@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+.Biography img{
+    padding: 10px 100px 30px 100px;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.content, .Achievements, .Quotes, .Timeline, .Legacy, .Resources{
+    width: 61%;
+    margin: 0px auto;
+    line-height: 1.5;
+    padding: 15px 0px;
+}
+
+blockquote{
+    font-style: italic;
+}
+
+.Gallery{
+    width: 62%;
+}
+.container{
+    display: flex;
+}
+
+.container, .gallery-text{
+    align-content: center;
+    font-size: larger;
+}
+.container img{
+    object-fit: cover;
+    width: 500px;
+    left: 0;
+}
+
+.Resources a:hover{
+    border-bottom: 2px solid;
+}
+
