@@ -71,6 +71,7 @@ nav{
     padding: 8px 20px;
     background: none;
     color: aliceblue;
+    font-size: 15px;
     border: 2px solid rgb(223, 76, 23);
     border-radius:7px 0px 0px 7px ;
 }
@@ -82,9 +83,50 @@ nav{
     font-weight: bold;
     background-color: orangered;
     border: none;
+    cursor: pointer;
     border-radius:0px 7px 7px 0px ;
 }
 
 .search:focus{
     outline: none;
 }
+
+.btn,.cn:active{
+    background-color: rgb(219, 67, 12);
+}
+
+.content{
+    width: 700px;
+    padding: 90px;
+    color: aliceblue;
+}
+
+.content span{
+    color: orangered;
+}
+
+.content h1{
+    font-size: 70px;
+}
+
+.content p{
+    font-size: 25px;
+    line-height: 0.8cm;
+    letter-spacing: 1.2px;
+}
+
+.cn{
+    padding: 8px 40px;
+    margin: 20px -1px;
+    background-color: orangered;
+    font-size: 25px;
+    font-weight:bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.cn a{
+    color: black;
+}
+
