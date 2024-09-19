@@ -76,6 +76,10 @@ nav{
     border-radius:7px 0px 0px 7px ;
 }
 
+.search:focus{
+    outline: none;
+}
+
 .btn{
     padding: 10px 30px;
     color: aliceblue;
@@ -87,11 +91,7 @@ nav{
     border-radius:0px 7px 7px 0px ;
 }
 
-.search:focus{
-    outline: none;
-}
-
-.btn,.cn:active{
+.search-container .btn:active{
     background-color: rgb(219, 67, 12);
 }
 
@@ -130,3 +130,93 @@ nav{
     color: black;
 }
 
+.cn:active{
+    background-color: rgb(219, 67, 12);
+}
+
+.login-card{
+    width: 250px;
+    height: 100%px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.775);
+    position: absolute;
+    top: 150px;
+    right: 110px;
+    border-radius: 14px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.login-card h2{
+    background-color: orangered;
+    width: 220px;
+    padding: 8px 10px;
+    text-align: center;
+    margin: auto;
+    border-radius: 14px;
+}
+.login-card label {
+    display: block;
+    color: aliceblue;
+    text-align: left;
+    margin: 20px 15px 10px ;
+    font-weight:bold ;
+    letter-spacing: 1px;
+    font-size: 17px;
+}
+.login-card input{
+    width: 220px;
+    padding: 10px 0px;
+    margin: 0px 0px 0px 0px ;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid orangered;
+    letter-spacing: 1px;
+    color: aliceblue;
+}
+
+::placeholder{
+    color: rgba(240, 248, 255, 0.781);
+}
+.login-card .btn1{
+    padding: 8px 90px;
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: bolder;
+    margin: 30px 0px;
+    font-family: a;
+    transition: 0.4s ease-in-out;
+    border: none;
+    background-color: #f0f8ffd7;
+    cursor: pointer;
+}
+
+.login-card .btn1:hover{
+    background-color: orangered;
+    border: none;
+}
+
+.link{
+    color: orangered;
+}
+
+.login-card p{
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    line-height: 25px;
+}
+
+footer p{
+    margin: 20px;
+}
+
+footer a{
+    font-size: 30px;
+    margin: 5px;
+    transition: 0.4s ease-in-out;
+}
+
+footer a:hover{
+    color: orangered;
+}

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORM PAGE</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7120bfd7fb.js" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <main>
@@ -21,10 +25,10 @@
                 </ul>
             </div>
 
-            <div class="search-container">
-                <input class="search" type="search" name="" placeholder="Type To Text">
-                <a href="#"><button class="btn">search</button></a>
-            </div>
+            <form class="search-container">
+                <input class="search" type="search" placeholder="Type To Text">
+                <button class="btn" type="submit">search</button>
+            </form>
         </nav>
 
         <section class="content">
@@ -35,6 +39,27 @@
             <button class="cn"><a href="#">Join Us</a></button>
         </section>
 
+        <form class="login-card" id="login-form">
+            <h2>Login Here</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email Here" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password Here" required>
+
+            <button class="btn1" type="submit">Login</button>
+
+            <p>Don't have an account? <a class="link" href="#"><br>Sign up</a> here</p>
+
+            <footer>
+                <p>Log in with</p>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="Google"><i class="fa-brands fa-google"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </footer>
+        </form>
     </main>
 </body>
 </html>
