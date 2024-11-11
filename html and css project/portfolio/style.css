@@ -733,6 +733,18 @@ span{
     .services-container{
         grid-template-columns: repeat(1,1fr);
     }
+    .service-box{
+        height: 450px;
+    }
+    .service-box .service-info{
+        max-height: 200px;
+    }
+    .service-info p{
+        max-height: 200px;
+    }
+    .testimonials h2{
+        font-size: 6rem;
+    }
 }
 
 /* over */
