@@ -1,11 +1,11 @@
-import { questions } from './quiz';
+import { questions } from './quiz.js';
 
 const startBtn = document.querySelector('.start-btn');
 const popupInfo = document.querySelector('.popup-info');
 const exitBtn = document.querySelector('.exit-btn');
 const main = document.querySelector('.main');
 const continueBtn = document.querySelector('.continue-btn');
-const quizSelection = document.querySelector('.quiz-selection');
+const quizSelection = document.querySelector('.quiz-section');
 //quiz part
 const questionE1 = document.querySelector('.question');
 const optionsE1 = document.querySelector('.options');
@@ -18,7 +18,6 @@ startBtn.onclick = () => {
     popupInfo.classList.add('active');
     main.classList.add('active');
 }
-
 
 exitBtn.onclick = () => {
     popupInfo.classList.remove('active');
@@ -52,7 +51,6 @@ function loadQuestion() {
         optionsE1.appendChild(optionBtn);
     });
 
-    nextBtn.disabled = true;
     footerE1.textContent = `${currentQuestionIndex + 1} of ${questions.length} Questions`;
 }
 
@@ -69,14 +67,12 @@ function selectOption(selectedIndex){
         if(index === selectedIndex && index !== currentQuestion.correct){
             btn.classList.add('incorrect');
         }
-        btn.disabled = true;
     });
 
     if (selectedIndex === currentQuestion.correct){
         score++;
         scoreE1.textContent = `Score: ${score}`;
     }
-    nextBtn.disabled = false;
 }
 
 //to handle next btn
