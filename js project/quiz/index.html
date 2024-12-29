@@ -23,7 +23,7 @@
 
         <div class="container">
 
-            <section class="quiz-section">
+            <section class="quiz-section" id="quiz-section">
                 <div class="quiz-box">
                     <h1>BrainBlitz Quiz</h1>
                     <div class="quiz-header">
@@ -31,6 +31,14 @@
                         <span class="header-score">Score: <span id="score">0</span> / 5</span>
                     </div>
 
+                    <div class="quiz-content">
+                        <h2 class="question">Question will appear here</h2>
+                        <div class="options">
+                          <!-- Options will be dynamically generated -->
+                        </div>
+                      </div>
+
+                    <!--
                     <h2 class="question-text">What does HTML stand for?</h2>
 
                     <div class="options">
@@ -39,6 +47,7 @@
                         <button class="option-btn" data-correct="false">C) Home Tool Markup Language</button>
                         <button class="option-btn" data-correct="false">D) Hyper Text Markdown Language</button>
                     </div>
+                    -->
 
                     <div class="quiz-footer">
                         <span class="question-total"><span id="qus-no">0</span> of 5 questions</span>
@@ -58,7 +67,7 @@
         </div>
     </main>
 
-    <div class="popup-info">
+    <div class="popup-info" id="popup-info">
         <h2>Quick Guide</h2>
         
         <span class="info">1. Each question has four options—choose the best answer.</span>
