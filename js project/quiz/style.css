@@ -195,7 +195,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 0%;
+    /* see */
+    left: -50%;
     width: 100%;
     background: #09001d;
     transition: 0.8s ease-in-out;
@@ -303,5 +304,15 @@ body{
 .quiz-footer .next-btn:hover{
     background: #c40094;
     border-color: #c40094;
+    color: #fff;
+}
+
+.option-btn.correct {
+    background: #27ae60;
+    color: #fff;
+}
+  
+.option-btn.incorrect {
+    background: #e74c3c;
     color: #fff;
 }

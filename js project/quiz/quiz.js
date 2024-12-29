@@ -1,4 +1,4 @@
-const questions = [
+export const questions = [
     {
         question: "What does HTML stand for?",
         options: [

@@ -28,7 +28,7 @@
                     <h1>BrainBlitz Quiz</h1>
                     <div class="quiz-header">
                         <span>Quiz Website</span>
-                        <span class="header-score">Score: <span id="score">0</span> / 5</span>
+                        <span class="score">0 / x</span>
                     </div>
 
                     <div class="quiz-content">
@@ -50,8 +50,8 @@
                     -->
 
                     <div class="quiz-footer">
-                        <span class="question-total"><span id="qus-no">0</span> of 5 questions</span>
-                        <button class="next-btn">Next</button>
+                        <span class="qus-no"> 0 of X questions</span>
+                        <button class="next-btn" disabled>Next</button>
                     </div>
 
                 </div>
@@ -67,7 +67,7 @@
         </div>
     </main>
 
-    <div class="popup-info" id="popup-info">
+    <div class="popup-info">
         <h2>Quick Guide</h2>
         
         <span class="info">1. Each question has four options—choose the best answer.</span>
@@ -83,8 +83,8 @@
 
     </div>
 
-    <script src="./questions.js"></script>
-    <script src="./script.js"></script>
+    <script src="quiz.js" type="module"></script>
+    <script src="script.js" type="module"></script>
 
 </body>
 
