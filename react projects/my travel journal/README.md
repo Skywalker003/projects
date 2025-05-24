@@ -6,7 +6,7 @@ A responsive web application to document and showcase travel destinations using 
 
 ## 🖼️ Preview
 
-![Preview](C:\Users\srivi\OneDrive\Documents\GitHub\projects\react projects\my travel journal\images\preview.png) <!-- Replace with your actual screenshot path -->
+![Preview](./images/preview.png) <!-- Replace with your actual screenshot path -->
 
 ---
 
