@@ -41,5 +41,7 @@ Pull requests are welcome! If you'd like to suggest improvements, feel free to f
 📄 License
 This project is open source and available under the MIT License.
 ---
+Let me know if you'd like to add deployment links, Tailwind, animations, or GitHub Actions badges — I can update the README accordingly.
+---
 
 Happy Coding!
