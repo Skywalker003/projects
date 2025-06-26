@@ -7,6 +7,20 @@ export default function Main() {
     const [ingredients, setIngredients] = React.useState([])
     const [recipe, setRecipe] = React.useState("")
 
+    const recipeSection = React.useRef(null)
+    
+    React.useEffect(() => {
+        if (recipe !== "" && recipeSection.current !== null) {
+            // recipeSection.current.scrollIntoView({behavior: "smooth"})
+            const yCoord = recipeSection.current.getBoundingClientRect().top + window.scrollY
+            window.scroll({
+                top: yCoord,
+                behavior: "smooth",
+                block: "start"
+            })
+        }
+    }, [recipe])
+
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromGroq(ingredients)
         setRecipe(recipeMarkdown)
@@ -17,12 +31,11 @@ export default function Main() {
         setIngredients(prev => [...prev, newIngredient])
     }
 
-    // ✅ Correct way to handle form submission
     function handleSubmit(e) {
         e.preventDefault()
         const formData = new FormData(e.target)
         addIngredient(formData)
-        e.target.reset() // Optional: clear input field after submit
+        e.target.reset() 
     }
 
     return (
@@ -39,6 +52,7 @@ export default function Main() {
 
             {ingredients.length > 0 &&
                 <IngredientsList
+                    ref={recipeSection}
                     ingredients={ingredients}
                     getRecipe={getRecipe}
                 />
