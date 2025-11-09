@@ -19,7 +19,7 @@ export async function getRecipeFromGroq(ingredientsArr) {
   const ingredients = ingredientsArr.join(", ");
 
   const body = {
-    model: "llama3-70b-8192",
+    model: "openai/gpt-oss-20b",
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
       {
