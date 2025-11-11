@@ -18,20 +18,23 @@ nav{
     display: inline;
 }
 
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .card{
     width:300px;
-    display: inline-block;
     margin: 0px 10px 10px 0px;
 }
 
 .inner_card{
-    display: flex;
+    display: grid;
+    grid-template-columns: 50px 1fr;
     margin: 5px 0px 0px 0px;
 }
 .text_card{
-    display: inline-block;
     line-height: 17px;
-    margin-left: 10px;
     font-size: 12px;
     font-family: Roboto;
 }
@@ -43,7 +46,6 @@ nav{
     border-radius: 36px;
     width: 36px;
     object-fit: contain;
-    margin-left: 2px;
 }
 
 .name{
