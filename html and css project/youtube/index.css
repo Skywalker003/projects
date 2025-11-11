@@ -3,19 +3,72 @@
 }
 body{
     margin: 5px;
+    background-color: rgb(246, 256, 246);
 }
 nav{
-    margin: 10px 0px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.logo_con{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu{
+    width: 25px;
+    margin: 0px 20px 0px 20px;
 }
 .logo{
-    display: inline-block;
+    width: 100px;
 }
-.text_logo{
-    display: inline;
+.len{
+    width: 25px;
+    padding: 0px 10px 0px 10px;
+}
+.len_btn{
+    border: 1px solid rgb(220, 220, 220);
+    background-color: rgb(247, 247, 247);
+    margin-right: 10px;
+}
+.len_btn:hover{
+    background-color: rgb(234, 233, 233);
+}
+.mic{
+    width: 25px;
+}
+.mic_btn{
+    border-radius: 50%;
+    border: none;
+}
+
+.input{
+    margin: 0px 35px 0px 70px;
+    display: flex;
+    flex: 1;
+    max-width: 500px;
 }
 
 .search_box{
-    display: inline;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 2px 0px 0px 2px;
+    border-right: none;
+}
+
+.quick{
+    display: flex;
+    flex: 1;
+    max-width: 200px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.features{
+    width: 30px;
 }
 
 main{
@@ -23,8 +76,6 @@ main{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 15px;
 }
-
-
 
 .inner_card{
     display: grid;
