@@ -2,8 +2,18 @@
     margin: 0px;
 }
 body{
-    margin: 5px;
-    background-color: rgb(246, 256, 246);
+    margin: 0px 5px 5px 5px;
+    background-color: rgb(246, 246, 246);
+    
+}
+
+aside{
+    background-color: aqua;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 50px;
+    width: 72px;
 }
 nav{
     height: 50px;
@@ -11,6 +21,9 @@ nav{
     justify-content: space-between;
     align-items: center;
     background-color: white;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid rgb(232, 232, 232);
 }
 .logo_con{
     display: flex;
@@ -57,6 +70,7 @@ nav{
     border: 1px solid rgb(220, 220, 220);
     border-radius: 2px 0px 0px 2px;
     border-right: none;
+    width: 0;
 }
 
 .quick{
@@ -65,6 +79,7 @@ nav{
     max-width: 200px;
     align-items: center;
     justify-content: space-around;
+    flex-shrink: 0;
 }
 
 .features{
@@ -75,6 +90,7 @@ main{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 15px;
+    padding: 20px 25px 25px 80px;
 }
 
 .inner_card{
