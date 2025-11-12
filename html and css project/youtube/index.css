@@ -8,12 +8,29 @@ body{
 }
 
 aside{
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     left: 0;
     bottom: 0;
     top: 50px;
-    width: 72px;
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.side_bar{
+    width: 25px;
+    font-family: Roboto;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+.side_bar:hover{
+    background-color: rgb(236, 236, 236);
 }
 nav{
     height: 50px;
@@ -24,6 +41,7 @@ nav{
     position: sticky;
     top: 0;
     border-bottom: 1px solid rgb(232, 232, 232);
+    z-index: 100;
 }
 .logo_con{
     display: flex;
@@ -71,6 +89,7 @@ nav{
     border-radius: 2px 0px 0px 2px;
     border-right: none;
     width: 0;
+    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
 }
 
 .quick{
@@ -90,12 +109,12 @@ main{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 15px;
-    padding: 20px 25px 25px 80px;
+    padding: 20px 25px 25px 90px;
 }
 
 .inner_card{
     display: grid;
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 40px 1fr;
     column-gap: 5px;
     margin: 5px 0px 0px 0px;
 }
@@ -107,10 +126,27 @@ main{
 .thumbnail{
     width: 100%;
 }
+.t_box{
+    position: relative;
+}
+.time{
+    position: absolute;
+    background-color: rgba(15, 15, 15, 0.883);
+    color: white;
+    bottom: 10px;
+    right: 4px;
+    font-family: Roboto;
+    font-size: 14px;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
 
+.pic_con{
+    width: 35px;
+}
 .pic{
     border-radius: 36px;
-    width: 50px;
+    max-width: 36px;
     object-fit: contain; 
 }
 
