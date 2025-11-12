@@ -63,7 +63,28 @@ nav{
     border: 1px solid rgb(220, 220, 220);
     background-color: rgb(247, 247, 247);
     margin-right: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
+.len_btn .tooltip{
+    position: absolute;
+    bottom: -39px;
+    padding: 3px 5px;
+    background-color: rgb(104, 104, 104);
+    color: white;
+    font-family: Roboto;
+    border-radius: 2px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+}
+
+.len_btn:hover .tooltip{
+    opacity: 1;
+}
+
 .len_btn:hover{
     background-color: rgb(234, 233, 233);
 }
@@ -73,7 +94,30 @@ nav{
 .mic_btn{
     border-radius: 50%;
     border: none;
+    display: flex;
+    position: relative;
+    justify-content: center;
 }
+
+.mic_btn .tooltip{
+    position: absolute;
+    bottom: -39px;
+    padding: 3px 5px;
+    background-color: rgb(104, 104, 104);
+    color: white;
+    font-family: Roboto;
+    border-radius: 2px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.mic_btn:hover .tooltip{
+    opacity: 1;
+}
+
 
 .input{
     margin: 0px 35px 0px 70px;
@@ -110,6 +154,21 @@ main{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 15px;
     padding: 20px 25px 25px 90px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 750px){
+    main{
+    grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 1000px){
+    main{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
 
 .inner_card{
