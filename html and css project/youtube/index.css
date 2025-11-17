@@ -1,6 +1,9 @@
 *{
     margin: 0px;
 }
+html, body {
+    overflow-x: hidden;
+}
 body{
     margin: 0px 5px 5px 5px;
     background-color: rgb(246, 246, 246);
@@ -38,8 +41,11 @@ nav{
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     border-bottom: 1px solid rgb(232, 232, 232);
     z-index: 100;
 }
@@ -153,7 +159,7 @@ main{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 15px;
-    padding: 20px 25px 25px 90px;
+    padding: calc(50px + 20px) 25px 25px 90px;
 }
 a{
     text-decoration: none;
@@ -172,6 +178,18 @@ a{
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 600px){
+    main{
+        grid-template-columns: 1fr !important;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    aside{
+        opacity: 0;
+    }
+}
+
 @media (max-width: 750px){
     main{
     grid-template-columns: 1fr 1fr;
