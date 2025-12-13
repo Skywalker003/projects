@@ -1,18 +1,30 @@
 document.getElementById("summarize").addEventListener("click", () =>{
-    const result = document.getElementById("result");
-    result.textContent = "Extracting Text...";
+    const resultDiv = document.getElementById("result");
+    const summary_type = document.getElementById("summary_type").value;
 
-    chrome.tabs.query({active: true, currentWindow: true },([tab]) => {
-        chrome.tabs.sendMessage(
-            tab.id,
-            { type: "GET_ARTICLE_TEXT"},
-            ({text}) => {
-                result.textContent = text ? text.slice(0,300) + "..." : "No article text found";
-            }
-        )
-    })
-});
+    resultDiv.innerHTML = '<div class = "loader"></div>';
 
-document.getElementById("copy-btn").addEventListener("click", () =>{
-    
-});
+    chrome.storage.sync.get(["geminiApiKey"],({geminiApiKey}) => {
+        if(!geminiApiKey){
+            resultDiv.textContent = "No API key set. Click the gear icon to add one.";
+            return;
+        }
+
+        chrome.tabs.query({active: true, currentWindow: true },([tab]) => {
+            chrome.tabs.sendMessage(
+                tab.id,
+                { type: "GET_ARTICLE_TEXT"},
+                ({text}) => {
+                    if(!text){
+                        resultDiv.textContent = "Couldn't extract text from this page.";
+                        return;
+                    }
+                    
+                }
+            )
+        })
+
+    });
+})
+
+   
