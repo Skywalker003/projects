@@ -1,3 +1,5 @@
+import { GoogleGenAI } from "@google/genai";
+
 document.getElementById("summarize").addEventListener("click", () =>{
     const resultDiv = document.getElementById("result");
     const summary_type = document.getElementById("summary_type").value;
@@ -14,12 +16,24 @@ document.getElementById("summarize").addEventListener("click", () =>{
             chrome.tabs.sendMessage(
                 tab.id,
                 { type: "GET_ARTICLE_TEXT"},
-                ({text}) => {
+                async ({text}) => {
                     if(!text){
                         resultDiv.textContent = "Couldn't extract text from this page.";
                         return;
                     }
-                    
+
+                    try {
+                        const summary = await getGeminiSummary(
+                            text,
+                            summaryType,
+                            geminiApiKey
+                        );
+
+                        resultDiv.textContent = summary
+                    } catch (error) {
+                        resultDiv.textContent = "Gemini error: " + err.message;
+                    }
+
                 }
             )
         })
@@ -27,4 +41,17 @@ document.getElementById("summarize").addEventListener("click", () =>{
     });
 })
 
+async function getGeminiSummary(rawText,type,apiKey){
+    const max =20000;
+    const text = rawText.length >max ? rawText.slice(0,max) + "..." : rawText;
+
+    const promptMap ={
+        brief:`Summarize in 2-3 sentences:\n\n${text}`,
+        detailed:`Give a detailed summary:\n\n${text}`,
+        bullet:`Summarize in 5-7 bullet points (start each line with "- "):\n\n${text}`,
+    }
+
+    const prompt = promptMap[type] || promptMap.brief;
+
+}
    
