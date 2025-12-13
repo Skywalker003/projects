@@ -52,6 +52,7 @@ async function getGeminiSummary(rawText,type,apiKey){
     }
 
     const prompt = promptMap[type] || promptMap.brief;
+    
 
 }
    
