@@ -8,6 +8,9 @@ function App() {
     <>
       <Navbar />
       <Movie_section />
+      <div className="text-center mt-4">
+        <p>© 2025 My Movie Site. All rights reserved.</p>
+      </div>
     </>
   )
 }
