@@ -50,8 +50,8 @@
 
 @layer components {
   .pattern {
-    @apply bg-hero-pattern w-full h-screen bg-center bg-cover absolute z-0;
-  }
+  @apply fixed inset-0 bg-hero-pattern bg-cover bg-center z-10;
+}
 
   .wrapper {
     @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;

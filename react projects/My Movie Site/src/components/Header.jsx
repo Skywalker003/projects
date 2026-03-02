@@ -1,7 +1,8 @@
 export default function Header() {
     return(
         <header>
-            <h2>find <span className="text-gradient">movies</span> you enjoy without the hassle</h2>
+            <img src="./hero.png" alt="" />
+            <h2>Find <span className="text-gradient">Movies</span> You'll Enjoy<br /> Without The Hassle</h2>
         </header>
     )
 }
