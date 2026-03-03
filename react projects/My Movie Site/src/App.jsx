@@ -14,46 +14,51 @@ function App() {
   const [movielist, setMovielist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${api_key}`
-    }
-  };
-
-  const fetchMovies = async () =>{
-
-    setIsLoading(true);
-    setError(null);
-
-    try{
-      const endpoint = `${api_base_url}/discover/movie?sort_by=popularity.desc`
-      const response = await fetch(endpoint, options);
-
-      if(!response.ok){
-        throw new Error("Failed to fetch movies");
-      }
-      const data = await response.json();
-      console.log(data);
-
-      if(data.response==false){
-        setError(data.Error || "Failed to fetch movies.");
-        setMovielist([]);
-        return;
-      }
-
-      setMovielist(data.results || []);
-
-    }catch(err){
-      console.error(`Error fetching movies: ${err}`);
-      setError("Failed to fetch movies. Please try again later.");
-    }
-  }
+  
 
   useEffect(() =>{
-    fetchMovies();
-  }, [])
+
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${api_key}`
+      }
+    };
+
+    const fetchMovies = async (query ='') =>{
+
+      setIsLoading(true);
+      setError(null);
+
+      try{
+        const endpoint = query ? `${api_base_url}/search/movie?query=${encodeURIComponent(query)}` : `${api_base_url}/discover/movie?sort_by=popularity.desc`;
+        const response = await fetch(endpoint, options);
+
+        if(!response.ok){
+          throw new Error("Failed to fetch movies");
+        }
+        const data = await response.json();
+
+        if(data.response==false){
+          setError(data.Error || "Failed to fetch movies.");
+          setMovielist([]);
+          return;
+        }
+
+        setMovielist(data.results || []);
+        console.log(data.results);
+
+      }catch(err){
+        console.error(`Error fetching movies: ${err}`);
+        setError("Failed to fetch movies. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchMovies(searchTerm);
+  }, [api_key, searchTerm])
 
   return (
     <main>
