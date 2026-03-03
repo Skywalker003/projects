@@ -1,12 +1,15 @@
 import Movie from "./Movie";
 
-export default function Movie_section() {
+export default function Movie_section({error, isLoading, movielist}) {
     return(
         <div className="card-container">
-            <Movie title="The Shawshank Redemption" rating={9.3} liked={false} />
-            <Movie title="The Godfather" rating={9.3} liked={false} />
-            <Movie title="The Dark Knight" rating={9.3} liked={false} />
-            <Movie title="Pulp Fiction" rating={9.3} liked={false} />
+            <h2>
+                all movies
+            </h2>
+            {isLoading ? <p className="text-blue-500">Loading movies...</p> : error ? <p className="text-red-500">{error}</p> : 
+            <ul>
+                {movielist.map(movie => <Movie key={movie.id} movie={movie} />)}
+            </ul>}
         </div>
     )
 }
