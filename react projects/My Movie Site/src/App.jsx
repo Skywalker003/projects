@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import {useDebounce} from 'react-use'
 import Header from './components/Header'
 import Search from './components/Search'
 import Movie_section from './components/Movie_section'
@@ -14,6 +15,11 @@ function App() {
   const [movielist, setMovielist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+
+  useDebounce(() => {
+    setDebouncedSearchTerm(searchTerm);
+  }, 1000 , [searchTerm]);
   
 
   useEffect(() =>{
@@ -57,8 +63,8 @@ function App() {
       }
     }
 
-    fetchMovies(searchTerm);
-  }, [api_key, searchTerm])
+    fetchMovies(debouncedSearchTerm);
+  }, [api_key, debouncedSearchTerm])
 
   return (
     <main>
