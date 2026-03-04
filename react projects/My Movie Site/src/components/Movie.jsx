@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Movie({ movie: {title, vote_average, poster_path, release_date, original_language } }) {
+export default function Movie({ movie: {title, vote_average, poster_path, release_date, original_language} }) {
     return(
        <div className="movie-card">
             <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
