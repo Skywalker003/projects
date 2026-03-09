@@ -1,36 +1,7 @@
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
-
-const projects = [
-  {
-    id: 1,
-    title: "AI Chef Recipe App",
-    description: " app that takes your ingredients and generates delicious recipes using AI!",
-    image: "/projects/project1.png",
-    tags: ["React", "Javascript"],
-    demoUrl: "https://chef-claude-recipe-maker.netlify.app/",
-    githubUrl: "https://github.com/Skywalker003/chef-claude",
-  },
-  {
-    id: 2,
-    title: "Tenzies Dice Game",
-    description:
-      "goal is to roll the dice until all dice show the same number",
-    image: "/projects/project2.png",
-    tags: ["React", "Javascript"],
-    demoUrl: "https://tenzies-dice-game-sky.netlify.app/",
-    githubUrl: "https://github.com/Skywalker003/Tenzies_Dice_game",
-  },
-  {
-    id: 3,
-    title: "BrainBlitz",
-    description:
-      "A quiz app with multiple-choice questions, instant feedback, and score tracking.",
-    image: "/projects/project3.png",
-    tags: ["Javascript"],
-    demoUrl: "https://sky-quiz.netlify.app/",
-    githubUrl: "https://github.com/Skywalker003/projects/tree/main/js%20project/quiz",
-  },
-];
+import { ArrowRight, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { GitHubIcon } from "./ui/GitHubIcon";
+import { projects } from "@/data/projects";
 
 export const ProjectsSection = () => {
   return (
@@ -87,7 +58,7 @@ export const ProjectsSection = () => {
                       target="_blank"
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
-                      <Github size={20} />
+                      <GitHubIcon size={20} />
                     </a>
                   </div>
                 </div>
@@ -96,13 +67,17 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <Link className="cosmic-button w-fit flex items-center gap-2" to="/projects">
+            View All Projects <ArrowRight size={16} />
+          </Link>
           <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
+            className="cosmic-button w-fit flex items-center gap-2"
             target="_blank"
+            rel="noreferrer"
             href="https://github.com/Skywalker003"
           >
-            Check My Github <ArrowRight size={16} />
+            Explore My GitHub <ArrowRight size={16} />
           </a>
         </div>
       </div>

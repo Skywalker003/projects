@@ -1,7 +1,6 @@
 import {
   Instagram,
   Linkedin,
-  Github,
   Mail,
   MapPin,
   Phone,
@@ -11,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { GitHubIcon } from "./ui/GitHubIcon";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -109,14 +109,29 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="https://www.linkedin.com/in/srivikas-sr" target="_blank">
-                  <Linkedin />
+                <a
+                  href="https://www.linkedin.com/in/srivikas-sr"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  <Linkedin size={24} />
                 </a>
-                <a href="https://github.com/Skywalker003" target="_blank">
-                  <Github />
+                <a
+                  href="https://github.com/Skywalker003"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  <GitHubIcon size={24} />
                 </a>
-                <a href="https://www.instagram.com/mistake_no_3/" target="_blank">
-                  <Instagram />
+                <a
+                  href="https://www.instagram.com/mistake_no_3/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  <Instagram size={24} />
                 </a>
               </div>
             </div>
