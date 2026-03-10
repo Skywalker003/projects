@@ -3,7 +3,7 @@ export default function Footer(){
         <footer>
             <div className="footer-top">
                 <div>
-                    <h1>Web_Dev</h1>
+                    <h1>Web<span>_Dev</span></h1>
                     <p>Learn, practice, and grow your web development skills with curated frontend courses.</p>
                     <p>Learn. Build. Grow.</p>
                 </div>
@@ -19,28 +19,28 @@ export default function Footer(){
 
                 <div>
                     <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>Projects</li>
+                        <li><a href="#html">HTML</a></li>
+                        <li><a href="#css">CSS</a></li>
+                        <li><a href="#javascript">JavaScript</a></li>
+                        <li><a href="#react">React</a></li>
+                        <li><a href="#projects">Projects</a></li>
                     </ul>
                 </div>
                 <div>
                     <ul>
-                        <li>FAQ</li>
-                        <li>Help Center</li>
-                        <li>Terms & Conditions</li>
-                        <li>Privacy Policy</li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#help-center">Help Center</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                        <li><a href="#privacy-policy">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div>
                     <ul>
-                        <li>WebDev@gmail.com</li>
-                        <li>Chennai</li>
-                        <li>LinkedIn</li>
-                        <li>Instagram</li>
-                        <li>Twitter (X)</li>
+                        <li><a href="mailto:WebDev@gmail.com">WebDev@gmail.com</a></li>
+                        <li><a href="#location">Chennai</a></li>
+                        <li><a href="#linkedin">LinkedIn</a></li>
+                        <li><a href="#instagram">Instagram</a></li>
+                        <li><a href="#twitter">Twitter (X)</a></li>
                     </ul>
                 </div>
             </div>

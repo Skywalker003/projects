@@ -37,27 +37,30 @@ export default function Course(){
   Advanced: 4,
 };
   return(
-    <div className="card-container">
-      {[...courseList]
-      .sort(
-        (a, b) => levelOrder[a.level] - levelOrder[b.level]
-      )
-      .filter((course) => levelOrder[course.level] <= levelOrder["Intermediate"])
-      .map(
-        ({ id, title, image, description, difficulty, level, shown } /*, index*/) => ( //destructured instead of (course) and then course.id, course.title etc
-          <Card
-            key={id}// index can also be used as key but id is better
-            title={title}
-            image={image}
-            description={description}
-            difficulty={difficulty}
-            level={level}
-            shown={shown}
-            hide={hideCourse}
-            id={id}//it seems we cant use key prop so we pass id prop to use 
-          />
+    <>
+      <h1 id="courses">Featured <span>Courses</span></h1>
+      <div className="card-container">
+        {[...courseList]
+        .sort(
+          (a, b) => levelOrder[a.level] - levelOrder[b.level]
         )
-      )}
-    </div>
+        .filter((course) => levelOrder[course.level] <= levelOrder["Intermediate"])
+        .map(
+          ({ id, title, image, description, difficulty, level, shown } /*, index*/) => ( //destructured instead of (course) and then course.id, course.title etc
+            <Card
+              key={id}// index can also be used as key but id is better
+              title={title}
+              image={image}
+              description={description}
+              difficulty={difficulty}
+              level={level}
+              shown={shown}
+              hide={hideCourse}
+              id={id}//it seems we cant use key prop so we pass id prop to use 
+            />
+          )
+        )}
+      </div>
+    </>
   )
 }

@@ -1,7 +1,7 @@
 export default function Navbar(){
     return(
         <nav>
-            <h2 className="logo">Web_Dev</h2>
+            <h2 className="logo">Webs<span>_Dev</span></h2>
             <a href="home">Home</a>
             <a href="courses">Courses</a>
             <a href="about">About</a>
