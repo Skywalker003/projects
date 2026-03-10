@@ -6,19 +6,19 @@ export default function Platform() {
 
             <div className="platform-benefits">
                 <div className="platform-benefit">
-                    <h3>Beginner Friendly</h3>
+                    <h2>Beginner Friendly</h2>
                     <p>Start from basics with simple explanations.</p>
                 </div>
                 <div className="platform-benefit">
-                    <h3>Comprehensive Curriculum</h3>
+                    <h2>Comprehensive Curriculum</h2>
                     <p>Our course covers everything from basics to advanced topics.</p>
                 </div>
                 <div className="platform-benefit">
-                    <h3>Practical Projects</h3>
+                    <h2>Practical Projects</h2>
                     <p>Build real-world applications to showcase your skills.</p>
                 </div>
                 <div className="platform-benefit">
-                    <h3>Expert Instructors</h3>
+                    <h2>Expert Instructors</h2>
                     <p>Learn from industry professionals with years of experience.</p>
                 </div>
             </div>

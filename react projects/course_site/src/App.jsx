@@ -4,6 +4,7 @@ import  Navbar  from './components/Navbar.jsx'
 import Course from './components/Course.jsx'
 import LearningPath from './components/LearningPath.jsx'
 import Platform from './components/Platform.jsx'
+import Project from './components/Project.jsx'
 import Footer from './components/Footer.jsx'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <LearningPath />
       <Platform />
       <Course />
+      <Project />
       <Footer />
     </>
   )

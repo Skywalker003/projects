@@ -202,7 +202,29 @@ span{
   animation-delay: calc(var(--step-delay, 0s) + 0.15s);
 }
 
+.platform-benefits{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  border-bottom: white 1px solid;
+  margin: 30px 0 30px 0;
+  padding-bottom: 40px;
+}
+.platform-benefit{
+  padding: 20px;
+  flex: 40%;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 111, 97, 0.18), rgba(255, 255, 255, 0.08));
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  animation-delay: var(--step-delay, 0s);
+}
 
+.platform-benefit:hover{
+  border-color: #ff6f61;
+  box-shadow: 0 10px 20px rgba(255, 100, 80, 0.2);
+  transform: translateY(-8px);
+}
 
 /* --- courses --- */
 .card-container{
@@ -211,7 +233,7 @@ span{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin-top: 30px;
+  margin: 30px 0px;
 }
 
 .card{
@@ -265,14 +287,6 @@ span{
   padding: 10px 15px;
   border-radius: 4px;
   margin: 10px;
-}
-
-/* --- Roadmap  --- */
-
-.roadmap{
-  border-top: white 1px solid;
-  margin-top: 30px;
-  padding-top: 10px;
 }
 
 @media (max-width: 700px){
@@ -334,6 +348,14 @@ span{
   100%{
     transform: translateY(0);
   }
+}
+
+/* --- project section --- */
+
+.projects-section{
+  margin: 0px 0px;
+  padding: 24px 0 5px 0;
+  border-top: white 1px solid;
 }
 
 /* --- footer --- */
