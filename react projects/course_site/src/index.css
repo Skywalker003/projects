@@ -229,7 +229,7 @@ span{
 /* --- courses --- */
 .card-container{
   display: flex;
-  gap: 20px;
+  gap: 30px 20px;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
@@ -246,7 +246,11 @@ span{
   transition: transform 0.3s ease;
 }
 .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px);
+}
+
+.card:hover .inner-text h3{
+  transform: translateY(12px);
 }
 
 .update{
@@ -271,6 +275,7 @@ span{
 }
 .inner-text h3{
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .enroll-btn{
@@ -354,7 +359,7 @@ span{
 
 .projects-section{
   margin: 0px 0px;
-  padding: 24px 0 5px 0;
+  padding: 10px 0 5px 0;
   border-top: white 1px solid;
 }
 

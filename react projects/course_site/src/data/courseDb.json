@@ -60,5 +60,36 @@
             "level": "Intermediate",
             "shown": true
         }
-    ]
+    ],
+
+    "projects": [
+    {
+      "id": 1,
+      "title": "PORTFOLIO WEBSITE",
+      "image": "/images/portfolio.png",
+      "description": "Create a responsive personal portfolio to showcase your projects, skills, and experience as a developer.",
+      "tech": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "id": 2,
+      "title": "WEATHER APP",
+      "image": "/images/weather.png",
+      "description": "Develop a weather app that fetches real-time data from a weather API and displays forecasts using dynamic JavaScript.",
+      "tech": ["JavaScript", "API", "Fetch"]
+    },
+    {
+      "id": 3,
+      "title": "MOVIE APP",
+      "image": "/images/movie.png",
+      "description": "Build a movie discovery app using React that allows users to search and explore movies through the TMDB API.",
+      "tech": ["React", "API"]
+    },
+    {
+      "id": 4,
+      "title": "FULL STACK APP",
+      "image": "/images/fullstack.png",
+      "description": "Build a amazon clone using react and backend API with Node.js and Express.",
+      "tech": ["Node.js", "Express"]
+    }
+  ]
 }

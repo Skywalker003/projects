@@ -1,12 +1,16 @@
-export default function Project(){
+export default function Project({title, image, description, tech }){
     return(
-        <section className="projects-section">
-            <h1>Projects You Will <span>Build</span></h1>
-            <div className="projects-container">
-                <div className="project-card">
-                    
-                </div>
-            </div>
-        </section>
+        <div className="card">
+            <img className="inner-img" src={image} alt="img" />
+              <div className="inner-text">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <div>
+                    {tech.map((t, index) =>(
+                        <span><button key={index} className="enroll-btn">{t}</button></span>
+                    ))}
+                  </div>
+              </div>
+        </div>
     )
 }

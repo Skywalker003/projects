@@ -13,7 +13,7 @@ import useFetch from "./useFetch";
 
 export default function Course(){
 
-   const { courseList, loading, error , hideCourse } = useFetch(
+  const { courseList, loading, error , hideCourse } = useFetch(
     "http://localhost:3000/courses"
   );
 
