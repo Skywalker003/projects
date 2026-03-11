@@ -1,22 +1,26 @@
+import Home from '../pages/Home'
+import Courses from '../pages/Courses'
+import About from '../pages/About'
+import Contact from '../pages/Contact'
 import './App.css'
-import Hero from './components/Hero.jsx'
-import Navbar  from './components/Navbar.jsx'
-import Course from './components/Course.jsx'
-import LearningPath from './components/LearningPath.jsx'
-import Platform from './components/Platform.jsx'
-import Projects from './components/Projects.jsx'
-import Footer from './components/Footer.jsx'
+import Navbar from './components/Navbar'
+
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <LearningPath />
-      <Platform />
-      <Course />
-      <Projects />
-      <Footer />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Home' element={<Home />} />
+          <Route path='/Courses' element={<Courses />} />
+          <Route path='/About' element={<About />} />
+          <Route path='/Contact' element={<Contact />} />
+        </Routes>
+      </Router>
     </>
   )
 }
