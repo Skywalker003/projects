@@ -5,7 +5,7 @@ import Contact from '../pages/Contact'
 import './App.css'
 import Navbar from './components/Navbar'
 
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
 function App() {
