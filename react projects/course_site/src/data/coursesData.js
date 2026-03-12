@@ -28,7 +28,7 @@ const courses = [
     description:
       "Learn JavaScript fundamentals to make websites interactive. Understand variables, functions, conditions, loops, and DOM manipulation.",
     difficulty: "Medium",
-    level: "Beginner → Intermediate",
+    level: "Beginner",
     shown: true,
   },
   {

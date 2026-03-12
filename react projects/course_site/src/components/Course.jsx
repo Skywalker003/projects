@@ -11,9 +11,8 @@ import Card from "./Card";
 import React from "react";
 import useFetch from "./useFetch";
 
-export default function Course(){
-
-  const { courseList, loading, error , hideCourse } = useFetch(
+export default function Course() {
+  const { courseList, loading, error, hideCourse } = useFetch(
     "http://localhost:3000/courses"
   );
 
@@ -24,43 +23,40 @@ export default function Course(){
   if (error) {
     return <div>Error: {error}</div>;
   }
-  
-  
+
   /*function handleHide(id){
     setCourseList([...courseList].filter((course) => course.id != id));
   }*/
 
   const levelOrder = {
-  Beginner: 1,
-  "Beginner → Intermediate": 2,
-  Intermediate: 3,
-  Advanced: 4,
-};
-  return(
+    Beginner: 1,
+    Intermediate: 2,
+    Advanced: 3,
+  };
+
+  return (
     <>
       <h1 id="courses">Featured <span>Courses</span></h1>
       <div className="card-container">
         {[...courseList]
-        .sort(
-          (a, b) => levelOrder[a.level] - levelOrder[b.level]
-        )
-        .filter((course) => levelOrder[course.level] <= levelOrder["Intermediate"])
-        .map(
-          ({ id, title, image, description, difficulty, level, shown } /*, index*/) => ( //destructured instead of (course) and then course.id, course.title etc
-            <Card
-              key={id}// index can also be used as key but id is better
-              title={title}
-              image={image}
-              description={description}
-              difficulty={difficulty}
-              level={level}
-              shown={shown}
-              hide={hideCourse}
-              id={id}//it seems we cant use key prop so we pass id prop to use 
-            />
-          )
-        )}
+          .sort((a, b) => levelOrder[a.level] - levelOrder[b.level])
+          .filter((course) => levelOrder[course.level] <= levelOrder["Intermediate"])
+          .map(
+            ({ id, title, image, description, difficulty, level, shown } /*, index*/) => (
+              <Card
+                key={id}
+                title={title}
+                image={image}
+                description={description}
+                difficulty={difficulty}
+                level={level}
+                shown={shown}
+                hide={hideCourse}
+                id={id}
+              />
+            )
+          )}
       </div>
     </>
-  )
+  );
 }
