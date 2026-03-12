@@ -10,6 +10,7 @@ export default function Course_hero({ courseCount, loading, error }) {
             {!loading && !error && (
                 <p>{courseCount} Courses <span>Available</span></p>
             )}
+            <a href="#courses"><button id="explore-btn" className="enroll-btn">Explore Courses</button></a>
         </div>
     </div>
   )

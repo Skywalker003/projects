@@ -137,8 +137,7 @@ span{
 
 .learning-path{
   margin: 0 0 30px 0;
-  padding: 24px 0 65px 0;
-  border-bottom: white 1px solid;
+  padding: 50px 0 55px 0;
   animation: learning-path-float 5s ease-in-out infinite;
 }
 
@@ -202,12 +201,19 @@ span{
   animation-delay: calc(var(--step-delay, 0s) + 0.15s);
 }
 
+/* --- platform benefits --- */
+
+.platform{
+  border-top: white 1px solid;
+  margin-bottom: 40px;
+}
+
 .platform-benefits{
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   border-bottom: white 1px solid;
-  margin: 30px 0 30px 0;
+  margin: 30px 0 0px 0;
   padding-bottom: 40px;
 }
 .platform-benefit{
@@ -233,7 +239,9 @@ span{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin: 30px 0px;
+  margin: 0px 0px;
+  padding: 5px 0 30px 0;
+  border-bottom: white 1px solid;
 }
 
 .card{
@@ -359,9 +367,16 @@ span{
 
 .projects-section{
   margin: 0px 0px;
-  padding: 10px 0 5px 0;
-  border-top: white 1px solid;
+  padding: 5px 0 0px 0;
 }
+
+.projects-section .card-container{
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 
 /* --- footer --- */
 
@@ -412,15 +427,23 @@ a:hover::after {
 
 .course-hero-container{
   position: relative;
-  padding: 200px 20px 200px;
+  padding: 130px 0px 200px;
   text-align: center;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 1.6rem;
 }
 
 .course-hero-container::before{
   content: "";
   position: absolute;
-  top: -190px;
+  top: -200px;
   left: 50%;
   transform: translateX(-50%);
   width: 1100px;
@@ -435,15 +458,4 @@ a:hover::after {
 
   filter: blur(80px);
   z-index: -1;
-}
-
-.course-hero-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
-  padding: 60px 15px 150px 15px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  font-size: 1.6rem;
 }
