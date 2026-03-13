@@ -1,8 +1,11 @@
 export default function Platform() {
     return(
         <section className="platform">
-            <h1>Why Choose This <span>Platform</span></h1>
-            <p>Learn web development with a clear roadmap and practical projects.</p>
+            <div className="section-heading">
+                <p className="section-kicker">Why Webs_Dev</p>
+                <h1>Why Choose This <span>Platform</span></h1>
+                <p>Learn web development with a clear roadmap and practical projects.</p>
+            </div>
 
             <div className="platform-benefits">
                 <div className="platform-benefit">

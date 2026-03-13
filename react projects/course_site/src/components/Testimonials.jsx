@@ -18,18 +18,24 @@ export default function Testimonials() {
 
   return (
     <section className="testimonials-section">
-        <h1>What Students <span>Say</span></h1>
+        <div className="testimonials-header">
+            <p className="section-kicker">Student feedback</p>
+            <h1>What Students <span>Say</span></h1>
+            <p className="testimonials-intro">
+                Real progress comes from clarity, consistent practice, and building things that actually work.
+            </p>
+        </div>
         <div className="testimonial-card-container">
             {[...testimonials]
                 .map(
-                    ({ id, name, role, message, star } /*, index*/) => ( //destructured instead of (course) and then course.id, course.title etc
+                    ({ id, name, role, message, star } /*, index*/) => (
                     <Testimonial_card
-                        key={id}// index can also be used as key but id is better
+                        key={id}
                         name={name}
                         role={role}
                         message={message}
                         star={star}
-                        id={id}//it seems we cant use key prop so we pass id prop to use 
+                        id={id}
                     />
                     )
                 )}

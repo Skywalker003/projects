@@ -19,7 +19,10 @@ export default function Projects(){
 
     return (
         <section className="projects-section">
-            <h1>Projects You Will <span>Build</span></h1>
+            <div className="section-heading">
+                <p className="section-kicker">Hands-on practice</p>
+                <h1>Projects You Will <span>Build</span></h1>
+            </div>
             <div className="card-container">
                 {[...projectList]
                     .map(

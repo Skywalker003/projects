@@ -11,7 +11,7 @@ import Testimonials from '../src/components/Testimonials.jsx'
 
 export default function Home() {
   return (
-    <>
+    <main className="home-page">
         <Hero />
         <LearningPath />
         <Platform />
@@ -19,6 +19,6 @@ export default function Home() {
         <Projects />
         <Testimonials/>
         <Footer />
-    </>
+    </main>
   )
 }

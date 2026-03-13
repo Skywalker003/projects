@@ -36,7 +36,10 @@ export default function Course() {
 
   return (
     <>
-      <h1 id="courses">Featured <span>Courses</span></h1>
+      <div className="section-heading">
+        <p className="section-kicker">Featured learning</p>
+        <h1 id="courses">Featured <span>Courses</span></h1>
+      </div>
       <div className="card-container">
         {[...courseList]
           .sort((a, b) => levelOrder[a.level] - levelOrder[b.level])
