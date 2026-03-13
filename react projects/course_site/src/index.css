@@ -516,3 +516,12 @@ a:hover::after {
   border-color: #ff6f61;
   color: white;
 }
+
+/*------------------------------------------ about page ------------------------------------------*/
+
+/* --- how we teach section --- */
+#learning{
+  border-top: none;
+}
+
+/* --- tech stack section --- */
