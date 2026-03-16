@@ -32,31 +32,34 @@ export default function Contact_form() {
   }
 
   return (
-
+    <div className="contact-section">
+    <h1 >Contact <span>Us</span></h1>
     <div className="contact-container">
       <div className="contact-info">
         <div className="contact-item">
-          <h4>Email</h4>
+          <h4><span>Email</span></h4>
           <p>websdev@gmail.com</p>
         </div>
         <div className="contact-item">
-          <h4>Location</h4>
+          <h4><span>Location</span></h4>
           <p>Chennai, India</p>
         </div>
         <div className="contact-item">
-          <h4>Response Time</h4>
+          <h4><span>Response Time</span></h4>
           <p>Within 24 hours</p>
         </div>
       </div>
 
       <section className="contact-form-section">
           <form className="contact-form" onSubmit={handleSubmit}>
+            
             <input
             type="text"
             name="name"
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange} />
+            
             <input
             type="email"
             name="email"
@@ -74,6 +77,7 @@ export default function Contact_form() {
             </button>
           </form>
       </section>
+    </div>
     </div>
   )
 }
