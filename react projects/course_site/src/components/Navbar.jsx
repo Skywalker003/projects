@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Navbar(){
+    const token = localStorage.getItem("token")
     return(
         <nav>
             <h2 className="logo">Webs<span>_Dev</span></h2>
@@ -8,7 +9,11 @@ export default function Navbar(){
             <Link to="/Courses">Courses</Link>
             <Link to="/About">About</Link>
             <Link to="/Contact">Contact</Link>
-            <button className="login">Log in</button>
+            <Link to="/Login">
+                <button className="login">
+                    {!token?"login":"logout"}
+                </button></Link>
+            
         </nav>
     )
 }
