@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AUTH_API_URL } from '../src/config'
 
 export default function Login({ handleLogin }) {
 
@@ -25,7 +26,7 @@ export default function Login({ handleLogin }) {
 
         try{
 
-            const res = await fetch("http://localhost:5000/login", {
+            const res = await fetch(`${AUTH_API_URL}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -38,7 +39,6 @@ export default function Login({ handleLogin }) {
             if(res.ok){
             handleLogin(data.token)
 
-            alert("Login successful")
             navigate("/Home")
 
             } else {

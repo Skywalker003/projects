@@ -1,11 +1,7 @@
 import React from 'react'
 
 export default function Testimonial_card({ name, role, message, star }) {
-  const cleanedMessage = message
-    ?.replace(/â|âœâœ|âœ/g, "")
-    .trim();
-
-  const ratingCount = star?.match(/â­/g)?.length || 5;
+  const ratingCount = Number(star) || 5;
 
   return (
     <div className="testimonial-card">
@@ -19,11 +15,11 @@ export default function Testimonial_card({ name, role, message, star }) {
           <p className="role">{role}</p>
         </div>
       </div>
-      <p className="message">{cleanedMessage}</p>
+      <p className="message">{message}</p>
       <div className="testimonial-footer">
         <div className="star" aria-label={`${ratingCount} out of 5 stars`}>
           {Array.from({ length: ratingCount }).map((_, index) => (
-            <span key={index}>★</span>
+            <span className="star-icon" key={index}>★</span>
           ))}
         </div>
         <span className="testimonial-tag">Verified learner</span>

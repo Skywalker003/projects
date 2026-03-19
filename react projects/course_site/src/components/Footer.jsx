@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Footer(){
     return(
         <footer>
@@ -9,10 +11,10 @@ export default function Footer(){
                 </div>
                 <div>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><Link to="/Home">Home</Link></li>
+                        <li><Link to="/Courses">Courses</Link></li>
+                        <li><Link to="/About">About</Link></li>
+                        <li><Link to="/Contact">Contact</Link></li>
                         <li><a href="#blog">Blog / Resources</a></li>
                     </ul>
                 </div>
@@ -38,15 +40,15 @@ export default function Footer(){
                     <ul>
                         <li><a href="mailto:WebDev@gmail.com">WebDev@gmail.com</a></li>
                         <li><a href="#location">Chennai</a></li>
-                        <li><a href="#linkedin">LinkedIn</a></li>
-                        <li><a href="#instagram">Instagram</a></li>
-                        <li><a href="#twitter">Twitter (X)</a></li>
+                        <li><a href="https://www.linkedin.com/in/srivikas-sr/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/mistake_no_3/?hl=en" target="_blank" rel="noreferrer">Instagram</a></li>
+                        <li><a href="https://x.com/" target="_blank" rel="noreferrer">Twitter (X)</a></li>
                     </ul>
                 </div>
             </div>
 
             <div className="footer-bottom">
-                <p>© 2025 Web_Dev. All rights reserved by sri vikas.</p>
+                <p>© 2025 Web_Dev. All rights reserved by Sri Vikas.</p>
             </div>
             
         </footer>

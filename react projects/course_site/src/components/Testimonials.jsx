@@ -1,11 +1,12 @@
 import React from 'react'
 import useFetch from "./useFetch";
 import Testimonial_card from './Testimonial_card';
+import { DATA_API_URL } from "../config";
 
 export default function Testimonials() {
 
     const { courseList: testimonials, loading, error } = useFetch(
-    "http://localhost:3000/testimonials"
+    `${DATA_API_URL}/testimonials`
   );
 
   if (loading) {

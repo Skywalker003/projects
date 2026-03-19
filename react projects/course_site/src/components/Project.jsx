@@ -7,7 +7,9 @@ export default function Project({id ,title, image, description, tech }){
                   <p>{description}</p>
                   <div>
                     {tech.map((t) =>(
-                        <span><button key={id} className="enroll-btn">{t}</button></span>
+                        <span key={`${id}-${t}`}>
+                            <button className="enroll-btn">{t}</button>
+                        </span>
                     ))}
                   </div>
               </div>

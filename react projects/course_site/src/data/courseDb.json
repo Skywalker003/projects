@@ -85,28 +85,27 @@
       "tech": ["Node.js", "Express"]
     }
   ],
-
   "testimonials": [
     {
       "id": 1,
       "name": "Arjun",
       "role": "Frontend Student",
-      "message": "❝ This platform helped me understand React easily and build real projects. ❜❜",
-      "star": "⭐ ⭐ ⭐ ⭐ ⭐"
+      "message": "This platform helped me understand React easily and build real projects.",
+      "star": "5"
     },
     {
       "id": 2,
       "name": "Priya",
       "role": "Web Development Learner",
-      "message": "❝ The learning path made it easy to move from HTML to full-stack development. ❜❜",
-      "star": "⭐ ⭐ ⭐ ⭐ ⭐"
+      "message": "The learning path made it easy to move from HTML to full-stack development.",
+      "star": "5"
     },
     {
       "id": 3,
       "name": "Rahul",
       "role": "Beginner Developer",
-      "message": "❝ Project-based learning helped me gain confidence in JavaScript. ❜❜",
-      "star": "⭐ ⭐ ⭐ ⭐ ⭐"
+      "message": "Project-based learning helped me gain confidence in JavaScript.",
+      "star": "5"
     }
   ]
 }

@@ -4,10 +4,11 @@ import useFetch from '../src/components/useFetch'
 import Course_course from '../src/components/Course_course';
 import LearningPath from '../src/components/LearningPath';
 import Footer from '../src/components/Footer';
+import { DATA_API_URL } from '../src/config';
 
 export default function Courses() {
 
-  const { courseList, loading, error } = useFetch("http://localhost:3000/courses");
+  const { courseList, loading, error } = useFetch(`${DATA_API_URL}/courses`);
 
 
   return (

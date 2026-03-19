@@ -1,10 +1,11 @@
 import Project from "./Project"
 import useFetch from "./useFetch"
+import { DATA_API_URL } from "../config"
 
 export default function Projects(){
 
     const { courseList , loading, error } = useFetch(
-    "http://localhost:3000/projects"
+    `${DATA_API_URL}/projects`
   );
 
   if (loading) {

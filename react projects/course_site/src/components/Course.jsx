@@ -10,10 +10,11 @@ import express from "../assets/express.png";
 import Card from "./Card";
 import React from "react";
 import useFetch from "./useFetch";
+import { DATA_API_URL } from "../config";
 
 export default function Course() {
   const { courseList, loading, error, hideCourse } = useFetch(
-    "http://localhost:3000/courses"
+    `${DATA_API_URL}/courses`
   );
 
   if (loading) {

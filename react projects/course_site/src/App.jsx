@@ -6,14 +6,23 @@ import Login from '../pages/Login'
 import './App.css'
 import Navbar from './components/Navbar'
 import ProtectedRoute from './components/ProtectedRoute'
+import ScrollToTop from './components/ScrollToTop'
+import { getTokenExpiryDelay, isTokenValid } from './utils/auth'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
 function App() {
 
-  const [token, setToken] = useState(localStorage.getItem("token"))
+  const savedToken = localStorage.getItem("token")
+  const initialToken = isTokenValid(savedToken) ? savedToken : null
+
+  if(savedToken && !initialToken){
+    localStorage.removeItem("token")
+  }
+
+  const [token, setToken] = useState(initialToken)
 
   function handleLogin(newToken){
     localStorage.setItem("token", newToken)
@@ -25,9 +34,26 @@ function App() {
     setToken(null)
   }
 
+  useEffect(() => {
+    if(!token){
+      return
+    }
+
+    const expiryDelay = getTokenExpiryDelay(token)
+    const timeoutId = window.setTimeout(() => {
+      handleLogout()
+      if(expiryDelay > 0){
+        alert("Session expired. Please login again.")
+      }
+    }, Math.max(expiryDelay, 0))
+
+    return () => window.clearTimeout(timeoutId)
+  }, [token])
+
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path='/Login' element={<Login handleLogin={handleLogin} />} />
           <Route path='/' element={<ProtectedRoute token={token}><><Navbar token={token} handleLogout={handleLogout} /><Home /></></ProtectedRoute>} />

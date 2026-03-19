@@ -1,11 +1,12 @@
 import Card from "./Card";
 import React from "react";
 import useFetch from "./useFetch";
+import { DATA_API_URL } from "../config";
 
 export default function Course_course() {
 
     const { courseList, loading, error , hideCourse } = useFetch(
-    "http://localhost:3000/courses"
+    `${DATA_API_URL}/courses`
   );
 
   const [selectedLevel, setSelectedLevel] = React.useState("All");
@@ -32,7 +33,7 @@ export default function Course_course() {
         .sort((a, b) => levelOrder[a.level] - levelOrder[b.level])
         .filter((course) => {
           if(selectedLevel === "All") {
-            return levelOrder[course.level] <= levelOrder["Intermediate"];
+            return levelOrder[course.level] <= levelOrder["Advanced"];
           }
           return course.level === selectedLevel;
         });
