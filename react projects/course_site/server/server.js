@@ -12,12 +12,25 @@ const port = process.env.PORT || 5000;
 const adminEmail = process.env.ADMIN_EMAIL;
 const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
 const jwtSecret = process.env.JWT_SECRET;
+const courseData = require("../src/data/courseDb.json");
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Backend is running");
+});
+
+app.get("/courses", (req, res) => {
+  res.json(courseData.courses);
+});
+
+app.get("/projects", (req, res) => {
+  res.json(courseData.projects);
+});
+
+app.get("/testimonials", (req, res) => {
+  res.json(courseData.testimonials);
 });
 
 app.post("/login", async (req, res) => {
