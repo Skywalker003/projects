@@ -51,27 +51,46 @@ export default function Login({ handleLogin }) {
     }
     
     return (
-    <div className="login-container">
+    <div className="login-page">
 
-        <form onSubmit={handleSubmit}>
-            <input 
-            type="email"
-            name="email"
-            autoComplete="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="enter your mail" />
+        <div className="login-card">
+
+            <h2>Welcome Back</h2>
+            <p>Login to continue your learning journey</p>
+
+            <form onSubmit={handleSubmit}>
             
-            <input
-            type="password"
-            name="password"
-            autoComplete="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="enter your password" />
+            <input 
+                type="email"
+                name="email"
+                autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                required
+            />
 
-            <button type="submit">Submit</button>
-        </form>
+            <input
+                type="password"
+                name="password"
+                autoComplete="current-password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+            />
+
+            <button type="submit" className="login-btn">
+                Login
+            </button>
+
+            </form>
+
+            <div className="login-extra">
+                <p>Don't have an account? <span>Sign up</span></p>
+            </div>
+
+        </div>
 
     </div>
   )

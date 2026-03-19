@@ -28,14 +28,13 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar token={token} handleLogout={handleLogout} />
         <Routes>
-          <Route path='/' element={<ProtectedRoute token={token}><Home /></ProtectedRoute>} />
-          <Route path='/Home' element={<ProtectedRoute token={token}><Home /></ProtectedRoute>} />
-          <Route path='/Courses' element={<ProtectedRoute token={token}><Courses /></ProtectedRoute>} />
-          <Route path='/About' element={<ProtectedRoute token={token}><About /></ProtectedRoute>} />
-          <Route path='/Contact' element={<ProtectedRoute token={token}><Contact /></ProtectedRoute>} />
           <Route path='/Login' element={<Login handleLogin={handleLogin} />} />
+          <Route path='/' element={<ProtectedRoute token={token}><><Navbar token={token} handleLogout={handleLogout} /><Home /></></ProtectedRoute>} />
+          <Route path='/Home' element={<ProtectedRoute token={token}><><Navbar token={token} handleLogout={handleLogout} /><Home /></></ProtectedRoute>} />
+          <Route path='/Courses' element={<ProtectedRoute token={token}><><Navbar token={token} handleLogout={handleLogout} /><Courses /></></ProtectedRoute>} />
+          <Route path='/About' element={<ProtectedRoute token={token}><><Navbar token={token} handleLogout={handleLogout} /><About /></></ProtectedRoute>} />
+          <Route path='/Contact' element={<ProtectedRoute token={token}><><Navbar token={token} handleLogout={handleLogout} /><Contact /></></ProtectedRoute>} />
         </Routes>
       </Router>
     </>

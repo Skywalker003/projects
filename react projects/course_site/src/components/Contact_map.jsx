@@ -9,9 +9,9 @@ export default function Contact_map() {
         width="800" 
         height="600" 
         style={{ border: 0, width: "100%", height: "400px" }}
-        allowfullscreen
+        allowFullScreen
         loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
+        referrerPolicy="no-referrer-when-downgrade">
         </iframe>
     </div>
   )

@@ -1290,3 +1290,75 @@ a:hover::after {
 .map-section{
   font-size: clamp(1.2rem, 3vw, 1.4rem);
 }
+
+/* ------------------------------------------------- login page ------------------------------------------------ */
+
+.login-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+.login-card{
+  width: 350px;
+  padding: 30px;
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(10px);
+}
+
+.login-card h2{
+  margin-bottom: 10px;
+}
+
+.login-card p{
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+.login-card input{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 0px 0px 5px 0px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: transparent;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.login-card input:focus{
+  border-color: #ff6b57;
+}
+
+.login-btn{
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #ff6b57;
+  color: white;
+  cursor: pointer;
+  margin: 0;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.login-btn:hover{
+  transform: translateY(-2px);
+}
+
+.login-extra{
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-extra span{
+  color: #ff6b57;
+  cursor: pointer;
+}
