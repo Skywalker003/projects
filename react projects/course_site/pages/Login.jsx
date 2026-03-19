@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
+export default function Login({ handleLogin }) {
 
-    const [ formData , setFormData] =useState({
+    const navigate = useNavigate()
+
+    const [ formData , setFormData] = useState({
         email:"",
         password:""
     })
@@ -33,9 +36,10 @@ export default function Login() {
             const data = await res.json()
 
             if(res.ok){
-            localStorage.setItem("token", data.token)
+            handleLogin(data.token)
 
             alert("Login successful")
+            navigate("/Home")
 
             } else {
             alert(data.message)
