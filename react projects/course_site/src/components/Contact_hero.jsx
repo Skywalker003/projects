@@ -14,6 +14,7 @@ export default function Contact_hero() {
         </p>
 
       <div className="contact-social">
+        {/* social links are grouped here so users can reach out quickly */}
         <a href="https://github.com/Skywalker003" target="_blank">
         <FaGithub /> GitHub
         </a>

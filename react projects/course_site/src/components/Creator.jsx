@@ -31,6 +31,7 @@ export default function Creator() {
           </p>
 
           <div className="creator-points">
+            {/* short highlights about the platform approach */}
             <div className="creator-point">
               <strong>Clear Roadmaps</strong>
               <span>Lessons are arranged so beginners know what to learn next.</span>

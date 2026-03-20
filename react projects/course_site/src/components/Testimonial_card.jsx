@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Testimonial_card({ name, role, message, star }) {
+  // using 5 as default if star is missing or not a proper number
   const ratingCount = Number(star) || 5;
 
   return (
@@ -18,6 +19,7 @@ export default function Testimonial_card({ name, role, message, star }) {
       <p className="message">{message}</p>
       <div className="testimonial-footer">
         <div className="star" aria-label={`${ratingCount} out of 5 stars`}>
+          {/* creating star icons based on the rating count */}
           {Array.from({ length: ratingCount }).map((_, index) => (
             <span className="star-icon" key={index}>★</span>
           ))}

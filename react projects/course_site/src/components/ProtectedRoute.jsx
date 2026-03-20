@@ -4,6 +4,7 @@ import { isTokenValid } from '../utils/auth'
 
 export default function ProtectedRoute({ children, token }) {
 
+    // if token is missing or expired, send user back to login page
     if(!isTokenValid(token)){
         localStorage.removeItem("token")
         return <Navigate to="/Login" />

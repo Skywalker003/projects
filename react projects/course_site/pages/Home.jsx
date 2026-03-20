@@ -12,6 +12,7 @@ import Testimonials from '../src/components/Testimonials.jsx'
 export default function Home() {
   return (
     <main className="home-page">
+        {/* home page is built by stacking smaller sections one after another */}
         <Hero />
         <LearningPath />
         <Platform />

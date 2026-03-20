@@ -5,9 +5,11 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
+  // ignoring build output because eslint does not need to check generated files
   globalIgnores(['dist']),
   {
     files: ['**/*.{js,jsx}'],
+    // frontend lint rules go here, but server files are handled in the next block
     ignores: ['server/**/*.js'],
     extends: [
       js.configs.recommended,
@@ -28,6 +30,7 @@ export default defineConfig([
     },
   },
   {
+    // separate config for node-style server files
     files: ['server/**/*.js'],
     extends: [js.configs.recommended],
     languageOptions: {

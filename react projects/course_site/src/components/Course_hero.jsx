@@ -8,8 +8,10 @@ export default function Course_hero({ courseCount, loading, error }) {
             <h1 className="courses-header">Explore <span>Web</span> Development Courses</h1>
             <p>Browse structured courses designed to take you from beginner to full-stack developer.</p>
             {!loading && !error && (
+                // showing the count only after data loads properly
                 <p>{courseCount} Courses <span>Available</span></p>
             )}
+            {/* jump link to the full course list */}
             <a href="#courses"><button id="explore-btn" className="enroll-btn">Explore Courses</button></a>
         </div>
     </div>

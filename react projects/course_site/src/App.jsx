@@ -14,10 +14,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
 function App() {
-
+  // checking localStorage first so refresh does not log the user out immediately
   const savedToken = localStorage.getItem("token")
   const initialToken = isTokenValid(savedToken) ? savedToken : null
 
+  // removing expired token if one is still sitting in localStorage
   if(savedToken && !initialToken){
     localStorage.removeItem("token")
   }
@@ -25,11 +26,13 @@ function App() {
   const [token, setToken] = useState(initialToken)
 
   function handleLogin(newToken){
+    // saving token in both localStorage and state after successful login
     localStorage.setItem("token", newToken)
     setToken(newToken)
   }
 
   function handleLogout(){
+    // clearing token from everywhere when user logs out
     localStorage.removeItem("token")
     setToken(null)
   }
@@ -39,6 +42,7 @@ function App() {
       return
     }
 
+    // auto logging out the user when the jwt expires
     const expiryDelay = getTokenExpiryDelay(token)
     const timeoutId = window.setTimeout(() => {
       handleLogout()
@@ -53,6 +57,7 @@ function App() {
   return (
     <>
       <Router>
+        {/* this makes every route start from the top of the page */}
         <ScrollToTop />
         <Routes>
           <Route path='/Login' element={<Login handleLogin={handleLogin} />} />

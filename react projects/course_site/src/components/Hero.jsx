@@ -4,6 +4,7 @@ export default function Hero(){
             <div className="hero-content">
                 <h1>Master <span>Web</span> Development from Scratch</h1>
                 <p>Discover a wide range of courses to enhance your skills and knowledge. Whether you're looking to learn something new or advance your career, we have the perfect course for you.</p>
+                {/* this jumps straight to the courses section on the same page */}
                 <a href="#courses"><button id="explore-btn" className="enroll-btn">Explore Courses</button></a>
             </div>
             <div className="hero-image">

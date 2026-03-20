@@ -13,6 +13,7 @@ import useFetch from "./useFetch";
 import { DATA_API_URL } from "../config";
 
 export default function Course() {
+  // fetching all courses, then showing only featured ones on home page
   const { courseList, loading, error, hideCourse } = useFetch(
     `${DATA_API_URL}/courses`
   );
@@ -43,7 +44,9 @@ export default function Course() {
       </div>
       <div className="card-container">
         {[...courseList]
+          // sorting first so courses stay in a clean learning order
           .sort((a, b) => levelOrder[a.level] - levelOrder[b.level])
+          // home page only shows beginner + intermediate featured courses
           .filter((course) => levelOrder[course.level] <= levelOrder["Intermediate"])
           .map(
             ({ id, title, image, description, difficulty, level, shown } /*, index*/) => (

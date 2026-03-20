@@ -10,6 +10,7 @@ export default function Footer(){
                     <p>Learn. Build. Grow.</p>
                 </div>
                 <div>
+                    {/* internal navigation links */}
                     <ul>
                         <li><Link to="/Home">Home</Link></li>
                         <li><Link to="/Courses">Courses</Link></li>
@@ -20,6 +21,7 @@ export default function Footer(){
                 </div>
 
                 <div>
+                    {/* quick topic shortcuts */}
                     <ul>
                         <li><a href="#html">HTML</a></li>
                         <li><a href="#css">CSS</a></li>
@@ -29,6 +31,7 @@ export default function Footer(){
                     </ul>
                 </div>
                 <div>
+                    {/* support/info section */}
                     <ul>
                         <li><a href="#faq">FAQ</a></li>
                         <li><a href="#help-center">Help Center</a></li>
@@ -37,6 +40,7 @@ export default function Footer(){
                     </ul>
                 </div>
                 <div>
+                    {/* contact + social links */}
                     <ul>
                         <li><a href="mailto:WebDev@gmail.com">WebDev@gmail.com</a></li>
                         <li><a href="#location">Chennai</a></li>

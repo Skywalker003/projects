@@ -6,6 +6,7 @@ export default function Project({id ,title, image, description, tech }){
                   <h3>{title}</h3>
                   <p>{description}</p>
                   <div>
+                    {/* looping through the tech array to show stack tags */}
                     {tech.map((t) =>(
                         <span key={`${id}-${t}`}>
                             <button className="enroll-btn">{t}</button>

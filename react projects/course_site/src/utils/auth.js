@@ -4,6 +4,7 @@ export function parseTokenPayload(token) {
   }
 
   try {
+    // jwt format is header.payload.signature, so i only need the middle part here
     const payload = token.split(".")[1];
 
     if (!payload) {
@@ -17,6 +18,7 @@ export function parseTokenPayload(token) {
 }
 
 export function isTokenValid(token) {
+  // checking whether the token has an expiry time and if it is still valid now
   const payload = parseTokenPayload(token);
 
   if (!payload?.exp) {
@@ -28,6 +30,7 @@ export function isTokenValid(token) {
 }
 
 export function getTokenExpiryDelay(token) {
+  // this gives the remaining time in milliseconds before the token expires
   const payload = parseTokenPayload(token);
 
   if (!payload?.exp) {

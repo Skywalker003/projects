@@ -7,6 +7,7 @@ export default function Login({ handleLogin }) {
 
     const navigate = useNavigate()
 
+    // storing the form values in one object for easier updates
     const [ formData , setFormData] = useState({
         email:"",
         password:""
@@ -15,6 +16,7 @@ export default function Login({ handleLogin }) {
     function handleChange(e){
         const { name , value } = e.target
 
+        // using input name to update the matching field
         setFormData({
             ...formData,
             [name]:value
@@ -26,6 +28,7 @@ export default function Login({ handleLogin }) {
 
         try{
 
+            // sending login details to backend
             const res = await fetch(`${AUTH_API_URL}/login`, {
             method: "POST",
             headers: {
@@ -37,6 +40,7 @@ export default function Login({ handleLogin }) {
             const data = await res.json()
 
             if(res.ok){
+            // if login works, save token through parent function and go to home
             handleLogin(data.token)
 
             navigate("/Home")

@@ -21,6 +21,7 @@ import {
 
 export default function Technologies() {
 
+  // keeping the tech list here makes it easy to add/remove cards later
   const techStack = [
     { icon: <FaHtml5 />, name: "HTML" },
     { icon: <FaCss3Alt />, name: "CSS" },
@@ -48,6 +49,7 @@ export default function Technologies() {
       </div>
 
       <div className="tech-grid">
+        {/* mapping the tech array into visual cards */}
         {techStack.map((tech, index) => (
           <div key={index} className="tech-card">
             <div className="tech-icon">{tech.icon}</div>

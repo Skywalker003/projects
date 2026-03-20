@@ -4,6 +4,7 @@ import { DATA_API_URL } from "../config"
 
 export default function Projects(){
 
+    // same fetch hook is reused here, but this time for project cards
     const { courseList , loading, error } = useFetch(
     `${DATA_API_URL}/projects`
   );
@@ -16,6 +17,7 @@ export default function Projects(){
     return <div>Error: {error}</div>;
   }
 
+  // only showing a few featured projects on the home page
   const projectList = courseList.slice(0,3);
 
     return (

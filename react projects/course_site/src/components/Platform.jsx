@@ -7,6 +7,7 @@ export default function Platform() {
                 <p>Learn web development with a clear roadmap and practical projects.</p>
             </div>
 
+            {/* each card highlights one reason for choosing the platform */}
             <div className="platform-benefits">
                 <div className="platform-benefit">
                     <h2>Beginner Friendly</h2>

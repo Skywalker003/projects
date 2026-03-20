@@ -5,6 +5,7 @@ export default function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // whenever route changes, scrolling back to top makes navigation feel cleaner
     window.scrollTo({
         top: 0,
         behavior: "smooth"

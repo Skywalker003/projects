@@ -5,6 +5,7 @@ import { DATA_API_URL } from "../config";
 
 export default function Testimonials() {
 
+    // renaming courseList to testimonials here so the returned data is easier to read
     const { courseList: testimonials, loading, error } = useFetch(
     `${DATA_API_URL}/testimonials`
   );

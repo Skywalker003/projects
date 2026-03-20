@@ -3,11 +3,13 @@ import React from "react";
 
 const useFetch = (url) => {
 
+    // keeping fetch logic inside one reusable hook
     const [courseList, setCourseList] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
 
     React.useEffect(() => {
+    // refetching whenever a different url is passed to this hook
     fetch(url)
         .then((res) => {
         if (!res.ok) {
@@ -26,6 +28,7 @@ const useFetch = (url) => {
     }, [url]);
 
     function hideCourse(id) {
+    // removing a course from the current list only on the frontend side
     setCourseList((prev) => prev.filter((course) => course.id !== id));
   }
 

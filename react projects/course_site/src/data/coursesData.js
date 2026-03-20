@@ -1,5 +1,6 @@
 import { html, css, js, react, nodejs, express } from "../assets";
 
+// old local course data kept here as a plain js version
 const courses = [
   {
     id: 1,

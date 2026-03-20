@@ -20,6 +20,7 @@ export default function LearningPath() {
       </p>
 
       <div className="learning-path-track">
+        {/* mapping each step so the roadmap can be changed from one array */}
         {learningPath.map((step, index) => (
           <div
             className="learning-path-item"

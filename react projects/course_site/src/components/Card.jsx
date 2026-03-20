@@ -6,6 +6,7 @@ export default function Card(props){
   //const [hide, setHide] = React.useState(true);
 
   function handleEnroll(){
+      // just updating the local button state for now
       setIsEnrolled(true);
   }
   /*function hidec(){
@@ -14,6 +15,7 @@ export default function Card(props){
 
   if(props.shown==true){
       return(
+          // showing the full course card when this course is available
           /*hide && */ <div className="card"> {/* can use props.shown&& if there is no else part */}
               <img className="inner-img" src={props.image} alt="img" />
               <div className="inner-text">
@@ -29,6 +31,7 @@ export default function Card(props){
   }
   else{
       return(
+          // fallback card when the course is not ready to show yet
           <div className="card">
               <h1 className="update">This course is coming soon!</h1>
           </div>

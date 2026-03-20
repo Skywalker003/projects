@@ -10,6 +10,7 @@ export default function LearningPhilosophy() {
             </div>
 
             <div className="about-learning__grid">
+                {/* each card explains one part of the teaching style */}
                 <div className="about-learning__card">
                     <h2>Learn Fundamentals</h2>
                     <p>Build a strong foundation in web development by learning the core concepts of HTML, CSS, and JavaScript. Understand how the web works and develop the essential skills needed to start creating modern websites and applications.</p>

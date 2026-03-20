@@ -4,6 +4,7 @@ export default function Mission_about() {
   return (
     <section className="about-mission">
         <div className="about-mission__content">
+            {/* this section explains the main purpose behind the platform */}
             <p className="about-section-kicker">Why we built this</p>
             <h1>Our <span>Mission</span></h1>
             <p>Our mission is to simplify the journey of learning web development by providing a clear, structured path for beginners. Instead of overwhelming learners with scattered resources, we focus on step-by-step guidance from the basics of HTML and CSS to advanced concepts like React and backend development. Through project-based learning and practical exercises, we aim to help learners not only understand concepts but also apply them by building real applications.</p>

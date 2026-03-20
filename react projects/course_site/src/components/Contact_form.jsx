@@ -5,6 +5,7 @@ export default function Contact_form() {
   function handleChange(e){
     const { name, value } = e.target
 
+    // updating whichever input the user is typing in
     setFormData({
       ...formData,
       [name]: value
@@ -20,6 +21,7 @@ export default function Contact_form() {
   function handleSubmit(e) {
     e.preventDefault();
     // Handle form submission logic here
+    // right now this just logs the form and shows a success alert
     console.log(formData);
 
     alert("Form submitted successfully!");
@@ -51,6 +53,7 @@ export default function Contact_form() {
       </div>
 
       <section className="contact-form-section">
+          {/* controlled form inputs are connected to formData state */}
           <form className="contact-form" onSubmit={handleSubmit}>
             
             <input

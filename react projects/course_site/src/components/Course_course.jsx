@@ -5,10 +5,12 @@ import { DATA_API_URL } from "../config";
 
 export default function Course_course() {
 
+    // fetching the full course list for the dedicated courses page
     const { courseList, loading, error , hideCourse } = useFetch(
     `${DATA_API_URL}/courses`
   );
 
+  // this controls which level button is currently active
   const [selectedLevel, setSelectedLevel] = React.useState("All");
 
   if (loading) {
@@ -29,6 +31,7 @@ export default function Course_course() {
     Advanced: 3,
   };
 
+  // sorting first, then filtering based on the selected level
   const filteredCourses = [...courseList]
         .sort((a, b) => levelOrder[a.level] - levelOrder[b.level])
         .filter((course) => {

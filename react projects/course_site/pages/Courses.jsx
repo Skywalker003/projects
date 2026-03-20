@@ -8,6 +8,7 @@ import { DATA_API_URL } from '../src/config';
 
 export default function Courses() {
 
+  // getting course data here mainly to show the count in the hero section
   const { courseList, loading, error } = useFetch(`${DATA_API_URL}/courses`);
 
 

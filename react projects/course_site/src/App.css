@@ -1,7 +1,7 @@
 #root {
+  /* this keeps the whole app centered and stops it from stretching too wide */
   max-width: 1380px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-

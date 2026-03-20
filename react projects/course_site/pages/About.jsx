@@ -9,6 +9,7 @@ import Footer from '../src/components/Footer'
 export default function About() {
   return (
     <main className="about-page">
+      {/* same idea as home page, but for the about sections */}
       <About_hero />
       <Mission_about />
       <LearningPhilosophy />

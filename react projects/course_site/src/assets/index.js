@@ -1,3 +1,4 @@
+// keeping old image exports here in case i want to switch back from public paths later
 /*
 import html from "./images/html.jpg";
 import css from "./images/css.jpg";
