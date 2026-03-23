@@ -114,6 +114,13 @@ ADMIN_PASSWORD_HASH=your-bcrypt-hash
 JWT_SECRET=your-secret-key
 ```
 
+## Default local admin :
+
+- **Email:** `admin@gmail.com`
+- **Password:** `123456`
+
+Change these in production and regenerate `ADMIN_PASSWORD_HASH` accordingly.
+
 ## How To Generate Password Hash
 
 If you want to create a bcrypt password hash for `ADMIN_PASSWORD_HASH`, run this inside the `server` folder:

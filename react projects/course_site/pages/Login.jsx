@@ -70,7 +70,7 @@ export default function Login({ handleLogin }) {
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Enter your email"
+                placeholder="admin@gmail.com"
                 required
             />
 
@@ -80,7 +80,7 @@ export default function Login({ handleLogin }) {
                 autoComplete="current-password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Enter your password"
+                placeholder="123456"
                 required
             />
 
