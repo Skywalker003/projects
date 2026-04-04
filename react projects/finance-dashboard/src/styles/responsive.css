@@ -1,0 +1,155 @@
+/* ============================================================
+   RESPONSIVE — all media queries in one file
+   ============================================================ */
+
+/* ---- ≤1024px: 2-col summary cards ---- */
+
+@media (max-width: 1024px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .insights-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .insights-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- ≤768px: sidebar drawer, charts stack ---- */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+
+  .header__hamburger {
+    display: flex;
+  }
+
+  .header {
+    padding: 0 var(--space-4);
+  }
+
+  .content {
+    padding: var(--space-4);
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide less important table columns */
+  .col-hide-md {
+    display: none;
+  }
+
+  .filter-bar {
+    gap: var(--space-2);
+  }
+
+  .filter-bar__count {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ---- ≤600px: 1-col summary, table simplifies ---- */
+
+@media (max-width: 600px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card__value {
+    font-size: 24px;
+  }
+
+  .insights-kpi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Hide low-priority table columns on mobile */
+  .col-hide-sm {
+    display: none;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-bar__search {
+    min-width: unset;
+  }
+
+  .filter-bar__select {
+    width: 100%;
+  }
+
+  .modal {
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .toast-container {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    left: var(--space-4);
+  }
+
+  .toast {
+    width: 100%;
+  }
+
+  .page-header__title {
+    font-size: 19px;
+  }
+
+  .header__date {
+    display: none;
+  }
+}
+
+/* ---- Print ---- */
+
+@media print {
+  .sidebar,
+  .header,
+  .filter-bar,
+  .table__actions,
+  .btn--primary {
+    display: none !important;
+  }
+
+  .main {
+    width: 100%;
+  }
+}

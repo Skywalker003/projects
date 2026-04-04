@@ -1,0 +1,215 @@
+/* ============================================================
+   GLOBAL TOKENS + RESET + DARK MODE
+   ============================================================ */
+
+:root {
+  /* Colors — light mode */
+  --color-bg: #F8F9FC;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F1F3F9;
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+
+  /* Brand */
+  --color-brand: #4F46E5;
+  --color-brand-light: #EEF2FF;
+  --color-brand-dark: #3730A3;
+
+  /* Semantic */
+  --color-green: #059669;
+  --color-green-light: #D1FAE5;
+  --color-red: #DC2626;
+  --color-red-light: #FEE2E2;
+  --color-amber: #D97706;
+  --color-amber-light: #FEF3C7;
+  --color-blue: #2563EB;
+  --color-blue-light: #DBEAFE;
+
+  /* Category colors */
+  --cat-food: #F97316;
+  --cat-transport: #8B5CF6;
+  --cat-shopping: #EC4899;
+  --cat-utilities: #14B8A6;
+  --cat-health: #EF4444;
+  --cat-entertainment: #F59E0B;
+  --cat-investment: #10B981;
+  --cat-rent: #6366F1;
+  --cat-salary: #22C55E;
+  --cat-freelance: #3B82F6;
+  --cat-other: #94A3B8;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Code', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+
+  /* Transitions */
+  --transition: 150ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Sidebar */
+  --sidebar-width: 240px;
+  --header-height: 60px;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0F1117;
+  --color-surface: #1A1D27;
+  --color-surface-alt: #222535;
+  --color-border: #2D3039;
+  --color-border-light: #23262F;
+
+  --color-text-primary: #F3F4F6;
+  --color-text-secondary: #9CA3AF;
+  --color-text-muted: #6B7280;
+
+  --color-brand-light: #1E1B4B;
+
+  --color-green-light: #064E3B;
+  --color-red-light: #7F1D1D;
+  --color-amber-light: #78350F;
+  --color-blue-light: #1E3A5F;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   NATIVE CONTROL COLOR SCHEME (fixes date/select in dark mode)
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ============================================================
+   CUSTOM SCROLLBARS
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ============================================================
+   FOCUS VISIBLE (keyboard nav accessibility)
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Suppress focus ring for mouse clicks */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+   SELECTION COLOR
+   ============================================================ */
+
+::selection {
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+}
