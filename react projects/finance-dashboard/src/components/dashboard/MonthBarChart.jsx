@@ -14,17 +14,10 @@ import { formatINRShort } from '../../utils/formatters';
 function CustomTooltip({ active, payload, label }) {
   if (!active || !payload?.length) return null;
   return (
-    <div style={{
-      background: 'var(--color-surface)',
-      border: '1px solid var(--color-border)',
-      borderRadius: 'var(--radius-md)',
-      padding: '10px 14px',
-      boxShadow: 'var(--shadow-md)',
-      fontSize: '13px',
-    }}>
-      <p style={{ fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: 6 }}>{label}</p>
+    <div className="chart-tooltip">
+      <p className="chart-tooltip__label">{label}</p>
       {payload.map(entry => (
-        <p key={entry.dataKey} style={{ color: entry.color, marginBottom: 2 }}>
+        <p key={entry.dataKey} className="chart-tooltip__entry" style={{ color: entry.color }}>
           {entry.name}: <strong>₹{entry.value.toLocaleString('en-IN')}</strong>
         </p>
       ))}
@@ -46,9 +39,12 @@ export default function MonthBarChart() {
   if (!hasData) return (
     <div className="chart-card fade-in-up stagger-4">
       <div className="chart-card__header">
-        <div><div className="chart-card__title">Income vs Expenses</div><div className="chart-card__subtitle">{rangeLabel}</div></div>
+        <div>
+          <div className="chart-card__title">Income vs Expenses</div>
+          <div className="chart-card__subtitle">{rangeLabel}</div>
+        </div>
       </div>
-      <div className="empty-state" style={{ padding: '3rem 0' }}>
+      <div className="empty-state empty-state--chart">
         <div className="empty-state__icon">📈</div>
         <div className="empty-state__title">No data yet</div>
       </div>
@@ -62,16 +58,16 @@ export default function MonthBarChart() {
           <div className="chart-card__title">Income vs Expenses</div>
           <div className="chart-card__subtitle">
             {rangeLabel} ·{' '}
-            <span style={{ color: 'var(--color-brand)', fontWeight: 500 }}>click a bar to filter</span>
+            <span className="chart-card__subtitle-link">click a bar to filter</span>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 16, fontSize: '12px' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--color-text-secondary)' }}>
-            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#059669', display: 'inline-block' }} />
+        <div className="chart-legend">
+          <span className="chart-legend__item">
+            <span className="chart-legend__dot chart-legend__dot--income" />
             Income
           </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--color-text-secondary)' }}>
-            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#DC2626', display: 'inline-block' }} />
+          <span className="chart-legend__item">
+            <span className="chart-legend__dot chart-legend__dot--expense" />
             Expenses
           </span>
         </div>

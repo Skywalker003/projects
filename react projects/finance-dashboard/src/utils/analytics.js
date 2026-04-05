@@ -47,6 +47,44 @@ export function getCategoryBreakdown(transactions) {
 }
 
 /**
+ * Returns daily running-balance data points from the start of the range to today.
+ * Starting balance = sum of all transactions BEFORE the range window.
+ */
+export function getBalanceTrend(transactions, monthCount) {
+  const now = new Date();
+  const rangeStart = new Date(now.getFullYear(), now.getMonth() - monthCount + 1, 1);
+  const rangeStartStr = rangeStart.toISOString().slice(0, 10);
+  const todayStr = now.toISOString().slice(0, 10);
+
+  // Balance accumulated before the window
+  let running = transactions
+    .filter(tx => tx.date < rangeStartStr)
+    .reduce((acc, tx) => acc + (tx.type === 'income' ? tx.amount : -tx.amount), 0);
+
+  // Walk day-by-day through the range
+  const points = [];
+  const cur = new Date(rangeStart);
+
+  while (cur.toISOString().slice(0, 10) <= todayStr) {
+    const dateStr = cur.toISOString().slice(0, 10);
+
+    for (const tx of transactions.filter(t => t.date === dateStr)) {
+      running += tx.type === 'income' ? tx.amount : -tx.amount;
+    }
+
+    points.push({
+      date: dateStr,
+      balance: running,
+      label: cur.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }),
+    });
+
+    cur.setDate(cur.getDate() + 1);
+  }
+
+  return points;
+}
+
+/**
  * Derives unique month strings ("YYYY-MM") from a transaction array,
  * sorted newest first. Used to populate the month filter dropdown.
  */

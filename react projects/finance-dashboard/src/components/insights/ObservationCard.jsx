@@ -8,7 +8,6 @@ export default function ObservationCard() {
 
   if (observation) insights.push(observation);
 
-  // Expense-to-income ratio insight (only when both exist)
   if (curIncome > 0 && curExpense > 0) {
     const ratio = Math.round((curExpense / curIncome) * 100);
     if (ratio > 90) {
@@ -18,12 +17,10 @@ export default function ObservationCard() {
     }
   }
 
-  // Only income, no expenses this month
   if (curIncome > 0 && curExpense === 0) {
     insights.push('No expenses logged this month yet — great start!');
   }
 
-  // Month-over-month expense change
   if (expensePctChange > 20) {
     insights.push(`Expenses jumped ${formatPct(expensePctChange)} vs last month — review recent purchases.`);
   } else if (expensePctChange < -15) {
@@ -39,9 +36,7 @@ export default function ObservationCard() {
       <div className="observation-card__icon">💡</div>
       <div className="observation-card__text">
         {insights.map((text, i) => (
-          <p key={i} style={{ marginBottom: i < insights.length - 1 ? 'var(--space-2)' : 0 }}>
-            {text}
-          </p>
+          <p key={i}>{text}</p>
         ))}
       </div>
     </div>

@@ -11,16 +11,13 @@ export default function Insights() {
         <p className="page-header__subtitle">Spending patterns and financial health</p>
       </div>
 
-      {/* 4 KPI cards */}
       <InsightKPIs />
 
-      {/* Observation card — full width */}
-      <div style={{ marginBottom: 'var(--space-5)' }}>
+      <div className="dashboard-section--sm">
         <ObservationCard />
       </div>
 
-      {/* Charts row: savings bar + category ranking */}
-      <div className="insights-charts-grid">
+      <div className="insights-charts-grid dashboard-section--sm">
         <SavingsBarChart />
         <CategoryRanking />
       </div>

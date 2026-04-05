@@ -12,7 +12,7 @@ const DescIcon = () => (
   </svg>
 );
 
-export default function SortableHeader({ column, label, className = '', style }) {
+export default function SortableHeader({ column, label, className = '' }) {
   const { state, dispatch } = useAppContext();
   const { sortConfig } = state;
 
@@ -25,13 +25,12 @@ export default function SortableHeader({ column, label, className = '', style })
   return (
     <th
       className={`sortable${isActive ? ' sort-active' : ''} ${className}`}
-      style={style}
       onClick={handleClick}
     >
       {label}
       {isActive
         ? sortConfig.direction === 'asc' ? <AscIcon /> : <DescIcon />
-        : <span className="sort-arrow" style={{ opacity: 0.25 }}><DescIcon /></span>
+        : <span className="sort-arrow sort-arrow--inactive"><DescIcon /></span>
       }
     </th>
   );

@@ -1,4 +1,3 @@
-import { useAppContext } from '../hooks/useAppContext';
 import { useTransactions } from '../hooks/useTransactions';
 import FilterBar from '../components/transactions/FilterBar';
 import TransactionTable from '../components/transactions/TransactionTable';
@@ -13,9 +12,7 @@ const DownloadIcon = () => (
 );
 
 export default function Transactions() {
-  const { state } = useAppContext();
   const { filtered } = useTransactions();
-  const isAdmin = state.role === 'admin';
 
   function handleExport() {
     exportCSV(filtered, 'transactions.csv');
@@ -23,18 +20,20 @@ export default function Transactions() {
 
   return (
     <div className="page-enter">
-      <div className="page-header" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
+      <div className="page-header page-header--row">
         <div>
           <h2 className="page-header__title">Transactions</h2>
           <p className="page-header__subtitle">All your financial activity</p>
         </div>
-
-        {isAdmin && (
-          <button className="btn btn--ghost btn--sm" onClick={handleExport}>
-            <DownloadIcon />
-            Export CSV
-          </button>
-        )}
+        <button
+          className="btn btn--ghost btn--sm"
+          onClick={handleExport}
+          disabled={filtered.length === 0}
+          title={filtered.length === 0 ? 'No transactions to export' : `Export ${filtered.length} transaction${filtered.length !== 1 ? 's' : ''}`}
+        >
+          <DownloadIcon />
+          Export CSV
+        </button>
       </div>
 
       <FilterBar />

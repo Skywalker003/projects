@@ -12,7 +12,7 @@ export function CategoryBadge({ category }) {
   const hex = CATEGORY_HEX[category] ?? '#94A3B8';
   return (
     <span className="cat-badge">
-      <span className="cat-badge__dot" style={{ background: hex }} />
+      <span className="cat-badge__dot" style={{ '--dot-color': hex }} />
       {category}
     </span>
   );

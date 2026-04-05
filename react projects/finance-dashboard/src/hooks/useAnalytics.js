@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useAppContext } from './useAppContext';
-import { getMonthlyTotals, getCategoryBreakdown } from '../utils/analytics';
+import { getMonthlyTotals, getCategoryBreakdown, getBalanceTrend } from '../utils/analytics';
 
 const RANGE_LABELS = { 1: 'This month', 3: 'Last 3 months', 6: 'Last 6 months', 12: 'Last 12 months' };
 
@@ -55,6 +55,9 @@ export function useAnalytics() {
     // Monthly totals (range-driven)
     const monthlyTotals = getMonthlyTotals(transactions, dashboardRange);
 
+    // Daily balance trend (range-driven)
+    const balanceTrend = getBalanceTrend(transactions, dashboardRange);
+
     // Category breakdown (expense only, all-time for Insights)
     const categoryBreakdown = getCategoryBreakdown(transactions);
 
@@ -98,6 +101,7 @@ export function useAnalytics() {
 
       // Charts
       monthlyTotals,
+      balanceTrend,
       categoryBreakdown,
       curCatBreakdown,
 

@@ -24,7 +24,7 @@ const PlusIcon = () => (
 
 export default function Header({ onMenuClick }) {
   const { state, dispatch } = useAppContext();
-  const { currentPage, role } = state;
+  const { currentPage, role, theme } = state;
 
   const today = formatDate(new Date().toISOString().slice(0, 10));
 
@@ -43,6 +43,14 @@ export default function Header({ onMenuClick }) {
 
       <div className="header__right">
         <span className="header__date">{today}</span>
+
+        <button
+          className="theme-toggle"
+          onClick={() => dispatch({ type: 'TOGGLE_THEME' })}
+          title="Toggle dark mode"
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
 
         {role === 'admin' && (
           <button className="btn btn--primary btn--sm" onClick={openAddModal}>

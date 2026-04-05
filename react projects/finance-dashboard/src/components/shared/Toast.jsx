@@ -23,27 +23,14 @@ export default function Toast() {
 
   return (
     <div className="toast-container">
-      <div className={`toast toast--${toast.type}`} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ fontWeight: 700, fontSize: '15px' }}>{icon}</span>
-        <span style={{ flex: 1 }}>{toast.message}</span>
-        {toast.undoable && (
-          <button
-            onClick={handleUndo}
-            style={{
-              background: 'rgba(255,255,255,0.2)',
-              border: '1px solid rgba(255,255,255,0.35)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'inherit',
-              cursor: 'pointer',
-              fontSize: '12px',
-              fontWeight: 600,
-              padding: '3px 10px',
-              flexShrink: 0,
-            }}
-          >
-            Undo
-          </button>
-        )}
+      <div className={`toast toast--${toast.type}`}>
+        <div className="toast__inner">
+          <span className="toast__icon">{icon}</span>
+          <span className="toast__message">{toast.message}</span>
+          {toast.undoable && (
+            <button className="toast__undo" onClick={handleUndo}>Undo</button>
+          )}
+        </div>
       </div>
     </div>
   );

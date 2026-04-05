@@ -3,7 +3,6 @@ import CountUpNumber from '../shared/CountUpNumber';
 import { formatPct } from '../../utils/formatters';
 
 function ChangeBadge({ pct, invertColor = false }) {
-  // invertColor: for expenses, up is bad (red), down is good (green)
   const isPositive = invertColor ? pct <= 0 : pct >= 0;
   const cls = pct === 0
     ? 'change-badge change-badge--neutral'
@@ -18,14 +17,14 @@ function ChangeBadge({ pct, invertColor = false }) {
   );
 }
 
-function SummaryCard({ label, value, prefix = '₹', pct, invertColor, valueColor, icon, iconBg, index }) {
+function SummaryCard({ label, value, prefix = '₹', pct, invertColor, negative, icon, iconBg, index }) {
   return (
     <div className={`summary-card fade-in-up stagger-${index}`}>
-      <div className="summary-card__icon" style={{ background: iconBg }}>
+      <div className="summary-card__icon" style={{ '--icon-bg': iconBg }}>
         {icon}
       </div>
       <div className="summary-card__label">{label}</div>
-      <div className="summary-card__value" style={valueColor ? { color: valueColor } : undefined}>
+      <div className={`summary-card__value${negative ? ' summary-card__value--negative' : ''}`}>
         {prefix}<CountUpNumber value={Math.abs(value)} />
       </div>
       <div className="summary-card__footer">
@@ -45,8 +44,7 @@ export default function SummaryCards() {
         index={1}
         label="Total Balance"
         value={totalBalance}
-        // Show red value when in deficit
-        valueColor={totalBalance < 0 ? 'var(--color-red)' : undefined}
+        negative={totalBalance < 0}
         prefix={totalBalance < 0 ? '−₹' : '₹'}
         pct={incomePctChange}
         invertColor={false}

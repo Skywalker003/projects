@@ -17,21 +17,12 @@ function CustomTooltip({ active, payload, label }) {
   const value = payload[0].value;
   const isPositive = value >= 0;
   return (
-    <div style={{
-      background: 'var(--color-surface)',
-      border: '1px solid var(--color-border)',
-      borderRadius: 'var(--radius-md)',
-      padding: '10px 14px',
-      boxShadow: 'var(--shadow-md)',
-      fontSize: '13px',
-    }}>
-      <p style={{ fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: 4 }}>{label}</p>
-      <p style={{ color: isPositive ? 'var(--color-green)' : 'var(--color-red)', fontWeight: 600 }}>
+    <div className="chart-tooltip">
+      <p className="chart-tooltip__label">{label}</p>
+      <p className={`chart-tooltip__value chart-tooltip__value--${isPositive ? 'positive' : 'negative'}`}>
         {isPositive ? '+' : ''}₹{Math.abs(value).toLocaleString('en-IN')}
       </p>
-      <p style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', marginTop: 2 }}>
-        {isPositive ? 'Surplus' : 'Deficit'}
-      </p>
+      <p className="chart-tooltip__sub">{isPositive ? 'Surplus' : 'Deficit'}</p>
     </div>
   );
 }
@@ -46,13 +37,13 @@ export default function SavingsBarChart() {
           <div className="chart-card__title">Monthly Savings</div>
           <div className="chart-card__subtitle">Income minus expenses per month</div>
         </div>
-        <div style={{ display: 'flex', gap: 12, fontSize: '12px' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--color-text-secondary)' }}>
-            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#059669', display: 'inline-block' }} />
+        <div className="chart-legend chart-legend--sm">
+          <span className="chart-legend__item">
+            <span className="chart-legend__dot chart-legend__dot--surplus" />
             Surplus
           </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: 'var(--color-text-secondary)' }}>
-            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#DC2626', display: 'inline-block' }} />
+          <span className="chart-legend__item">
+            <span className="chart-legend__dot chart-legend__dot--deficit" />
             Deficit
           </span>
         </div>
@@ -78,10 +69,7 @@ export default function SavingsBarChart() {
           <ReferenceLine y={0} stroke="var(--color-border)" strokeWidth={1.5} />
           <Bar dataKey="savings" radius={[4, 4, 0, 0]}>
             {monthlyTotals.map(entry => (
-              <Cell
-                key={entry.key}
-                fill={entry.savings >= 0 ? '#059669' : '#DC2626'}
-              />
+              <Cell key={entry.key} fill={entry.savings >= 0 ? '#059669' : '#DC2626'} />
             ))}
           </Bar>
         </BarChart>

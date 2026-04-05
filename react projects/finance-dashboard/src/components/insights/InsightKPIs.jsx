@@ -1,17 +1,12 @@
 import { useAnalytics } from '../../hooks/useAnalytics';
 import { formatINR } from '../../utils/formatters';
-import { CATEGORY_HEX } from '../../data/categories';
 
 function KPICard({ label, value, sub, icon, iconBg, index }) {
   return (
     <div className={`kpi-card fade-in-up stagger-${index}`}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 'var(--space-3)' }}>
+      <div className="kpi-card__header">
         <div className="kpi-card__label">{label}</div>
-        <div style={{
-          width: 34, height: 34, borderRadius: 'var(--radius-md)',
-          background: iconBg, display: 'flex', alignItems: 'center',
-          justifyContent: 'center', fontSize: 17, flexShrink: 0,
-        }}>
+        <div className="kpi-card__icon" style={{ '--icon-bg': iconBg }}>
           {icon}
         </div>
       </div>
@@ -23,8 +18,6 @@ function KPICard({ label, value, sub, icon, iconBg, index }) {
 
 export default function InsightKPIs() {
   const { topCategory, savingsRate, totalTransactions, avgTxValue } = useAnalytics();
-
-  const topCatColor = topCategory ? (CATEGORY_HEX[topCategory.category] ?? '#94A3B8') : '#94A3B8';
 
   return (
     <div className="insights-kpi-grid">

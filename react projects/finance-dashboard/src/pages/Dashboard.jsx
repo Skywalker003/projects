@@ -4,6 +4,7 @@ import MonthBarChart from '../components/dashboard/MonthBarChart';
 import SpendingPieChart from '../components/dashboard/SpendingPieChart';
 import RecentTransactions from '../components/dashboard/RecentTransactions';
 import RangeSelector from '../components/dashboard/RangeSelector';
+import BalanceTrendChart from '../components/dashboard/BalanceTrendChart';
 
 function DashboardEmpty({ isAdmin, onAdd }) {
   return (
@@ -48,7 +49,7 @@ export default function Dashboard() {
 
   return (
     <div className="page-enter">
-      <div className="page-header" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+      <div className="page-header page-header--row">
         <div>
           <h2 className="page-header__title">Dashboard</h2>
           <p className="page-header__subtitle">Your financial overview at a glance</p>
@@ -58,12 +59,16 @@ export default function Dashboard() {
 
       <SummaryCards />
 
-      <div className="dashboard-grid" style={{ marginTop: 'var(--space-5)' }}>
+      <div className="dashboard-grid dashboard-section">
+        <BalanceTrendChart />
+      </div>
+
+      <div className="dashboard-grid dashboard-section--sm">
         <MonthBarChart />
         <SpendingPieChart />
       </div>
 
-      <div style={{ marginTop: 'var(--space-5)' }}>
+      <div className="dashboard-grid dashboard-section">
         <RecentTransactions />
       </div>
     </div>

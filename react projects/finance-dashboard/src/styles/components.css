@@ -47,6 +47,8 @@
   line-height: 1;
 }
 
+.summary-card__value--negative { color: var(--color-red); }
+
 .summary-card__footer {
   display: flex;
   align-items: center;
@@ -57,6 +59,7 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
+  background: var(--icon-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -405,6 +408,12 @@
   border-color: var(--color-brand);
 }
 
+/* On desktop these are transparent wrappers — children flow into filter-bar flex */
+.filter-bar__dropdowns,
+.filter-bar__bottom {
+  display: contents;
+}
+
 .filter-bar__count {
   font-size: 12.5px;
   color: var(--color-text-muted);
@@ -428,6 +437,9 @@
   text-align: center;
   color: var(--color-text-muted);
 }
+
+.empty-state--compact { padding: 1.5rem var(--space-4); }
+.empty-state--chart   { padding: 3rem 0; }
 
 .empty-state__icon {
   font-size: 48px;
@@ -622,6 +634,11 @@
   margin-top: 2px;
 }
 
+.chart-card__subtitle-link {
+  color: var(--color-brand);
+  font-weight: 500;
+}
+
 /* ---- Pie legend ---- */
 
 .pie-legend {
@@ -636,6 +653,8 @@
   align-items: center;
   justify-content: space-between;
   font-size: 12.5px;
+  opacity: var(--legend-opacity, 1);
+  transition: opacity 150ms;
 }
 
 .pie-legend__item--clickable {
@@ -676,6 +695,94 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* ── Transaction Cards (mobile) ── */
+.tx-card-list {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.tx-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tx-card__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.tx-card__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.tx-card__emoji {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.tx-card__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tx-card__desc {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tx-card__date {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+.tx-card__amount {
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.tx-card__amount--income  { color: var(--color-green); }
+.tx-card__amount--expense { color: var(--color-red); }
+
+.tx-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tx-card__badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tx-card__actions {
+  display: flex;
+  gap: var(--space-1);
+  align-items: center;
+}
+
 .pie-legend__left {
   display: flex;
   align-items: center;
@@ -687,6 +794,7 @@
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+  background: var(--dot-color);
 }
 
 .pie-legend__name {
@@ -747,6 +855,8 @@
   height: 100%;
   border-radius: var(--radius-full);
   transition: width 600ms ease;
+  width: var(--bar-width);
+  background: var(--bar-color);
 }
 
 /* ---- Observation card ---- */
@@ -779,6 +889,10 @@
 
 .observation-card__text strong {
   color: var(--color-text-primary);
+}
+
+.observation-card__text p + p {
+  margin-top: var(--space-2);
 }
 
 /* ---- Recent transactions ---- */
@@ -1014,7 +1128,6 @@
 }
 
 /* Select arrow in dark mode */
-[data-theme="dark"] .sidebar__role-select,
 [data-theme="dark"] .filter-bar__select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-color: var(--color-surface-alt);
@@ -1090,3 +1203,137 @@ option {
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
+/* ── Shared chart tooltip ── */
+.chart-tooltip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-md);
+  font-size: 13px;
+}
+.chart-tooltip--sm       { padding: 8px 12px; }
+.chart-tooltip__date     { color: var(--color-text-muted); margin-bottom: 4px; }
+.chart-tooltip__label    { font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
+.chart-tooltip__name     { color: var(--color-text-primary); font-weight: 600; }
+.chart-tooltip__secondary{ color: var(--color-text-secondary); }
+.chart-tooltip__value    { font-weight: 700; }
+.chart-tooltip__value--positive { color: var(--color-green); }
+.chart-tooltip__value--negative { color: var(--color-red); }
+.chart-tooltip__value--dynamic  { color: var(--tooltip-value-color); }
+.chart-tooltip__sub      { font-size: 11.5px; color: var(--color-text-muted); margin-top: 2px; }
+.chart-tooltip__hint     { color: var(--color-brand); font-size: 11px; margin-top: 4px; }
+.chart-tooltip__entry    { margin-bottom: 2px; }
+
+/* ── Shared chart legend ── */
+.chart-legend      { display: flex; gap: 16px; font-size: 12px; }
+.chart-legend--sm  { gap: 12px; }
+.chart-legend__item{ display: flex; align-items: center; gap: 5px; color: var(--color-text-secondary); }
+.chart-legend__dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.chart-legend__dot--income,
+.chart-legend__dot--surplus { background: #059669; }
+.chart-legend__dot--expense,
+.chart-legend__dot--deficit { background: #DC2626; }
+
+/* ── Grid utilities ── */
+.col-span-full { grid-column: 1 / -1; }
+
+/* ── Page header with right-side action ── */
+.page-header--row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ── Dashboard section spacing ── */
+.dashboard-section    { margin-top: var(--space-5); }
+.dashboard-section--sm{ margin-top: var(--space-4); }
+
+/* ── Balance trend badge ── */
+.trend-badge        { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+.trend-badge--up    { color: var(--color-green); }
+.trend-badge--down  { color: var(--color-red); }
+.trend-badge__arrow { font-size: 16px; }
+
+/* ── Toast inner layout ── */
+.toast__inner   { display: flex; align-items: center; gap: 10px; }
+.toast__icon    { font-weight: 700; font-size: 15px; }
+.toast__message { flex: 1; }
+.toast__undo {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: var(--radius-sm);
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+
+/* ── Table column alignment ── */
+.table__col-amount  { text-align: center; }
+.table__col-actions { width: 100px; text-align: center; }
+
+/* ── Transaction row cells ── */
+.table__cell-desc  { display: flex; align-items: center; gap: 8px; }
+.table__cell-emoji { font-size: 16px; }
+.table__cell-amount{ text-align: center; }
+
+/* ── Action button colours ── */
+.btn--icon-edit   { color: var(--color-brand); }
+.btn--icon-delete { color: var(--color-red); }
+
+/* ── Sort arrow (inactive) ── */
+.sort-arrow--inactive { opacity: 0.25; }
+
+/* ── Recent transactions amount colours ── */
+.recent-tx__amount--income  { color: var(--color-green); }
+.recent-tx__amount--expense { color: var(--color-red); }
+
+/* ── Category ranking extras ── */
+.cat-ranking__empty {
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  text-align: center;
+  padding: var(--space-8) 0;
+}
+.cat-ranking__pct { font-size: 11px; color: var(--color-text-muted); font-weight: 400; }
+
+/* ── Pie legend extras ── */
+.pie-legend__right { display: flex; align-items: center; gap: 10px; }
+.pie-legend__pct   { font-size: 11px; color: var(--color-text-muted); }
+
+/* ── KPI card ── */
+.kpi-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+.kpi-card__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: var(--icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+/* ── Dropdown root & chevron ── */
+.dropdown-root          { position: relative; flex-shrink: 0; }
+.dropdown-chevron       { transition: transform 150ms ease; flex-shrink: 0; }
+.dropdown-chevron--open { transform: rotate(180deg); }
+
+/* ── Badge dot colour (dynamic) ── */
+.cat-badge__dot { background: var(--dot-color); }

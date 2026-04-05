@@ -4,24 +4,22 @@ const ChevronIcon = ({ open }) => (
   <svg
     width="12" height="12" viewBox="0 0 24 24"
     fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
-    style={{ transition: 'transform 150ms ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', flexShrink: 0 }}
+    className={`dropdown-chevron${open ? ' dropdown-chevron--open' : ''}`}
   >
     <polyline points="6 9 12 15 18 9" />
   </svg>
 );
 
-/**
- * Custom styled dropdown — replaces native <select> in FilterBar.
- * @param {string}   value       - currently selected value
- * @param {Function} onChange    - called with the new value string
- * @param {Array}    options     - [{ label, value }]
- * @param {string}   placeholder - label shown when value is ''
- */
-export default function Dropdown({ value, onChange, options, placeholder = 'All' }) {
+const CheckIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
+export default function Dropdown({ value, onChange, options, placeholder = 'All', className }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
-  // Close on outside click
   useEffect(() => {
     function handleClickOutside(e) {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
@@ -30,7 +28,6 @@ export default function Dropdown({ value, onChange, options, placeholder = 'All'
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close on Escape
   useEffect(() => {
     function handleKey(e) {
       if (e.key === 'Escape') setOpen(false);
@@ -47,9 +44,10 @@ export default function Dropdown({ value, onChange, options, placeholder = 'All'
     setOpen(false);
   }
 
+  const rootClass = ['dropdown-root', className].filter(Boolean).join(' ');
+
   return (
-    <div ref={ref} style={{ position: 'relative', flexShrink: 0 }}>
-      {/* Trigger button */}
+    <div ref={ref} className={rootClass}>
       <button
         type="button"
         className="dropdown-trigger"
@@ -61,10 +59,8 @@ export default function Dropdown({ value, onChange, options, placeholder = 'All'
         <ChevronIcon open={open} />
       </button>
 
-      {/* Options panel */}
       {open && (
         <div className="dropdown-panel" role="listbox">
-          {/* "All" / reset option */}
           <button
             type="button"
             role="option"
@@ -94,9 +90,3 @@ export default function Dropdown({ value, onChange, options, placeholder = 'All'
     </div>
   );
 }
-
-const CheckIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);

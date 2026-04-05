@@ -1,31 +1,32 @@
 # FinTrack — Personal Finance Dashboard
 
-A clean, interactive finance dashboard built with React. Track income and expenses, explore spending patterns, and manage transactions — all in the browser with no backend required.
+A clean, interactive personal finance dashboard built with React. Track income and expenses, explore spending patterns, drill into charts, and manage transactions — all in the browser with no backend required.
 
 ---
 
 ## Screenshots
 
-> Dashboard (light mode)
+**Dashboard — light mode**
+![Dashboard](./src/assets/dashboard.png)
 
-![Dashboard](./src/assets/hero.png)
+**Transactions**
+![Transactions](./src/assets/Transactions.png)
+
+**Insights**
+![Insights](./src/assets/Insights.png)
 
 ---
 
 ## Quick Start
 
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Start the dev server
+# Start dev server
 npm run dev
+# → http://localhost:5173
 
-# 3. Open in browser
-# http://localhost:5173
-```
-
-```bash
 # Production build
 npm run build
 npm run preview
@@ -38,94 +39,76 @@ npm run preview
 ## Features
 
 ### Dashboard
-- **Summary cards** — Total Balance, Income This Month, Expenses This Month, each with a % change badge vs the previous month
-- **Count-up animation** — numbers animate from 0 on page load
-- **Income vs Expenses bar chart** — grouped Recharts BarChart across the last 6 months with ₹-formatted tooltip
-- **Spending breakdown donut** — current month expenses by category with a custom legend showing % share and ₹ amount
-- **Recent transactions** — last 5 entries with emoji icons; "View all →" navigates to Transactions
+- **Summary cards** — Total Balance, Income This Month, Expenses This Month with % change badge vs the previous month
+- **Count-up animation** — numbers animate from 0 on first render
+- **Date range selector** — 1M / 3M / 6M / 1Y pill toggle in the header; all three charts update simultaneously
+- **Balance Trend** — full-width AreaChart showing the running account balance day-by-day across the selected range; gradient fill turns green/red based on trend direction; trend badge shows ₹ gained/lost
+- **Income vs Expenses** — grouped BarChart across the selected range; click any bar to jump to Transactions filtered to that month
+- **Spending Breakdown** — donut chart of expenses by category for the selected range; click any slice to drill into Transactions; custom legend with % share and ₹ amount
+- **Recent Transactions** — last 5 entries with emoji icons; "View all →" navigates to Transactions
 
 ### Transactions
-- **Full transaction table** — Date, Description, Category, Type, Amount columns
-- **Text search** — matches description and category simultaneously, live-filtered
-- **Filters** — Type (All / Income / Expense), Category, Month dropdowns; all derived from actual data
+- **Responsive layout** — full table on desktop; card-per-row layout on mobile (≤600px)
+- **Text search** — matches description and category live
+- **Filters** — Type, Category, Month dropdowns; mobile layout places all 3 in a single row
+- **Sortable columns** — click any header to sort asc/desc
 - **Clear button** — resets all active filters in one click
-- **Result count** — "Showing X of Y transactions" updates live
-- **Sortable columns** — click any header to sort; click again to toggle asc/desc; active column shows directional arrow
-- **Category badges** — colour-coded dot per category
-- **Type badges** — green for income, red for expense
-- **CSV export** — Admin only; exports the current filtered view
+- **Result count** — "Showing X of Y" updates live
+- **Chart drill-through** — navigating from a dashboard chart pre-filters the list automatically
+- **Export CSV** — downloads the current filtered view (available to both roles)
+- **Undo delete** — deleting a transaction shows a 4-second toast with an Undo button; no confirm dialog
 
 ### Insights
-- **KPI cards** — Top spending category, Savings rate %, Total transactions, Average transaction value
-- **Savings rate badge** — contextual label: "Great job! Above 20%" / "Try to hit 20%" / "Expenses exceed income"
-- **Monthly savings chart** — each bar Cell-coloured green (surplus) or red (deficit); ReferenceLine at zero
-- **Category ranking** — plain CSS horizontal bars, no chart library; shows emoji, name, % share, ₹ amount
-- **Observation card** — 1–3 auto-generated plain-English insights based on your data
+- **KPI cards** — Top spending category, Savings rate, Total transactions, Average transaction value
+- **Monthly Savings chart** — bars coloured green (surplus) or red (deficit); ReferenceLine at zero
+- **Category Breakdown** — CSS progress bars ranked by spend; no chart library
+- **Observation card** — 2–4 auto-generated plain-English insights based on your data
 
 ### Role-based UI
+
 | Feature | Viewer | Admin |
 |---|---|---|
-| View dashboard, transactions, insights | ✓ | ✓ |
+| View all pages | ✓ | ✓ |
+| Export CSV | ✓ | ✓ |
 | Add transaction | — | ✓ |
 | Edit transaction | — | ✓ |
 | Delete transaction | — | ✓ |
-| Export CSV | — | ✓ |
+
+The role toggle slider is at the bottom of the sidebar. Switch between Viewer and Admin instantly — the role persists across page refreshes.
 
 ### Other
-- **Dark mode** — full theme switch via CSS custom properties; persisted across sessions
-- **Responsive** — works on mobile (375px), tablet (768px), and desktop (1280px+); sidebar collapses to a drawer on mobile
+- **Dark mode** — toggle button in the top-right header; full theme switch via CSS custom properties; persisted in localStorage
+- **Responsive** — works at 375px (mobile cards), 768px (sidebar drawer), and 1280px+ (full layout)
 - **localStorage persistence** — transactions, role, and theme all survive a page refresh
-- **Animations** — `fadeInUp` entrance with staggered delays on cards; `bar-grow` on category ranking bars
-
----
-
-## Role Switching
-
-The role switcher is in the **bottom-left of the sidebar**.
-
-1. Open the dropdown and select **Admin**
-2. The role badge updates immediately: "Admin — full access"
-3. The **Add Transaction** button appears in the top-right header
-4. **Edit** and **Delete** buttons appear on each transaction row
-5. **Export CSV** button appears on the Transactions page
-
-Switch back to **Viewer** at any time to see the read-only experience. The selected role persists across page refreshes.
+- **Animations** — `fadeInUp` entrance with staggered delays; `bar-grow` on category ranking bars
 
 ---
 
 ## State Management
 
-All application state lives in a single `AppContext` powered by `useReducer`. There is no Redux, Zustand, or any external state library.
-
-### State shape
+All state lives in a single `AppContext` powered by `useReducer`. No Redux, Zustand, or external library.
 
 ```js
 {
-  transactions: [],      // persisted to localStorage
-  role: "viewer",        // "viewer" | "admin" — persisted
-  theme: "light",        // "light" | "dark" — persisted
-  currentPage: "dashboard",
+  transactions: [],        // persisted to localStorage
+  role: 'viewer',          // 'viewer' | 'admin' — persisted
+  theme: 'light',          // 'light' | 'dark' — persisted
+  currentPage: 'dashboard',
+  dashboardRange: 6,       // 1 | 3 | 6 | 12 months
   filters: { search, type, category, month },
   sortConfig: { column, direction },
   modalState: { isOpen, mode, editId },
-  toast: null            // { message, type } | null
+  lastDeleted: null,       // { tx, index } for undo
+  toast: null              // { message, type, undoable? } | null
 }
 ```
 
-### Derived state via hooks
+**Derived state via hooks — nothing computed is stored in the reducer:**
 
-No computed values are stored in the reducer. Instead:
-
-| Hook | What it computes |
+| Hook | Computes |
 |---|---|
-| `useTransactions` | Filtered + sorted transaction list via `useMemo` |
-| `useAnalytics` | Monthly totals, category breakdown, savings rate, KPIs — all via `useMemo` |
-
-This means the reducer stays simple (pure data mutations only) and derived values automatically stay in sync without any manual cache invalidation.
-
-### localStorage sync
-
-The reducer directly syncs `transactions`, `role`, and `theme` to localStorage on every relevant action. On first load, `initialState.js` reads from localStorage and falls back to the 50-item mock dataset if nothing is stored.
+| `useTransactions` | Filtered + sorted transaction list |
+| `useAnalytics` | Monthly totals, balance trend, category breakdown, KPIs, savings rate, observation strings |
 
 ---
 
@@ -134,41 +117,39 @@ The reducer directly syncs `transactions`, `role`, and `theme` to localStorage o
 ```
 src/
   context/
-    AppContext.jsx       createContext + Provider
-    reducer.js          all action handlers (12 actions)
-    initialState.js     state shape + localStorage seed
+    AppContext.jsx        createContext + Provider
+    reducer.js           14 action handlers
+    initialState.js      state shape + localStorage seed
   data/
-    mockTransactions.js 50 realistic Indian ₹ transactions across 6 months
-    categories.js       11 categories with CSS variable + hex colours + emojis
+    mockTransactions.js  50 realistic Indian ₹ transactions across 6 months
+    categories.js        11 categories with CSS variable + hex colours + emojis
   hooks/
-    useAppContext.js     guarded context hook
-    useTransactions.js  filtered + sorted list via useMemo
-    useAnalytics.js     all computed financial metrics
+    useAppContext.js      guarded context hook
+    useTransactions.js   filtered + sorted list via useMemo
+    useAnalytics.js      all computed financial metrics
   utils/
-    formatters.js       formatINR, formatDate, formatMonth, formatPct, generateId
-    analytics.js        getMonthlyTotals, getCategoryBreakdown, getUniqueMonths
-    exportCSV.js        Blob URL CSV download
+    formatters.js        formatINR, formatDate, formatMonth, formatPct, formatINRShort
+    analytics.js         getMonthlyTotals, getCategoryBreakdown, getBalanceTrend, getUniqueMonths
+    exportCSV.js         Blob URL CSV download
   components/
-    layout/             Layout, Sidebar, Header
-    dashboard/          SummaryCards, MonthBarChart, SpendingPieChart,
-                        RecentTransactions, CountUpNumber
-    transactions/       FilterBar, TransactionTable, TransactionRow,
-                        SortableHeader
-    insights/           InsightKPIs, SavingsBarChart, CategoryRanking,
-                        ObservationCard
-    shared/             Modal, TransactionForm, TransactionModal,
-                        ConfirmDialog, Badge, EmptyState, Toast
+    layout/              Layout, Sidebar, Header
+    dashboard/           SummaryCards, BalanceTrendChart, MonthBarChart,
+                         SpendingPieChart, RecentTransactions, RangeSelector
+    transactions/        FilterBar, TransactionTable, TransactionRow,
+                         TransactionCard, SortableHeader
+    insights/            InsightKPIs, SavingsBarChart, CategoryRanking, ObservationCard
+    shared/              Modal, TransactionForm, TransactionModal,
+                         Badge, EmptyState, Toast, Dropdown
   pages/
     Dashboard.jsx
     Transactions.jsx
     Insights.jsx
   styles/
-    index.css           CSS custom properties, reset, dark mode tokens,
-                        scrollbars, focus styles
-    layout.css          sidebar, header, page grids
-    components.css      cards, badges, buttons, table, form, modal, toast
-    animations.css      fadeInUp keyframes + stagger delay classes
-    responsive.css      breakpoints: 1024px, 768px, 600px
+    index.css            CSS custom properties, reset, dark mode tokens
+    layout.css           sidebar, header, page grids
+    components.css       cards, badges, buttons, table, form, modal, toast, charts
+    animations.css       fadeInUp keyframes + stagger classes
+    responsive.css       breakpoints: 1024px, 768px, 600px
 ```
 
 ---
@@ -177,39 +158,37 @@ src/
 
 | Tool | Why |
 |---|---|
-| **React 18 + Vite** | Fast HMR, modern JSX transform, zero config |
-| **Plain CSS + Custom Properties** | Full control over dark mode, no runtime overhead, demonstrates CSS depth |
-| **Context API + useReducer** | Right-sized for this scope — no Redux boilerplate, still predictable |
-| **Recharts** | Declarative SVG charts with good React integration; only used for 3 chart types |
-| **localStorage** | Satisfies persistence requirement with ~10 lines of code per slice |
+| **React 18 + Vite** | Fast HMR, modern JSX transform |
+| **Plain CSS + Custom Properties** | Full dark mode control, no runtime overhead, demonstrates CSS depth |
+| **Context API + useReducer** | Right-sized for a 3-page app — no Redux boilerplate |
+| **Recharts** | Declarative SVG charts; AreaChart, BarChart, PieChart |
+| **localStorage** | Persistence with ~10 lines per slice |
 
-No UI component library. Every component is hand-built. This was a deliberate choice to demonstrate CSS and component composition skills rather than theme-overriding a third-party library.
-
-No routing library. Page switching is handled via `currentPage` in state — clean for a 3-page app and one less dependency.
+No UI component library — every component is hand-built. No routing library — page switching via `currentPage` in state.
 
 ---
 
 ## Design Decisions
 
-**Indian ₹ locale throughout** — all numbers formatted with `Intl.NumberFormat('en-IN')` and `currency: 'INR'`. Mock data uses Swiggy, Zomato, Ola, HDFC SIP etc. for realism.
+**Indian ₹ locale throughout** — all numbers formatted with `Intl.NumberFormat('en-IN', { currency: 'INR' })`. Mock data uses Swiggy, Zomato, Ola, HDFC SIP, Zerodha etc.
 
-**Two colour maps per category** — `CATEGORY_COLOR` uses CSS variables (for HTML/CSS contexts like badges), `CATEGORY_HEX` uses hex strings (for Recharts `Cell` fill which renders SVG and can't resolve CSS variables).
+**No inline CSS** — all styles live in `.css` files. Dynamic values (colours from data, widths from percentages) are passed as CSS custom properties (`style={{ '--bar-color': hex }}`) and consumed in CSS (`background: var(--bar-color)`). Boolean state variations use class modifiers (`.summary-card__value--negative`).
 
-**`useAnalytics` as the single source of computed truth** — monthly totals, category breakdowns, savings rate, KPIs, and observation strings are all derived in one `useMemo` block. No risk of components computing the same thing differently.
+**Two colour maps per category** — `CATEGORY_COLOR` uses CSS variables (for HTML/CSS contexts), `CATEGORY_HEX` uses hex strings (for Recharts SVG, which cannot resolve CSS variables).
 
-**Expense-inverted change badges** — on the Expenses card, a % increase is shown in red (bad) and a decrease in green (good). The income and balance cards use the normal convention.
+**`useAnalytics` as the single source of computed truth** — monthly totals, balance trend, category breakdowns, savings rate, KPIs, and observation strings all derived in one `useMemo`. No risk of components computing the same value differently.
 
-**CSS-only animations** — `fadeInUp` keyframes with stagger delay classes (`stagger-1` through `stagger-8`) give entrance animations without Framer Motion. The stagger is applied via CSS animation-delay, not JavaScript timers.
+**Chart drill-through** — `SET_PAGE` no longer clears filters (sidebar navigation calls `CLEAR_FILTERS` explicitly before navigating). This allows charts to set a filter then navigate in two separate dispatches without the second wiping the first.
 
-**`color-scheme: light/dark`** — applied to `:root` and `[data-theme="dark"]` so native browser controls (date picker, select options, number spinners) automatically match the active theme without custom styling every element.
+**Undo delete** — reducer stores `lastDeleted: { tx, index }` on `DELETE_TRANSACTION`. `UNDO_DELETE` splices it back at the original index. `HIDE_TOAST` clears `lastDeleted` when the 4-second window expires.
+
+**CSS-only animations** — `fadeInUp` with stagger delay classes (`stagger-1` through `stagger-8`) — no Framer Motion.
 
 ---
 
-## Known Limitations / Assumptions
+## Known Limitations
 
-- **No backend** — data is mock-seeded and stored in localStorage only. Clearing browser storage resets to the 50 mock transactions.
-- **No real authentication** — role switching is a UI demo only, not a security boundary.
-- **Date capped at today** — the form prevents future-dated transactions (`max={today}` on the date input).
-- **Single currency** — hardcoded to Indian Rupees (₹). Adding multi-currency support would require a currency field and conversion logic.
-- **No pagination** — 50 transactions render fine in a table; pagination would be needed at ~500+ rows.
-- **Chart tooltips use inline styles** — Recharts custom tooltips use inline CSS variables which work because the tooltip renders in the React tree, not the SVG.
+- **No backend** — data is mock-seeded and stored in localStorage. Clearing browser storage resets to 50 mock transactions.
+- **No real authentication** — role switching is a UI demo, not a security boundary.
+- **Single currency** — hardcoded to Indian Rupees (₹).
+- **No pagination** — 50 transactions render fine; pagination would be needed at ~500+ rows.

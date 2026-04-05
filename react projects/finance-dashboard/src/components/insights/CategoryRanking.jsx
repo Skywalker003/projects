@@ -18,14 +18,12 @@ export default function CategoryRanking() {
       </div>
 
       {top.length === 0 ? (
-        <p style={{ color: 'var(--color-text-muted)', fontSize: '13.5px', textAlign: 'center', padding: 'var(--space-8) 0' }}>
-          No expense data yet.
-        </p>
+        <p className="cat-ranking__empty">No expense data yet.</p>
       ) : (
         <div className="cat-ranking">
           {top.map((item, i) => {
-            const hex   = CATEGORY_HEX[item.category]   ?? '#94A3B8';
-            const emoji = CATEGORY_EMOJI[item.category] ?? '📦';
+            const hex      = CATEGORY_HEX[item.category]   ?? '#94A3B8';
+            const emoji    = CATEGORY_EMOJI[item.category] ?? '📦';
             const widthPct = Math.round((item.total / maxTotal) * 100);
 
             return (
@@ -34,16 +32,14 @@ export default function CategoryRanking() {
                   <div className="cat-ranking__name">
                     <span>{emoji}</span>
                     {item.category}
-                    <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 400 }}>
-                      {item.pct}%
-                    </span>
+                    <span className="cat-ranking__pct">{item.pct}%</span>
                   </div>
                   <div className="cat-ranking__amount">{formatINR(item.total)}</div>
                 </div>
                 <div className="cat-ranking__bar-bg">
                   <div
                     className="cat-ranking__bar-fill bar-grow"
-                    style={{ width: `${widthPct}%`, background: hex }}
+                    style={{ '--bar-width': `${widthPct}%`, '--bar-color': hex }}
                   />
                 </div>
               </div>

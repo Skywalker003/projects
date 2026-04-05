@@ -40,7 +40,7 @@ const NAV_ITEMS = [
 
 export default function Sidebar({ isOpen, onClose }) {
   const { state, dispatch } = useAppContext();
-  const { currentPage, role, theme } = state;
+  const { currentPage, role } = state;
 
   function navigate(page) {
     dispatch({ type: 'CLEAR_FILTERS' });
@@ -48,15 +48,11 @@ export default function Sidebar({ isOpen, onClose }) {
     onClose?.();
   }
 
-  function handleRoleChange(e) {
-    dispatch({ type: 'SET_ROLE', payload: e.target.value });
+  function toggleRole() {
+    dispatch({ type: 'SET_ROLE', payload: role === 'admin' ? 'viewer' : 'admin' });
   }
 
-  function handleThemeToggle() {
-    dispatch({ type: 'TOGGLE_THEME' });
-  }
-
-  return (
+return (
     <aside className={`sidebar${isOpen ? ' open' : ''}`}>
       {/* Logo */}
       <div className="sidebar__logo">
@@ -84,22 +80,13 @@ export default function Sidebar({ isOpen, onClose }) {
 
       {/* Footer — role switcher + theme toggle */}
       <div className="sidebar__footer">
-        {/* Theme toggle */}
-        <button className="theme-toggle" onClick={handleThemeToggle} title="Toggle dark mode" style={{ alignSelf: 'flex-start' }}>
-          {theme === 'dark' ? '☀️' : '🌙'}
-        </button>
-
         {/* Role switcher */}
         <div>
-          <div className="sidebar__role-label">Role</div>
-          <select
-            className="sidebar__role-select"
-            value={role}
-            onChange={handleRoleChange}
-          >
-            <option value="viewer">Viewer</option>
-            <option value="admin">Admin</option>
-          </select>
+          <div className="role-toggle" onClick={toggleRole}>
+            <div className={`role-toggle__thumb role-toggle__thumb--${role}`} />
+            <span className={`role-toggle__opt${role === 'viewer' ? ' role-toggle__opt--active' : ''}`}>Viewer</span>
+            <span className={`role-toggle__opt${role === 'admin'  ? ' role-toggle__opt--active' : ''}`}>Admin</span>
+          </div>
         </div>
 
         {/* Role badge */}

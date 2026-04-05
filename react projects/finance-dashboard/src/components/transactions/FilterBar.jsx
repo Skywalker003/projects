@@ -50,40 +50,38 @@ export default function FilterBar() {
         />
       </div>
 
-      {/* Type */}
-      <Dropdown
-        value={filters.type}
-        onChange={v => set('type', v)}
-        options={TYPE_OPTIONS}
-        placeholder="All types"
-      />
+      {/* Dropdowns — 3-col grid on mobile, inline on desktop */}
+      <div className="filter-bar__dropdowns">
+        <Dropdown
+          value={filters.type}
+          onChange={v => set('type', v)}
+          options={TYPE_OPTIONS}
+          placeholder="All types"
+        />
+        <Dropdown
+          value={filters.category}
+          onChange={v => set('category', v)}
+          options={categoryOptions}
+          placeholder="All categories"
+        />
+        <Dropdown
+          value={filters.month}
+          onChange={v => set('month', v)}
+          options={monthOptions}
+          placeholder="All months"
+        />
+      </div>
 
-      {/* Category */}
-      <Dropdown
-        value={filters.category}
-        onChange={v => set('category', v)}
-        options={categoryOptions}
-        placeholder="All categories"
-      />
-
-      {/* Month */}
-      <Dropdown
-        value={filters.month}
-        onChange={v => set('month', v)}
-        options={monthOptions}
-        placeholder="All months"
-      />
-
-      {/* Clear */}
-      {hasFilters && (
-        <button className="btn btn--ghost btn--sm" onClick={clear}>
-          Clear
-        </button>
-      )}
-
-      {/* Count */}
-      <div className="filter-bar__count">
-        Showing <span>{filtered.length}</span> of <span>{total}</span>
+      {/* Count + Clear — single row on mobile */}
+      <div className="filter-bar__bottom">
+        <div className="filter-bar__count">
+          Showing <span>{filtered.length}</span> of <span>{total}</span>
+        </div>
+        {hasFilters && (
+          <button className="btn btn--ghost btn--sm" onClick={clear}>
+            Clear
+          </button>
+        )}
       </div>
     </div>
   );

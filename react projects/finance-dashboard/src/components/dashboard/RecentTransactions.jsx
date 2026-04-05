@@ -8,7 +8,7 @@ export default function RecentTransactions() {
   const recent = [...state.transactions]
     .sort((a, b) => {
       if (a.date !== b.date) return a.date < b.date ? 1 : -1;
-      return 0; // same date: preserve insertion order (newest added = first in array)
+      return 0;
     })
     .slice(0, 5);
 
@@ -17,7 +17,7 @@ export default function RecentTransactions() {
   }
 
   return (
-    <div className="chart-card fade-in-up stagger-6" style={{ gridColumn: '1 / -1' }}>
+    <div className="chart-card fade-in-up stagger-6 col-span-full">
       <div className="chart-card__header">
         <div>
           <div className="chart-card__title">Recent Transactions</div>
@@ -26,7 +26,7 @@ export default function RecentTransactions() {
       </div>
 
       {recent.length === 0 ? (
-        <div className="empty-state" style={{ padding: '1.5rem' }}>
+        <div className="empty-state empty-state--compact">
           <div className="empty-state__icon">💸</div>
           <div className="empty-state__title">No transactions yet</div>
           <div className="empty-state__desc">Add your first transaction to get started.</div>
@@ -45,10 +45,7 @@ export default function RecentTransactions() {
                 </div>
               </div>
               <div className="recent-tx__right">
-                <div
-                  className="recent-tx__amount"
-                  style={{ color: tx.type === 'income' ? 'var(--color-green)' : 'var(--color-red)' }}
-                >
+                <div className={`recent-tx__amount recent-tx__amount--${tx.type}`}>
                   {tx.type === 'income' ? '+' : '−'}{formatINR(tx.amount)}
                 </div>
                 <div className="recent-tx__date">{formatDate(tx.date)}</div>

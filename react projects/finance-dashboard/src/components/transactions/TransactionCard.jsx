@@ -19,7 +19,7 @@ const TrashIcon = () => (
   </svg>
 );
 
-export default function TransactionRow({ tx }) {
+export default function TransactionCard({ tx }) {
   const { state, dispatch } = useAppContext();
   const isAdmin = state.role === 'admin';
 
@@ -33,33 +33,27 @@ export default function TransactionRow({ tx }) {
   }
 
   return (
-    <tr>
-      <td className="table__date">{formatDate(tx.date)}</td>
-
-      <td>
-        <div className="table__cell-desc">
-          <span className="table__cell-emoji">{CATEGORY_EMOJI[tx.category] ?? '📦'}</span>
-          <span className="table__desc">{tx.desc}</span>
+    <div className="tx-card">
+      <div className="tx-card__main">
+        <div className="tx-card__left">
+          <span className="tx-card__emoji">{CATEGORY_EMOJI[tx.category] ?? '📦'}</span>
+          <div className="tx-card__info">
+            <span className="tx-card__desc">{tx.desc}</span>
+            <span className="tx-card__date">{formatDate(tx.date)}</span>
+          </div>
         </div>
-      </td>
-
-      <td className="col-hide-md">
-        <CategoryBadge category={tx.category} />
-      </td>
-
-      <td className="col-hide-sm">
-        <TypeBadge type={tx.type} />
-      </td>
-
-      <td className="table__cell-amount">
-        <span className={`table__amount table__amount--${tx.type}`}>
+        <span className={`tx-card__amount tx-card__amount--${tx.type}`}>
           {formatINR(tx.amount)}
         </span>
-      </td>
+      </div>
 
-      {isAdmin && (
-        <td>
-          <div className="table__actions">
+      <div className="tx-card__footer">
+        <div className="tx-card__badges">
+          <CategoryBadge category={tx.category} />
+          <TypeBadge type={tx.type} />
+        </div>
+        {isAdmin && (
+          <div className="tx-card__actions">
             <button className="btn--icon btn--icon-edit" onClick={handleEdit} title="Edit">
               <EditIcon />
             </button>
@@ -67,8 +61,8 @@ export default function TransactionRow({ tx }) {
               <TrashIcon />
             </button>
           </div>
-        </td>
-      )}
-    </tr>
+        )}
+      </div>
+    </div>
   );
 }
