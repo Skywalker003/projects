@@ -43,7 +43,7 @@ export const services = [
   },
   {
     id: 6,
-    title: 'Other Services',
+    title: 'Consulting Services',
     icon: 'Wrench',
     image: consulting,
     shortDescription: 'SAP solutions, AMC for computers, CCTV installation and technical support',

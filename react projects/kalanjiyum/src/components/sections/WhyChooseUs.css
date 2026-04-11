@@ -1,6 +1,3 @@
-.why-choose-us-section {
-    background-color: var(--color-gray);
-}
 .why-choose-us {
     display: grid;
     grid-template-columns: 1fr 1fr;

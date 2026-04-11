@@ -13,7 +13,7 @@ const features = [
 export default function WhyChooseUs() {
 
     return (
-        <section className="section why-choose-us-section">
+        <section className="section section--gray">
             <div className="container why-choose-us">
                 <img className="why-choose-us_image" src={whyImage} alt="Why Choose Us" />
 

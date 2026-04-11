@@ -145,9 +145,13 @@ input, textarea, select {
   padding: var(--space-4xl) var(--space-3xl);
 }
 
-.section--gray{
+.section--light{
   background-color: var(--color-light);
 }
+.section--gray{
+  background-color: var(--color-gray);
+}
+
 .section--dark{
   background-color: var(--color-dark);
 }
