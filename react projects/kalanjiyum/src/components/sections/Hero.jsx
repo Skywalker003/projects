@@ -18,8 +18,8 @@ export default function Hero() {
                 </p>
 
                 <div className="hero_actions">
-                    <Button variant="primary" size="btn--xl">Get a Free Quote</Button>
-                    <Button variant="secondary" size="btn--xl">
+                    <Button variant="primary" size="xl">Get a Free Quote</Button>
+                    <Button variant="secondary" size="xl">
                         View our Services <ArrowRight size={16} />
                     </Button>
                 </div>

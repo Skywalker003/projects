@@ -74,4 +74,13 @@
   .services-grid {
     grid-template-columns: 1fr;
   }
+
+  .service-card::before {
+    opacity: 1;
+  }
+
+  .service-card__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
