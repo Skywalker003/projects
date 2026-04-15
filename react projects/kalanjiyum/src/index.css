@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
 
 /* ------------ Defining css variables ------------- */
 :root{
@@ -24,6 +24,7 @@
 
   /* Typography */
   --font-family: 'Inter', sans-serif;
+  --font-display: 'Playfair Display', serif;
 
   --font-size-h1:   3.5rem; /*styles*/
   --font-size-h2:   2.5rem;
@@ -228,7 +229,59 @@ input, textarea, select {
   margin-right: auto;
 }
 
+/*------------------- hero page ------------------------*/
 
+.page-hero {
+  padding: var(--space-4xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-hero_inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.page-hero_breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.page-hero_breadcrumb a {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.page-hero_breadcrumb a:hover {
+  color: var(--color-red);
+}
+
+.page-hero_breadcrumb span {
+  color: var(--color-red);
+  font-weight: var(--font-weight-semibold);
+}
+
+.page-hero_title{
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-heading);
+  max-width: 600px;
+  text-align: center;
+}
+
+.page-hero_subtext{
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  max-width: 600px;
+  text-align: center;
+}
 
 /*-------------------Buttons Classes ------------------------*/
 
@@ -341,32 +394,6 @@ input, textarea, select {
   border-top-color: var(--color-red);
 }
 
-/* ------------- badges -------------- */
-  .badge {
-    display: inline-block;
-    align-items: center;
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 0.5px;
-  }
-  
-  .badge--red {
-    background-color: var(--color-red);
-    color: var(--color-white);
-  }
-
-  .badge--light {
-    background-color: var(--color-light);
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
-  }
-
-  .badge--red-light {
-    background-color: var(--color-red-light);
-    color: var(--color-red-dark);
-  }
 
 
   /* ------------- forms -------------- */

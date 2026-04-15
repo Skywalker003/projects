@@ -1,10 +1,10 @@
-import Hero from '../components/sections/Hero'
-import StatsBar from '../components/sections/StatsBar'
-import ServicesGrid from '../components/sections/ServicesGrid'
-import WhyChooseUs from '../components/sections/WhyChooseUs'
-import TechPartners from '../components/sections/TechPartners'
-import Testimonials from '../components/sections/Testimonials'
-import CTABanner from '../components/sections/CTABanner'
+import Hero from '../components/sections/home/Hero'
+import StatsBar from '../components/sections/home/StatsBar'
+import ServicesGrid from '../components/sections/home/ServicesGrid'
+import WhyChooseUs from '../components/sections/home/WhyChooseUs'
+import TechPartners from '../components/sections/home/TechPartners'
+import Testimonials from '../components/sections/home/Testimonials'
+import CTABanner from '../components/sections/home/CTABanner'
 
 export default function Home() {
   return (

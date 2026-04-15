@@ -16,6 +16,7 @@
     justify-content: space-between;
     height: 100%;
     padding: 0 var(--space-lg);
+    position: relative;
 }
 
 .navbar__brand {
@@ -48,6 +49,9 @@
     display: flex;
     align-items: center;
     gap: var(--space-xl);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navbar__link {

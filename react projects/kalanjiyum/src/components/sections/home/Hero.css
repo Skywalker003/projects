@@ -15,11 +15,16 @@
 
 .hero_content h1{
     font-size: var(--font-size-h1);
-    font-weight: var(--font-weight-black);
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
     line-height: var(--line-height-heading);
 }
 .hero_content h1 span{
     color: var(--color-red);
+}
+.hero_semibold {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
 }
 .hero_content p{
     font-size: var(--font-size-lg);

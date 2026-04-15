@@ -1,0 +1,44 @@
+.who-we-are {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+}
+
+.who-we-are_content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.who-we-are_title {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-primary);
+}
+
+.who-we-are_content p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+.who-we-are_content strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.who-we-are_image {
+    width: 100%;
+    border-radius: var(--radius-xl);
+}
+
+@media (max-width: 768px){
+    .who-we-are {
+        grid-template-columns: 1fr;
+    }
+    .who-we-are_image {
+        display: none;
+    }
+    
+}

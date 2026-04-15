@@ -14,8 +14,7 @@ export default function CTABanner() {
           </p>
 
           <div className="cta-banner__actions">
-            <Link to="/contact" className="btn btn--white">Get a Free Quote</Link>
-            <Link to="/contact" className="btn btn--ghost cta-banner__btn-dark">Contact Us</Link>
+            <Link to="/contact" className="btn btn--white">Contact Us</Link>
           </div>
 
         </div>

@@ -1,7 +1,7 @@
 import './WhyChooseUs.css';
 import { CheckCircle, Headset } from 'lucide-react';
-import Button from '../ui/Button';
-import whyImage from '../../assets/images/homepage2.png';
+import Button from '../../ui/Button';
+import whyImage from '../../../assets/images/homepage2.png';
 
 const features = [
     { title: 'Cost-Effective',  desc: 'High-quality engineering without the premium price tag.' },

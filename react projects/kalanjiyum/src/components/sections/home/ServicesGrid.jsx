@@ -1,10 +1,10 @@
 import "./ServicesGrid.css"
-import { services } from "../../data/services"
-import SectionHeading from "../ui/SectionHeading"
+import { services } from "../../../data/services"
+import SectionHeading from "../../ui/SectionHeading"
 
 export default function ServicesGrid() {
     return (
-        <div className="section">
+        <div id="services" className="section">
             <div className="container">
                 <SectionHeading
                     label="What We Do"

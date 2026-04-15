@@ -19,7 +19,7 @@ export default function Navbar() {
         <Link to="/"  className="navbar__brand" onClick={closeMenu}>
           <img src={logo} alt="Logo" className="navbar__logo"/>
           <span className="navbar__name">
-            Kalanjiyum{' '}<span className="navbar__name--accent">Tech</span>
+            Kalanjiyam{' '}<span className="navbar__name--accent">Tech</span>
           </span>
         </Link>
 
@@ -46,11 +46,7 @@ export default function Navbar() {
           </NavLink>
           
         </div>
-        <div className="navbar__cta">
-          <Link to="/contact" className='btn btn--primary btn--sm' onClick={closeMenu} >Get a Quote</Link>
-        </div>
-
-        {/* Mobile Menu Button */}
+{/* Mobile Menu Button */}
         <button
           className='navbar__hamburger'
           onClick={() => setIsMenuOpen(!isMenuOpen)}

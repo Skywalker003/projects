@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { Mail, MapPin, Clock } from 'lucide-react'
 import logo from '../../assets/images/logo.png'
 import './Footer.css'
 
@@ -14,7 +14,7 @@ export default function Footer() {
           <Link to="/"  className="footer__logo-wrap">
             <img src={logo} alt="Logo" className="footer__logo"/>
             <div>
-              <div className="footer__company-name">Kalanjiyum</div>
+              <div className="footer__company-name">Kalanjiyam</div>
               <div className="footer__company-sub">Tech</div>
             </div>
           </Link>
@@ -66,11 +66,7 @@ export default function Footer() {
         <div className="footer__col">
           <h4 className="footer__col-title">Get In Touch</h4>
           <ul className="footer__contact">
-            <li className="footer__contact-item">
-              <Phone size={16} className="footer__contact-icon" />
-              <span>+91 7904003831</span>
-            </li>
-            <li className="footer__contact-item">
+<li className="footer__contact-item">
               <Mail size={16} className="footer__contact-icon" />
               <span>contactus@kalanjiyam.info</span>
             </li>
@@ -89,7 +85,7 @@ export default function Footer() {
 
       <div className='footer__bottom'>
         <div className="footer__bottom-inner">
-          <p>&copy; {new Date().getFullYear()} Kalanjiyum Technical Solutions. All rights reserved. Made with ❤️ in Madurai</p>
+          <p>&copy; {new Date().getFullYear()} Kalanjiyam Technical Solutions. All rights reserved.</p>
         </div>
       </div>
 

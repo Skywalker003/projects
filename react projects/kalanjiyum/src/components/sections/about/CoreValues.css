@@ -1,0 +1,31 @@
+.core-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.core-values_icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-red-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+}
+
+.core-values_desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+@media (max-width: 768px){
+    .core-values {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .section {
+        padding: var(--space-4xl) var(--space-md);
+    }
+}
