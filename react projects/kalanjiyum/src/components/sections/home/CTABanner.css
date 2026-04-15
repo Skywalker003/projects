@@ -52,8 +52,21 @@
 }
 
 @media (max-width: 768px) {
+  .section-cta {
+    padding: 0 var(--space-md) var(--space-2xl) var(--space-md);
+  }
+
+  .cta-banner {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
   .cta-banner__actions {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-banner__actions .btn {
+    min-width: unset;
     width: 100%;
   }
 }

@@ -61,9 +61,15 @@
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
+    padding: var(--space-2xl) var(--space-md);
   }
-  
-  .hero img{
+
+  .hero img {
     display: none;
-    }
+  }
+
+  .hero_actions .btn {
+    padding: 12px 24px;
+    font-size: var(--font-size-base);
+  }
 }

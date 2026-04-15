@@ -34,7 +34,7 @@
 @media (max-width: 768px) {
     .stats-bar {
         grid-template-columns: repeat(2,1fr);
-        gap:var(--space-xs)
+        gap: var(--space-xs);
     }
     .stats-bar__item {
         border-right: none;

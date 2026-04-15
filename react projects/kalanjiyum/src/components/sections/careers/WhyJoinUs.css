@@ -1,13 +1,13 @@
-.core-values {
+.why-join-us {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
 }
 
-.core-values_icon {
+.why-join-us_icon {
     width: 48px;
     height: 48px;
-    background-color: var(--color-red-light);
+    background-color: var(--color-light);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
@@ -15,14 +15,21 @@
     margin-bottom: var(--space-md);
 }
 
-.core-values_desc {
+.why-join-us_title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.why-join-us_desc {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
 }
 
-@media (max-width: 768px){
-    .core-values {
+@media (max-width: 768px) {
+    .why-join-us {
         grid-template-columns: 1fr;
     }
 }

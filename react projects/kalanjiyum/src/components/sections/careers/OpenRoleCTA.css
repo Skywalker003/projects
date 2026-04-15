@@ -1,0 +1,66 @@
+.open-role-cta {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: var(--space-4xl) var(--space-lg);
+}
+
+.open-role-cta_overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.open-role-cta_inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xl);
+}
+
+.open-role-cta_title {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    line-height: var(--line-height-heading);
+}
+
+.open-role-cta_subtext {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 480px;
+    line-height: var(--line-height-body);
+}
+
+.open-role-cta_btn {
+    background: linear-gradient(135deg, var(--color-red), var(--color-red-dark));
+    border-color: transparent;
+    gap: var(--space-sm);
+}
+
+.open-role-cta_btn:hover {
+    background: linear-gradient(135deg, var(--color-red-dark), var(--color-red));
+    border-color: transparent;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .open-role-cta_title {
+        font-size: var(--font-size-h2);
+    }
+
+    .open-role-cta_subtext {
+        font-size: var(--font-size-base);
+    }
+
+    .open-role-cta_btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
