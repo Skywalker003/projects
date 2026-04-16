@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;800;900&display=swap');
 
 /* ------------ Defining css variables ------------- */
 :root{
@@ -176,7 +176,7 @@ input, textarea, select {
 }
 
 /* Label */
-.section-heading__label {
+.section-heading_label {
   display: inline-block;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
@@ -187,7 +187,7 @@ input, textarea, select {
 }
 
 /* Heading */
-.section-heading__title {
+.section-heading_title {
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -196,7 +196,7 @@ input, textarea, select {
 }
 
 /* Red accent line */
-.section-heading__accent {
+.section-heading_accent {
   width: 40px;
   height: 3px;
   background-color: var(--color-red);
@@ -205,18 +205,18 @@ input, textarea, select {
 }
 
 /* Center accent line */
-.section-heading--center .section-heading__accent {
+.section-heading--center .section-heading_accent {
   margin-left: auto;
   margin-right: auto;
 }
 
 /* Left accent line */
-.section-heading--left .section-heading__accent {
+.section-heading--left .section-heading_accent {
   margin-left: 0;
 }
 
 /* Subtext */
-.section-heading__subtext {
+.section-heading_subtext {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
   line-height: var(--line-height-body);
@@ -224,7 +224,7 @@ input, textarea, select {
 }
 
 /* Center subtext */
-.section-heading--center .section-heading__subtext {
+.section-heading--center .section-heading_subtext {
   margin-left: auto;
   margin-right: auto;
 }
@@ -435,6 +435,7 @@ input, textarea, select {
   textarea.form-input {
     resize: vertical;
     min-height: 140px;
+    max-height: 300px;
   }
 
   .form-error {

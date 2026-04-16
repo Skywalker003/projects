@@ -6,7 +6,7 @@ export default function WhoWeAre() {
         <section className='section'>
             <div className="who-we-are container">
                 <div className="who-we-are_content">
-                    <span className='section-heading__label'>Our Story</span>
+                    <span className='section-heading_label'>Our Story</span>
                     <h2 className='who-we-are_title'>Who We Are</h2>
 
                     <p>

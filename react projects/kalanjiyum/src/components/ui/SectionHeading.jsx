@@ -8,15 +8,15 @@ export default function SectionHeading({
     <div className={`section-heading section-heading--${align}`}>
 
       {label && (
-        <span className="section-heading__label">{label}</span>
+        <span className="section-heading_label">{label}</span>
       )}
 
-      <h2 className="section-heading__title">{heading}</h2>
+      <h2 className="section-heading_title">{heading}</h2>
 
-      <div className="section-heading__accent" />
+      <div className="section-heading_accent" />
 
       {subtext && (
-        <p className="section-heading__subtext">{subtext}</p>
+        <p className="section-heading_subtext">{subtext}</p>
       )}
 
     </div>

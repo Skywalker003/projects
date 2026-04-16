@@ -10,7 +10,7 @@ export default function OpenRoleCTA() {
         >
             <div className="open-role-cta_overlay" />
             <div className="container open-role-cta_inner">
-                <h2 className="open-role-cta_title">Don't see the right role?</h2>
+                <h2 className="open-role-cta_title">Looking for a different role?</h2>
                 <p className="open-role-cta_subtext">
                     We are always looking for exceptional talent to join our industrial
                     mission. Send us your resume and we'll keep you in mind for future openings.

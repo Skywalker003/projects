@@ -1,4 +1,13 @@
-// src/pages/Contact.jsx
+import ContactHero from '../components/sections/contact/ContactHero'
+import ContactForm from '../components/sections/contact/ContactForm'
+import OurLocations from '../components/sections/contact/OurLocations'
+
 export default function Contact() {
-  return <div style={{ padding: '2rem' }}>Contact Page — Coming Soon</div>
+    return (
+        <>
+            <ContactHero />
+            <ContactForm />
+            <OurLocations />
+        </>
+    )
 }

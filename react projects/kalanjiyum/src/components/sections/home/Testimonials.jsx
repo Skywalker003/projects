@@ -17,16 +17,16 @@ export default function Testimonials() {
                     {testimonials.map((t) => (
                         <div className="testimonial-card card" key={t.id}>
 
-                            <div className="testimonial-card__stars">
+                            <div className="testimonial-card_stars">
                                 {Array.from({ length: t.rating }).map((_, i) => (
                                 <Star key={i} size={16} fill="var(--color-red)" color="var(--color-red)" />
                                 ))}
                             </div>
 
-                            <p className="testimonial-card__quote">"{t.quote}"</p>
+                            <p className="testimonial-card_quote">"{t.quote}"</p>
 
-                            <div className="testimonial-card__person">
-                                <div className="testimonial-card__avatar">
+                            <div className="testimonial-card_person">
+                                <div className="testimonial-card_avatar">
                                 {t.name.charAt(0)}
                                 </div>
                                 <div>

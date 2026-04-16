@@ -10,6 +10,7 @@ import Careers from './pages/Careers'
 import Portfolio from './pages/Portfolio'
 import Services from './pages/Services'
 import TermsAndPrivacy from './pages/TermsAndPrivacy'
+import JobApplication from './pages/JobApplication'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms-and-privacy" element={<TermsAndPrivacy />} />
+            <Route path="/careers/apply" element={<JobApplication />} />
             <Route path="*" element={<Home />} />
           </Routes>
         <Footer />

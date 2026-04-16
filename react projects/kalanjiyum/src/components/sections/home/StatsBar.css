@@ -7,24 +7,24 @@
   text-align: center;
 }
 
-.stats-bar__item{
+.stats-bar_item{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-xs);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
-.stats-bar__item:last-child {
+.stats-bar_item:last-child {
   border-right: none;
 }
 
-.stats-bar__number{
+.stats-bar_number{
     font-size: var(--font-size-h3);
     font-weight: var(--font-weight-bold);
     color: var(--color-white);
 }
 
-.stats-bar__label {
+.stats-bar_label {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
     font-weight: var(--font-weight-semibold);
@@ -36,7 +36,7 @@
         grid-template-columns: repeat(2,1fr);
         gap: var(--space-xs);
     }
-    .stats-bar__item {
+    .stats-bar_item {
         border-right: none;
     }
 }

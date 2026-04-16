@@ -13,39 +13,39 @@
   gap: var(--space-lg);
 }
 
-.cta-banner__title {
+.cta-banner_title {
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
   line-height: var(--line-height-heading);
 }
 
-.cta-banner__subtext {
+.cta-banner_subtext {
   font-size: var(--font-size-base);
   color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
   line-height: var(--line-height-body);
 }
 
-.cta-banner__actions {
+.cta-banner_actions {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.cta-banner__actions .btn {
+.cta-banner_actions .btn {
   min-width: 200px;
   justify-content: center;
 }
 
-.cta-banner__btn-dark {
+.cta-banner_btn-dark {
   background-color: var(--color-dark);
   color: var(--color-white);
   border-color: var(--color-dark);
 }
 
-.cta-banner__btn-dark:hover {
+.cta-banner_btn-dark:hover {
   background-color: transparent;
   color: var(--color-white);
   border-color: var(--color-white);
@@ -60,12 +60,12 @@
     padding: var(--space-2xl) var(--space-lg);
   }
 
-  .cta-banner__actions {
+  .cta-banner_actions {
     flex-direction: column;
     width: 100%;
   }
 
-  .cta-banner__actions .btn {
+  .cta-banner_actions .btn {
     min-width: unset;
     width: 100%;
   }

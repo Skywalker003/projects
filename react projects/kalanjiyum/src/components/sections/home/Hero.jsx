@@ -7,8 +7,8 @@ export default function Hero() {
         <div className="hero section ">
             <div className="hero_content">
                 <div>
-                    <h1>Your <span>Technical</span></h1>
-                    <h1><span className="hero_semibold">Partner for </span>Growth.</h1>
+                    <h1><span className="hero_bold">Your </span><span className="hero_red">Technical</span></h1>
+                    <h1><span className="hero_regular">Partner for </span><span className="hero_bold">Growth.</span></h1>
                 </div>
 
                 <p>

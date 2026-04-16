@@ -13,42 +13,42 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar__inner">
+      <div className="navbar_inner">
 
         {/* Logo and Brand Name */}
-        <Link to="/"  className="navbar__brand" onClick={closeMenu}>
-          <img src={logo} alt="Logo" className="navbar__logo"/>
-          <span className="navbar__name">
-            Kalanjiyam{' '}<span className="navbar__name--accent">Tech</span>
+        <Link to="/"  className="navbar_brand" onClick={closeMenu}>
+          <img src={logo} alt="Logo" className="navbar_logo"/>
+          <span className="navbar_name">
+            Kalanjiyam{' '}<span className="navbar_name--accent">Tech</span>
           </span>
         </Link>
 
         {/*desktop links */}
-        <div className={`navbar__links ${isMenuOpen ? 'navbar__links--open' : ''}`}>
+        <div className={`navbar_links ${isMenuOpen ? 'navbar_links--open' : ''}`}>
           
-          <NavLink to="/" className={({ isActive}) => isActive ? 'navbar__link navbar__link--active' : 'navbar__link'} onClick={closeMenu}>
+          <NavLink to="/" className={({ isActive}) => isActive ? 'navbar_link navbar_link--active' : 'navbar_link'} onClick={closeMenu}>
             Home
           </NavLink>
-          <NavLink to="/about" className={({ isActive}) => isActive ? 'navbar__link navbar__link--active' : 'navbar__link'} onClick={closeMenu}>
+          <NavLink to="/about" className={({ isActive}) => isActive ? 'navbar_link navbar_link--active' : 'navbar_link'} onClick={closeMenu}>
             About
           </NavLink>
-          <NavLink to="/services" className={({ isActive}) => isActive ? 'navbar__link navbar__link--active' : 'navbar__link'} onClick={closeMenu}>
+          <NavLink to="/services" className={({ isActive}) => isActive ? 'navbar_link navbar_link--active' : 'navbar_link'} onClick={closeMenu}>
             Services
           </NavLink>
-          <NavLink to="/portfolio" className={({ isActive}) => isActive ? 'navbar__link navbar__link--active' : 'navbar__link'} onClick={closeMenu}>
+          <NavLink to="/portfolio" className={({ isActive}) => isActive ? 'navbar_link navbar_link--active' : 'navbar_link'} onClick={closeMenu}>
             Portfolio
           </NavLink>
-          <NavLink to="/careers" className={({ isActive}) => isActive ? 'navbar__link navbar__link--active' : 'navbar__link'} onClick={closeMenu}>
+          <NavLink to="/careers" className={({ isActive}) => isActive ? 'navbar_link navbar_link--active' : 'navbar_link'} onClick={closeMenu}>
             Careers
           </NavLink>
-          <NavLink to="/contact" className={({ isActive}) => isActive ? 'navbar__link navbar__link--active' : 'navbar__link'} onClick={closeMenu}>
+          <NavLink to="/contact" className={({ isActive}) => isActive ? 'navbar_link navbar_link--active' : 'navbar_link'} onClick={closeMenu}>
             Contact
           </NavLink>
           
         </div>
 {/* Mobile Menu Button */}
         <button
-          className='navbar__hamburger'
+          className='navbar_hamburger'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >

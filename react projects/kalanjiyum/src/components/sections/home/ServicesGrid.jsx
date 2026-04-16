@@ -16,7 +16,7 @@ export default function ServicesGrid() {
                     {services.map(service => (
                         <div className="service-card" key={service.id}>
                         <img src={service.image} alt={service.title} />
-                            <div className="service-card__overlay">
+                            <div className="service-card_overlay">
                                 <h3>{service.title}</h3>
                                 <p>{service.shortDescription}</p>
                                 <button className="btn btn--white btn--sm">Learn More</button>

@@ -7,13 +7,13 @@ export default function CTABanner() {
       <div className="container">
         <div className="cta-banner">
 
-          <h2 className="cta-banner__title">Ready to Automate Your Success?</h2>
-          <p className="cta-banner__subtext">
+          <h2 className="cta-banner_title">Ready to Automate Your Success?</h2>
+          <p className="cta-banner_subtext">
             Partner with Madurai's leading technical solutions provider, Kalanjiyam
             Technical Solutions, for Industry 4.0 and advanced web development.
           </p>
 
-          <div className="cta-banner__actions">
+          <div className="cta-banner_actions">
             <Link to="/contact" className="btn btn--white">Contact Us</Link>
           </div>
 

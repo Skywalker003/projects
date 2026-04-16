@@ -19,7 +19,7 @@ export default function WhyChooseUs() {
 
                     <div className="why-choose-us_content">
                         <div className="why-choose-us_heading">
-                            <span className="section-heading__label">
+                            <span className="section-heading_label">
                             Why Kalanjiyam Technical Solutions?
                         </span>
 

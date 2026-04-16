@@ -16,14 +16,18 @@
 .hero_content h1{
     font-size: var(--font-size-h1);
     font-family: var(--font-display);
-    font-weight: var(--font-weight-bold);
     line-height: var(--line-height-heading);
 }
-.hero_content h1 span{
+.hero_bold {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+.hero_red {
+    font-weight: var(--font-weight-regular);
     color: var(--color-red);
 }
-.hero_semibold {
-    font-weight: var(--font-weight-semibold);
+.hero_regular {
+    font-weight: var(--font-weight-regular);
     color: var(--color-text-primary);
 }
 .hero_content p{
@@ -43,10 +47,10 @@
     color: var(--color-text-secondary);
     font-weight: var(--font-weight-semibold);
 }
-.hero__trust-first-item{
+.hero_trust-first-item{
     padding-right: var(--space-lg);
 }
-.hero__trust-item {
+.hero_trust-item {
     border-left: 1px solid var(--color-border);
     padding-left: var(--space-lg);
 }

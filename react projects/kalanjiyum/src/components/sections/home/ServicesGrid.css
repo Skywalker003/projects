@@ -39,7 +39,7 @@
   opacity: 1;
 }
 
-.service-card__overlay {
+.service-card_overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -52,18 +52,18 @@
   transition: all var(--transition-normal);
 }
 
-.service-card:hover .service-card__overlay {
+.service-card:hover .service-card_overlay {
   opacity: 1;
   transform: translateY(0);
 }
 
-.service-card__overlay h3 {
+.service-card_overlay h3 {
   font-size: var(--font-size-h3);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-sm);
 }
 
-.service-card__overlay p {
+.service-card_overlay p {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-body);
   margin-bottom: var(--space-md);
@@ -79,7 +79,7 @@
     opacity: 1;
   }
 
-  .service-card__overlay {
+  .service-card_overlay {
     opacity: 1;
     transform: translateY(0);
   }

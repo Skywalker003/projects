@@ -1,0 +1,150 @@
+.contact-form-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+/* ---- Left Info Column ---- */
+
+.contact-form_info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.contact-form_title {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.contact-form_subtext {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+/* Contact Details */
+
+.contact-form_details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.contact-form_details-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.contact-form_detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
+.contact-form_detail-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-red-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-form_detail-label {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+}
+
+.contact-form_detail-value {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+}
+
+a.contact-form_detail-value:hover {
+    color: var(--color-red);
+}
+
+/* Urgent Card */
+
+.contact-form_urgent {
+    background-color: var(--color-light);
+    border-left: 3px solid var(--color-red);
+}
+
+.contact-form_urgent-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.contact-form_urgent-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.contact-form_urgent-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+/* ---- Right Form Card ---- */
+
+.contact-form_card {
+    padding: var(--space-2xl);
+}
+
+.contact-form_fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.contact-form_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+    .contact-form-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .contact-form_info {
+        gap: var(--space-lg);
+    }
+
+    .contact-form_title {
+        font-size: var(--font-size-h3);
+    }
+
+    .contact-form_row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form_card {
+        padding: var(--space-lg);
+    }
+}
