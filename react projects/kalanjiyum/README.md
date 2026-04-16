@@ -6,7 +6,7 @@ A modern company website built with React and Vite.
 
 - **React 19** with React Router v7
 - **Vite 8** for bundling and dev server
-- **Framer Motion** for animations
+- **Framer Motion** for animations (not yet)
 - **Lucide React** for icons
 
 ## Pages
