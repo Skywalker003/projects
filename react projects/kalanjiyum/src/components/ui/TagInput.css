@@ -1,0 +1,117 @@
+.tag-input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tag-input_hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tag-input_key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 6px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: var(--font-family);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-light);
+    min-height: 60px;
+    cursor: text;
+    transition: all var(--transition-fast);
+}
+
+.tag-input:focus-within {
+    border-color: var(--color-red);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(208, 2, 27, 0.08);
+}
+
+.tag-input_chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px 4px 12px;
+    background-color: var(--color-red-light);
+    color: var(--color-red);
+    border: 1px solid rgba(208, 2, 27, 0.2);
+    border-radius: 999px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.tag-input_remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-red);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 1px;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.tag-input_remove:hover {
+    opacity: 1;
+}
+
+.tag-input_field {
+    flex: 1;
+    min-width: 120px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    color: var(--color-text-primary);
+    padding: 2px 0;
+}
+
+.tag-input_field::placeholder {
+    color: var(--color-text-light);
+}
+
+@media (max-width: 480px) {
+    .tag-input {
+        min-height: 44px;
+        padding: 8px 10px;
+        gap: 5px;
+    }
+
+    .tag-input_chip {
+        padding: 3px 8px 3px 10px;
+        font-size: 11px;
+        gap: 4px;
+    }
+
+    .tag-input_field {
+        font-size: var(--font-size-sm);
+        min-width: 60px;
+    }
+}

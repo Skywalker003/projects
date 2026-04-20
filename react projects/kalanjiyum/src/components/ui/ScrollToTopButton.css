@@ -1,0 +1,37 @@
+.scroll-top-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(208, 2, 27, 0.35);
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.scroll-top-btn:hover {
+    background-color: var(--color-red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(208, 2, 27, 0.45);
+}
+
+.scroll-top-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+    .scroll-top-btn {
+        bottom: 20px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
+}
