@@ -1,6 +1,7 @@
 import './CurrentOpenings.css'
 import { MapPin } from 'lucide-react'
-import { jobs } from '../../../data/jobs'
+import { Link } from 'react-router-dom'
+import { jobs } from '../../../data/careers'
 import SectionHeading from '../../ui/SectionHeading'
 
 export default function CurrentOpenings() {
@@ -25,9 +26,9 @@ export default function CurrentOpenings() {
                                 </div>
                                 <p className="job-card_desc">{job.desc}</p>
                             </div>
-                            <a href="mailto:contactus@kalanjiyam.info" className="btn btn--primary btn--sm job-card_btn">
+                            <Link to={`/careers/apply?position=${encodeURIComponent(job.title)}`} className="btn btn--primary btn--sm job-card_btn">
                                 Apply Now
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
