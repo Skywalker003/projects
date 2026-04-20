@@ -132,8 +132,8 @@
 /* Mobile */
 @media (max-width: 1024px) {
   .footer_main {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-2xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
   }
 
   .footer_brand {
@@ -172,7 +172,16 @@
 }
 
 @media (max-width: 480px) {
+  .footer {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
   .footer_main {
     grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer_col-title {
+    margin-bottom: var(--space-md);
   }
 }
