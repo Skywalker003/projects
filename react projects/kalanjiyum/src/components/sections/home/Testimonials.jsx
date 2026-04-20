@@ -1,6 +1,6 @@
 import './Testimonials.css';
 import { Star } from 'lucide-react';
-import { testimonials } from '../../../data/testimonials';
+import { testimonials } from '../../../data/home';
 import SectionHeading from '../../ui/SectionHeading';
 
 export default function Testimonials() {
