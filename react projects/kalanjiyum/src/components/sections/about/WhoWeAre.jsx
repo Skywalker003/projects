@@ -23,7 +23,7 @@ export default function WhoWeAre() {
 
                 </div>
 
-                <img className="who-we-are_image" src={aboutImage} alt="Who We are image" />
+                <img className="who-we-are_image" src={aboutImage} alt="Kalanjiyam Technical Solutions team at work" />
             </div>
         </section>
     )

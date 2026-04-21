@@ -30,15 +30,19 @@
 
 .who-we-are_image {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: var(--radius-xl);
+    align-self: center;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     .who-we-are {
         grid-template-columns: 1fr;
     }
+
     .who-we-are_image {
-        display: none;
+        max-width: 480px;
+        margin: 0 auto;
     }
-    
 }

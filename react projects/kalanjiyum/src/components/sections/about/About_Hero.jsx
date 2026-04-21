@@ -3,9 +3,10 @@ import PageHero from '../../ui/PageHero'
 
 export default function About_Hero() {
     return (
-        <PageHero 
+        <PageHero
+            className="about-hero"
             page="About"
-            title={<>About<br/>Kalanjiyam Tech</>}
+            title="About Kalanjiyam Tech"
             subtext="A passionate team delivering cost-effective technology solutions since 2019."
         />
     )

@@ -15,13 +15,30 @@
     margin-bottom: var(--space-md);
 }
 
+.core-values_icon svg {
+    color: var(--color-red);
+}
+
+.core-values_title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
 .core-values_desc {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: var(--line-height-body);
 }
 
-@media (max-width: 768px){
+@media (max-width: 1024px) {
+    .core-values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
     .core-values {
         grid-template-columns: 1fr;
     }
