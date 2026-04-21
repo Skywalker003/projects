@@ -16,17 +16,17 @@
 
 .how-it-works_connector {
     position: absolute;
-    top: 28px;
-    left: calc(50% + 28px);
-    width: calc(100% - 56px);
-    height: 2px;
+    top: var(--space-2xl);
+    left: calc(50% + var(--space-2xl));
+    width: calc(100% - var(--space-4xl));
+    height: 1px;
     background: linear-gradient(to right, var(--color-red), var(--color-border));
     z-index: 0;
 }
 
 .how-it-works_num {
-    width: 56px;
-    height: 56px;
+    width: var(--space-4xl);
+    height: var(--space-4xl);
     border-radius: var(--radius-full);
     background-color: var(--color-red);
     color: var(--color-white);
@@ -38,7 +38,7 @@
     flex-shrink: 0;
     position: relative;
     z-index: 1;
-    box-shadow: 0 4px 16px rgba(208, 2, 27, 0.3);
+    box-shadow: var(--shadow-red, 0 4px 16px rgba(208, 2, 27, 0.3));
 }
 
 .how-it-works_title {
@@ -76,7 +76,7 @@
         left: calc(50% - 1px);
         top: 0;
         bottom: 0;
-        width: 2px;
+        width: 1px;
         background: linear-gradient(to bottom, var(--color-red), var(--color-border));
         z-index: 0;
     }

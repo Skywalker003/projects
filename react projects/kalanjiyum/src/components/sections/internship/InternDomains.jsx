@@ -81,7 +81,7 @@ export default function InternDomains() {
 
             {/* Modal */}
             {activeModal && (
-                <div className="intern-modal_overlay" onClick={() => setActiveModal(null)} aria-hidden="true">
+                <div className="intern-modal_overlay" onClick={() => setActiveModal(null)} role="presentation">
                     <div
                         className="intern-modal_box"
                         role="dialog"

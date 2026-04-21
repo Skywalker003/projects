@@ -11,7 +11,7 @@ export default function WhatYouGain() {
                     <img src={gainImage} alt="Interns at work" className="what-you-gain_image" />
                 </div>
                 <div className="what-you-gain_content">
-                    <span className="section-heading_label">Internship Benefits</span>
+                    <span className="what-you-gain_label">Internship Benefits</span>
                     <h2 className="what-you-gain_title">More Than Just an Internship</h2>
                     <ul className="what-you-gain_list">
                         {internBenefits.map((b, i) => (

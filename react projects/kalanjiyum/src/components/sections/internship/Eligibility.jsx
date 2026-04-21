@@ -11,8 +11,8 @@ export default function Eligibility() {
                     align="center"
                 />
                 <div className="eligibility_grid">
-                    {eligibilityCards.map((c, i) => (
-                        <div className="eligibility_card card" key={i}>
+                    {eligibilityCards.map((c) => (
+                        <div className="eligibility_card card" key={c.title}>
                             <div className="eligibility_icon"><c.icon size={24} /></div>
                             <h3 className="eligibility_title">{c.title}</h3>
                             <p className="eligibility_text">{c.text}</p>

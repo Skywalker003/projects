@@ -19,7 +19,7 @@
     font-weight: var(--font-weight-bold);
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    padding: 6px 16px;
+    padding: var(--space-xs) var(--space-md);
     border-radius: var(--radius-full);
 }
 
@@ -33,7 +33,7 @@
 
 .intern-hero_subtext {
     font-size: var(--font-size-lg);
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--color-text-light);
     line-height: var(--line-height-body);
     max-width: 600px;
 }
@@ -54,7 +54,7 @@
 
 .intern-hero_btn-outline:hover {
     border-color: var(--color-white);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .intern-hero_pills {
@@ -68,11 +68,11 @@
     display: flex;
     align-items: center;
     gap: var(--space-xs);
-    background-color: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    padding: 8px 16px;
+    padding: var(--space-xs) var(--space-md);
     border-radius: var(--radius-full);
     border: 1px solid rgba(255, 255, 255, 0.12);
 }

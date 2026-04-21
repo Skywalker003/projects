@@ -12,8 +12,8 @@ export default function WhyInternWithUs() {
                     align="center"
                 />
                 <div className="why-intern_grid">
-                    {internReasons.map((r, i) => (
-                        <div className="why-intern_card card" key={i}>
+                    {internReasons.map((r) => (
+                        <div className="why-intern_card card" key={r.title}>
                             <div className="why-intern_icon"><r.icon size={24} /></div>
                             <h3 className="why-intern_title">{r.title}</h3>
                             <p className="why-intern_text">{r.text}</p>

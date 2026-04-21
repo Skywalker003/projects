@@ -30,6 +30,7 @@
         flex-direction: column;
         text-align: center;
         align-items: center;
+        gap: var(--space-lg);
     }
 
     .intern-cta_title {

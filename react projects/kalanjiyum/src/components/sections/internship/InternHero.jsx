@@ -23,10 +23,10 @@ export default function InternHero() {
                         View Domains
                     </a>
                 </div>
-                <div className="intern-hero_pills">
-                    <span className="intern-hero_pill"><MapPin size={14} /> Online &amp; Offline</span>
-                    <span className="intern-hero_pill"><Calendar size={14} /> Flexible Duration</span>
-                    <span className="intern-hero_pill"><Award size={14} /> Certificate Provided</span>
+                <div className="intern-hero_pills" aria-label="Internship highlights">
+                    <span className="intern-hero_pill" aria-label="Mode: Online and Offline"><MapPin size={14} aria-hidden="true" /> Online &amp; Offline</span>
+                    <span className="intern-hero_pill" aria-label="Duration: Flexible"><Calendar size={14} aria-hidden="true" /> Flexible Duration</span>
+                    <span className="intern-hero_pill" aria-label="Benefit: Certificate Provided"><Award size={14} aria-hidden="true" /> Certificate Provided</span>
                 </div>
             </div>
         </section>

@@ -12,7 +12,7 @@ export default function HowItWorks() {
                 />
                 <div className="how-it-works_steps">
                     {steps.map((s, i) => (
-                        <div className="how-it-works_step" key={i}>
+                        <div className="how-it-works_step" key={s.num}>
                             {i < steps.length - 1 && <div className="how-it-works_connector" />}
                             <div className="how-it-works_num">{s.num}</div>
                             <h3 className="how-it-works_title">{s.title}</h3>
