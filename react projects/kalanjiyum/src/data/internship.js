@@ -1,4 +1,4 @@
-import { Briefcase, Users, Calendar, Award, BookOpen, User, RefreshCw } from 'lucide-react'
+import { Laptop, Users, Calendar, Award, BookOpen, User, RefreshCw } from 'lucide-react'
 import internpage2 from '../assets/images/internpage2.png'
 import internpage3 from '../assets/images/internpage3.png'
 import internpage4 from '../assets/images/internpage4.png'
@@ -11,14 +11,14 @@ export const domains = [
         domainKey: 'Software Development',
         title: 'Software Development',
         desc: 'Build real-world applications across web, mobile, and AI using modern tech stacks.',
-        rolesLabel: 'Roles Available',
+        rolesLabel: 'Internship Available',
         roles: [
-            'Frontend Developer Intern',
-            'Backend Developer Intern',
-            'Full Stack Developer Intern',
-            'Mobile App Developer Intern',
-            'AI/ML Intern',
-            'Networking Intern',
+            'Frontend Development',
+            'Backend Development',
+            'Full Stack Development',
+            'Mobile App Development',
+            'AI/ML',
+            'Networking',
         ],
         tagsLabel: 'Tech Stack',
         tagGroups: [
@@ -42,29 +42,36 @@ export const domains = [
             'Industry 4.0 Systems',
             'Electronics Systems',
         ],
+        internshipsLabel: 'Internship Available',
+        internships: [
+            'PLC Programming',
+            'Embedded Systems',
+            'SCADA & HMI',
+            'IoT & IIoT Development',
+        ],
         tagsLabel: 'Skills Covered',
         tags: ['Electrical Basics', 'Basic Wiring', 'PLC Programming', 'Embedded Systems', 'HMI', 'SCADA'],
     },
     {
-        badge: 'OPS',
+        badge: 'OPERATIONS',
         badgeColor: 'gray',
         image: internpage4,
         domainKey: 'Administration',
         title: 'Administration',
         desc: 'Develop business acumen and operational skills across HR, project management and business analysis.',
-        rolesLabel: 'Roles Available',
+        rolesLabel: 'Internship Available',
         roles: [
-            'Business Analyst Intern',
-            'Market Research Analyst',
-            'Operations Trainee',
+            'Business Analysis & Market Research',
+            'HR & Operations Trainee',
+            'Finance & Accounts Trainee',
         ],
         tagsLabel: 'Sub-Domains',
-        tags: ['Human Resources', 'Project Management', 'Business Operations'],
+        tags: ['Human Resources', 'Project Management', 'Business Operations', 'Finance & Accounts'],
     },
 ]
 
 export const internReasons = [
-    { icon: Briefcase, title: 'Real Projects',          text: 'Work on live client projects, not dummy tasks. Build a portfolio that stands out.' },
+    { icon: Laptop,    title: 'Online & Offline Mode',   text: 'Join us from anywhere or work on-site — both modes are fully supported.' },
     { icon: Users,     title: 'Industry Mentorship',    text: 'Learn directly from certified engineers and experienced developers.' },
     { icon: Calendar,  title: 'Flexible Duration',      text: 'Intern on your own schedule. Duration is flexible based on your availability.' },
     { icon: Award,     title: 'Completion Certificate', text: 'Earn a verified certificate on successful completion of your internship.' },

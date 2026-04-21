@@ -1,24 +1,22 @@
 export const domainRoles = {
     'Software Development': [
-        'Frontend Developer Intern',
-        'Backend Developer Intern',
-        'Full Stack Developer Intern',
-        'Mobile App Developer Intern',
-        'AI/ML Intern',
-        'Networking Intern',
+        'Frontend Development',
+        'Backend Development',
+        'Full Stack Development',
+        'Mobile App Development',
+        'AI/ML',
+        'Networking',
     ],
     'Industrial Automation': [
-        'IoT Intern',
-        'IIoT Intern',
-        'Industry 4.0 Systems Intern',
-        'Electronics Systems Intern',
-        'PLC Programming Intern',
+        'PLC Programming',
+        'Embedded Systems',
+        'SCADA & HMI',
+        'IoT & IIoT Development',
     ],
     'Administration': [
-        'Business Analyst Intern',
-        'Market Research Analyst',
-        'Operations Trainee',
-        'HR Intern',
+        'Business Analysis & Market Research',
+        'HR & Operations Trainee',
+        'Finance & Accounts Trainee',
     ],
 }
 

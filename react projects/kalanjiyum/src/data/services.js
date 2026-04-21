@@ -1,9 +1,9 @@
-import industry from '../assets/images/industry.png'
-import processAutomation from '../assets/images/process_automation.png'
-import webDev from '../assets/images/web_dev.png'
+import industry from '../assets/images/industry 4.0.jpg'
+import processAutomation from '../assets/images/process-automation.jpg'
+import webDev from '../assets/images/web_dev2.jpg'
 import networkSol from '../assets/images/network_sol.png'
-import plcSensor from '../assets/images/plc&sensor.png'
-import consulting from '../assets/images/consulting.png'
+import plcSensor from '../assets/images/PLC.png'
+import consulting from '../assets/images/consulting_services.jpg'
 
 export const services = [
   {
