@@ -1,5 +1,7 @@
 /* Progress bar */
 .iapp-progress {
+    display: none;
+}
     position: sticky;
     top: 80px;
     z-index: 10;
