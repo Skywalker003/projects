@@ -1,10 +1,11 @@
 import "./Hero.css"
-import Button from "../../ui/Button"
+import { Link } from 'react-router-dom'
 import heroImage from '../../../assets/images/home_hero.png'
 import { ArrowRight } from 'lucide-react'
+
 export default function Hero() {
     return (
-        <div className="hero section ">
+        <section className="hero">
             <div className="hero_content">
                 <div>
                     <h1><span className="hero_bold">Your </span><span className="hero_red">Technical</span></h1>
@@ -16,16 +17,14 @@ export default function Hero() {
                 </p>
 
                 <div className="hero_actions">
-                    <Button variant="primary" size="xl">About Us</Button>
+                    <Link to="/about" className="btn btn--primary btn--xl">About Us</Link>
                     <a href="#services" className="btn btn--secondary btn--xl">
                         View our Services <ArrowRight size={16} />
                     </a>
                 </div>
-
             </div>
 
-            <img src={heroImage} alt="Hero Image" />
-
-        </div>
+            <img src={heroImage} alt="Kalanjiyam Technical Solutions industrial workspace" />
+        </section>
     )
 }

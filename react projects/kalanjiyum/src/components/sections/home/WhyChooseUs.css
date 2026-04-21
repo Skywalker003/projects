@@ -50,12 +50,45 @@
     color: var(--color-text-secondary);
 }
 
+/* ── 1024px: tighten but keep 2-col ── */
+@media (max-width: 1024px) {
+    .why-choose-us {
+        gap: var(--space-xl);
+    }
+}
+
+/* ── 900px: image gets smaller column ── */
+@media (max-width: 900px) {
+    .why-choose-us {
+        grid-template-columns: 2fr 3fr;
+        gap: var(--space-lg);
+    }
+}
+
+/* ── 768px: stack ── */
 @media (max-width: 768px) {
     .why-choose-us {
         grid-template-columns: 1fr;
     }
 
+    .why-choose-us_image {
+        max-height: 300px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .why-choose-us_features {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ── 480px: single col features ── */
+@media (max-width: 480px) {
     .why-choose-us_features {
         grid-template-columns: 1fr;
+    }
+
+    .why-choose-us_content {
+        gap: var(--space-lg);
     }
 }

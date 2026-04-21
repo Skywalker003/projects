@@ -5,12 +5,13 @@ import SectionHeading from '../../ui/SectionHeading';
 
 export default function Testimonials() {
     return (
-        <section className="section ">
+        <section className="section">
             <div className="container">
 
                 <SectionHeading
-                heading="What Our Clients Say"
-                align="center"
+                    label="Client Stories"
+                    heading="What Our Clients Say"
+                    align="center"
                 />
 
                 <div className="testimonials-grid">

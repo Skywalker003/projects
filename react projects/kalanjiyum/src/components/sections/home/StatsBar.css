@@ -33,10 +33,32 @@
 
 @media (max-width: 768px) {
     .stats-bar {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--space-xs);
     }
     .stats-bar_item {
         border-right: none;
+        padding: var(--space-sm) 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .stats-bar_item:nth-child(3),
+    .stats-bar_item:nth-child(4) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .stats-bar_number {
+        font-size: var(--font-size-h4);
+    }
+
+    .stats-bar_label {
+        font-size: 10px;
+        letter-spacing: 0.05rem;
     }
 }

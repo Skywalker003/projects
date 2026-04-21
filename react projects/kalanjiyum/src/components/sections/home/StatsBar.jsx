@@ -2,7 +2,7 @@ import "./StatsBar.css"
 
 export default function StatsBar() {
     return (
-        <div className="stats-bar">
+        <section className="stats-bar">
             <div className="stats-bar_item">
                 <div className="stats-bar_number">2019</div>
                 <div className="stats-bar_label">YEAR FOUNDED</div>
@@ -19,6 +19,6 @@ export default function StatsBar() {
                 <div className="stats-bar_number">20+</div>
                 <div className="stats-bar_label">ASSOCIATED PROFESSIONALS</div>
             </div>
-        </div>
+        </section>
     )
 }

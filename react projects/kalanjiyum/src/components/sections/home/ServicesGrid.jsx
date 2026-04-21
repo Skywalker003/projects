@@ -1,10 +1,11 @@
 import "./ServicesGrid.css"
+import { Link } from 'react-router-dom'
 import { services } from "../../../data/services"
 import SectionHeading from "../../ui/SectionHeading"
 
 export default function ServicesGrid() {
     return (
-        <div id="services" className="section">
+        <section id="services" className="section">
             <div className="container">
                 <SectionHeading
                     label="What We Do"
@@ -15,16 +16,16 @@ export default function ServicesGrid() {
                 <div className="services-grid">
                     {services.map(service => (
                         <div className="service-card" key={service.id}>
-                        <img src={service.image} alt={service.title} />
+                            <img src={service.image} alt={service.title} />
                             <div className="service-card_overlay">
                                 <h3>{service.title}</h3>
                                 <p>{service.shortDescription}</p>
-                                <button className="btn btn--white btn--sm">Learn More</button>
+                                <Link to="/services" className="btn btn--white btn--sm">Learn More</Link>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

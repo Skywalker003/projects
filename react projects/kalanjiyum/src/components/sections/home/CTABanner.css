@@ -1,5 +1,5 @@
 .section-cta {
-    padding: 0 var(--space-3xl) var(--space-4xl) var(--space-3xl);
+    padding: var(--space-4xl) var(--space-3xl);
 }
 
 .cta-banner {
@@ -39,21 +39,9 @@
   justify-content: center;
 }
 
-.cta-banner_btn-dark {
-  background-color: var(--color-dark);
-  color: var(--color-white);
-  border-color: var(--color-dark);
-}
-
-.cta-banner_btn-dark:hover {
-  background-color: transparent;
-  color: var(--color-white);
-  border-color: var(--color-white);
-}
-
 @media (max-width: 768px) {
   .section-cta {
-    padding: 0 var(--space-md) var(--space-2xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-md);
   }
 
   .cta-banner {
@@ -68,5 +56,12 @@
   .cta-banner_actions .btn {
     min-width: unset;
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-banner {
+    padding: var(--space-xl) var(--space-md);
+    border-radius: var(--radius-lg);
   }
 }
