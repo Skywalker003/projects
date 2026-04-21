@@ -1,7 +1,7 @@
 import './TagInput.css'
 import { useState, useRef } from 'react'
 
-export default function TagInput({ tags, onChange, placeholder }) {
+export default function TagInput({ id, tags, onChange, placeholder }) {
     const [input, setInput] = useState('')
     const inputRef = useRef(null)
 
@@ -49,6 +49,7 @@ export default function TagInput({ tags, onChange, placeholder }) {
                 </span>
             ))}
             <input
+                id={id}
                 ref={inputRef}
                 className="tag-input_field"
                 type="text"

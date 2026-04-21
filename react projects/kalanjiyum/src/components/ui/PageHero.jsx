@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import {ChevronRight} from 'lucide-react'
 
-export default function PageHero({title, subtext, page, parent, parentPath}) {
+export default function PageHero({title, subtext, page, parent, parentPath, className}) {
     return (
-        <section className='page-hero'>
+        <section className={`page-hero${className ? ` ${className}` : ''}`}>
             <div className="container page-hero_inner">
                 <div className='page-hero_breadcrumb'>
                     <Link to="/">Home</Link>

@@ -2,7 +2,7 @@ import './CustomSelect.css'
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, Check, Search } from 'lucide-react'
 
-export default function CustomSelect({ options, value, onChange, placeholder, disabled, searchable }) {
+export default function CustomSelect({ id, options, value, onChange, placeholder, disabled, searchable }) {
     const [open, setOpen] = useState(false)
     const [query, setQuery] = useState('')
     const ref = useRef(null)
@@ -35,6 +35,7 @@ export default function CustomSelect({ options, value, onChange, placeholder, di
     return (
         <div className={`custom-select ${open ? 'custom-select--open' : ''} ${disabled ? 'custom-select--disabled' : ''}`} ref={ref}>
             <button
+                id={id}
                 type="button"
                 className="custom-select_trigger"
                 onClick={() => !disabled && setOpen(!open)}
