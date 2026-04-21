@@ -32,11 +32,11 @@
 }
 
 .job-card_badge {
-    background-color: #EEF2FF;
-    color: #4F46E5;
+    background-color: var(--color-indigo-light);
+    color: var(--color-indigo);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
-    padding: 3px 10px;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-full);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -59,7 +59,6 @@
 
 .job-card_btn {
     flex-shrink: 0;
-    min-width: 140px;
     justify-content: center;
     background: linear-gradient(135deg, var(--color-red), var(--color-red-dark));
     border-color: transparent;

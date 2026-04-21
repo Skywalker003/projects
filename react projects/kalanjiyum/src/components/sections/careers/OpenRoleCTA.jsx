@@ -16,7 +16,7 @@ export default function OpenRoleCTA() {
                     mission. Send us your resume and we'll keep you in mind for future openings.
                 </p>
                 <a href="mailto:contactus@kalanjiyam.info" className="btn btn--primary open-role-cta_btn">
-                    <Mail size={16} />
+                    <Mail size={16} aria-hidden="true" />
                     contactus@kalanjiyam.info
                 </a>
             </div>

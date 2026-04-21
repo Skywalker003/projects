@@ -21,7 +21,7 @@ export default function CurrentOpenings() {
                                     <span className="job-card_badge">{job.type}</span>
                                 </div>
                                 <div className="job-card_location">
-                                    <MapPin size={14} />
+                                    <MapPin size={14} aria-hidden="true" />
                                     <span>{job.location}</span>
                                 </div>
                                 <p className="job-card_desc">{job.desc}</p>

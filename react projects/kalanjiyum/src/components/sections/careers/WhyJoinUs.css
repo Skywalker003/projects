@@ -15,6 +15,10 @@
     margin-bottom: var(--space-md);
 }
 
+.why-join-us_icon svg {
+    color: var(--color-red);
+}
+
 .why-join-us_title {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);

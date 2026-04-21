@@ -15,7 +15,7 @@ export default function WhyJoinUs() {
                     {careersReasons.map((r) => (
                         <div className="why-join-us_card card" key={r.title}>
                             <div className="why-join-us_icon">
-                                <r.icon size={24} color="var(--color-red)" />
+                                <r.icon size={24} />
                             </div>
                             <h4 className="why-join-us_title">{r.title}</h4>
                             <p className="why-join-us_desc">{r.desc}</p>
