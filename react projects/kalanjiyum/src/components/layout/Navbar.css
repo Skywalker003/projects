@@ -5,7 +5,7 @@
     width: 100%;
     height: var(--navbar-height);
     background-color: var(--color-white);
-    border-bottom: var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
 }
 
@@ -33,7 +33,7 @@
 }
 
 .navbar_name {
-    font-size: 1.25rem;
+    font-size: var(--font-size-h4);
     font-weight: var(--font-weight-extrabold);
     color: var(--color-dark);
     letter-spacing: -0.02em;
@@ -91,7 +91,7 @@
 .navbar_dropdown-trigger {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--space-xs);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
@@ -112,7 +112,8 @@
     color: var(--color-text-secondary);
 }
 
-.navbar_dropdown-wrap:hover .navbar_dropdown-chevron {
+.navbar_dropdown-wrap:hover .navbar_dropdown-chevron,
+.navbar_dropdown-wrap:focus-within .navbar_dropdown-chevron {
     transform: rotate(180deg);
 }
 
@@ -121,7 +122,7 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 12px;
+    padding-top: var(--space-sm);
     min-width: 160px;
     z-index: 200;
     display: none;
@@ -135,7 +136,8 @@
     overflow: hidden;
 }
 
-.navbar_dropdown-wrap:hover .navbar_dropdown {
+.navbar_dropdown-wrap:hover .navbar_dropdown,
+.navbar_dropdown-wrap:focus-within .navbar_dropdown {
     display: block;
 }
 
@@ -159,7 +161,6 @@
 }
 
 /* Mobile accordion elements — hidden on desktop */
-.navbar_dropdown-mobile { display: none; }
 .navbar_mobile-careers-trigger { display: none; }
 .navbar_mobile-sub { display: none; }
 
