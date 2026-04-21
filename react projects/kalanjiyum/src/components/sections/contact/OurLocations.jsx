@@ -34,7 +34,7 @@ export default function OurLocations() {
                             <div className="card locations-card" key={loc.id}>
                                 <div className="locations-card_header">
                                     <div className="locations-card_icon">
-                                        <Building2 size={20} color="var(--color-red)" />
+                                        <Building2 size={20} />
                                     </div>
                                     <span className="locations-card_type">{loc.type}</span>
                                 </div>
@@ -94,9 +94,10 @@ export default function OurLocations() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="locations-map_card"
+                        aria-label="Open Kalanjiyam HQ directions in Google Maps"
                     >
                         <div className="locations-hq_icon">
-                            <MapPin size={20} color="var(--color-white)" />
+                            <MapPin size={20} />
                         </div>
                         <div>
                             <h4 className="locations-map_title">Visit Our {headquarters.name}</h4>

@@ -4,9 +4,9 @@ import { Mail, Clock, Zap, CheckCircle } from 'lucide-react'
 import logo from '../../../assets/images/logo.png'
 
 
-const today = new Date().toISOString().split('T')[0]
-
 export default function ContactForm() {
+    const today = new Date().toISOString().split('T')[0]
+
     const [orgName, setOrgName]       = useState('')
     const [name, setName]             = useState('')
     const [email, setEmail]           = useState('')
@@ -76,7 +76,7 @@ export default function ContactForm() {
                 {/* Left: Info */}
                 <div className="contact-form_info">
                     <div className="contact-form_heading">
-                        <h1 className="contact-form_title">Contact Us</h1>
+                        <h2 className="contact-form_title">Contact Us</h2>
                         <p className="contact-form_subtext">
                             Have a project in mind or need technical consultation? Reach out to our team
                             of experts for tailored automation and digital solutions.
@@ -87,7 +87,7 @@ export default function ContactForm() {
                         <h3 className="contact-form_details-title">Contact Information</h3>
                         <div className="contact-form_detail-item">
                             <div className="contact-form_detail-icon">
-                                <Mail size={16} color="var(--color-red)" />
+                                <Mail size={16} />
                             </div>
                             <div>
                                 <span className="contact-form_detail-label">Email</span>
@@ -98,7 +98,7 @@ export default function ContactForm() {
                         </div>
                         <div className="contact-form_detail-item">
                             <div className="contact-form_detail-icon">
-                                <Clock size={16} color="var(--color-red)" />
+                                <Clock size={16} />
                             </div>
                             <div>
                                 <span className="contact-form_detail-label">Hours</span>
@@ -109,7 +109,7 @@ export default function ContactForm() {
 
                     <div className="contact-form_urgent card">
                         <div className="contact-form_urgent-header">
-                            <Zap size={16} color="var(--color-red)" />
+                            <Zap size={16} />
                             <h4 className="contact-form_urgent-title">Urgent Consultation?</h4>
                         </div>
                         <p className="contact-form_urgent-text">
@@ -126,14 +126,15 @@ export default function ContactForm() {
                         <div className="contact-form_fields">
 
                             <div className="form-group contact-form_date-group">
-                                <label className="form-label">Date</label>
-                                <input className="form-input contact-form_date" type="date" value={today} readOnly />
+                                <label htmlFor="contact-date" className="form-label">Date</label>
+                                <input id="contact-date" className="form-input contact-form_date" type="date" value={today} readOnly />
                             </div>
 
                             <div className="contact-form_row">
                                 <div className="form-group">
-                                    <label className="form-label">Name <span className="contact-req">*</span></label>
+                                    <label htmlFor="contact-name" className="form-label">Name <span className="contact-req">*</span></label>
                                     <input
+                                        id="contact-name"
                                         className={`form-input${errors.name ? ' form-input--error' : ''}`}
                                         type="text"
                                         placeholder="Your Full Name"
@@ -143,8 +144,9 @@ export default function ContactForm() {
                                     {errors.name && <span className="form-error">{errors.name}</span>}
                                 </div>
                                 <div className="form-group">
-                                    <label className="form-label">Organisation Name <span className="contact-optional">(Optional)</span></label>
+                                    <label htmlFor="contact-org" className="form-label">Organisation Name <span className="contact-optional">(Optional)</span></label>
                                     <input
+                                        id="contact-org"
                                         className="form-input"
                                         type="text"
                                         placeholder="Company / Organisation"
@@ -156,8 +158,9 @@ export default function ContactForm() {
 
                             <div className="contact-form_email-phone">
                                 <div className="form-group contact-form_email-group">
-                                    <label className="form-label">Email ID <span className="contact-req">*</span></label>
+                                    <label htmlFor="contact-email" className="form-label">Email ID <span className="contact-req">*</span></label>
                                     <input
+                                        id="contact-email"
                                         className={`form-input${errors.email ? ' form-input--error' : ''}`}
                                         type="email"
                                         placeholder="you@example.com"
@@ -166,10 +169,11 @@ export default function ContactForm() {
                                     />
                                     {errors.email && <span className="form-error">{errors.email}</span>}
                                 </div>
-                                <div className="form-group contact-form_phone-group">
-                                    <label className="form-label">Phone Number <span className="contact-optional">(Optional)</span></label>
+                                <fieldset className="form-group contact-form_phone-group">
+                                    <legend className="form-label">Phone Number <span className="contact-optional">(Optional)</span></legend>
                                     <div className={`contact-phone${errors.phonePrefix || errors.phone ? ' contact-phone--error' : ''}`}>
                                         <input
+                                            id="contact-phone-prefix"
                                             className={`contact-phone_prefix${errors.phonePrefix ? ' contact-phone_prefix--error' : ''}`}
                                             type="text"
                                             value={phonePrefix}
@@ -187,6 +191,7 @@ export default function ContactForm() {
                                         />
                                         <span className="contact-phone_divider" />
                                         <input
+                                            id="contact-phone"
                                             className="contact-phone_number"
                                             type="tel"
                                             placeholder="Phone number"
@@ -198,12 +203,13 @@ export default function ContactForm() {
                                     {(errors.phonePrefix || errors.phone) && (
                                         <span className="form-error">{errors.phonePrefix || errors.phone}</span>
                                     )}
-                                </div>
+                                </fieldset>
                             </div>
 
                             <div className="form-group">
-                                <label className="form-label">Address <span className="contact-optional">(Optional)</span></label>
+                                <label htmlFor="contact-address" className="form-label">Address <span className="contact-optional">(Optional)</span></label>
                                 <input
+                                    id="contact-address"
                                     className="form-input"
                                     type="text"
                                     placeholder="Your address"
@@ -213,8 +219,9 @@ export default function ContactForm() {
                             </div>
 
                             <div className="form-group">
-                                <label className="form-label">Enquiry Description <span className="contact-req">*</span></label>
+                                <label htmlFor="contact-message" className="form-label">Enquiry Description <span className="contact-req">*</span></label>
                                 <textarea
+                                    id="contact-message"
                                     className={`form-input${errors.message ? ' form-input--error' : ''}`}
                                     rows={5}
                                     placeholder="Describe your enquiry or project requirements..."
@@ -224,7 +231,7 @@ export default function ContactForm() {
                                 {errors.message && <span className="form-error">{errors.message}</span>}
                             </div>
 
-                            <button type="submit" className="btn btn--primary btn--full" disabled={isSubmitting}>
+                            <button type="submit" className="btn btn--primary btn--full" disabled={isSubmitting} aria-busy={isSubmitting}>
                                 {isSubmitting ? (
                                     <><img src={logo} alt="" className="contact-spinner" />Sending…</>
                                 ) : 'Send Enquiry'}

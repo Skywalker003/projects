@@ -73,6 +73,14 @@
     flex-shrink: 0;
 }
 
+.locations-card_icon svg {
+    color: var(--color-red);
+}
+
+.locations-hq_icon svg {
+    color: var(--color-white);
+}
+
 .locations-card_type {
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-bold);
@@ -80,7 +88,7 @@
     text-transform: uppercase;
     letter-spacing: 0.12em;
     background-color: var(--color-red-light);
-    padding: 3px 10px;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-full);
 }
 
@@ -180,7 +188,7 @@
 
 .locations-map_card:hover {
     transform: translate(-50%, -54%);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-2xl);
 }
 
 .locations-hq_icon {
