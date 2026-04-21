@@ -8,3 +8,12 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+const preloader = document.getElementById('preloader')
+if (preloader) {
+  setTimeout(() => {
+    document.body.classList.remove('preloading')
+    preloader.classList.add('hidden')
+    preloader.addEventListener('transitionend', () => preloader.remove(), { once: true })
+  }, 2500)
+}

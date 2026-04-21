@@ -13,9 +13,24 @@
   --color-border:#E5E7EB;
 
   /* Status Colors */
-  --color-success:#10B981;
+  --color-success:#16a34a;
+  --color-success-light:#f0fdf4;
+  --color-success-dark:#15803d;
   --color-error:#EF4444;
+  --color-red-focus: rgba(208, 2, 27, 0.08);
   --color-whatsapp:#25D366;
+  --color-white-subtle: rgba(255, 255, 255, 0.08);
+  --color-white-border: rgba(255, 255, 255, 0.5);
+  --color-white-dim: rgba(255, 255, 255, 0.8);
+  --color-white-muted: rgba(255, 255, 255, 0.85);
+  --color-overlay-light: rgba(0, 0, 0, 0.2);
+  --color-overlay-medium: rgba(0, 0, 0, 0.5);
+  --color-overlay-dark: rgba(0, 0, 0, 0.65);
+  --color-overlay-strong: rgba(0, 0, 0, 0.8);
+  --color-text-muted-dark: #C6C4DF;
+  --color-blue: #2563EB;
+  --color-indigo: #4F46E5;
+  --color-indigo-light: #EEF2FF;
 
   /*Text Colors*/
   --color-text-primary:#1A1A2E;
@@ -34,6 +49,7 @@
   --font-size-base: 1rem;
   --font-size-sm:   0.875rem;
   --font-size-xs:   0.75rem;
+  --font-size-2xs:  0.625rem;
 
   --font-weight-light:     300;/*weight*/
   --font-weight-regular:   400;
@@ -47,6 +63,7 @@
   --line-height-body:    1.7;
 
   /* Spacing */
+  --space-2xs: 0.125rem;  /* 2px  */
   --space-xs:  0.25rem;   /* 4px  */
   --space-sm:  0.5rem;    /* 8px  */
   --space-md:  1rem;      /* 16px */
@@ -64,14 +81,17 @@
   --radius-full: 9999px;
 
   /* Shadows */
+  --shadow-red: 0 4px 16px rgba(208, 2, 27, 0.3);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-2xl: 0 20px 60px rgba(0, 0, 0, 0.2);
 
   /* Layout */
-  --max-width:     1200px;
-  --navbar-height: 72px;
+  --max-width:       1200px;
+  --max-width-prose: 720px;
+  --navbar-height:   72px;
 
   /* Transitions */
   --transition-fast:   0.2s ease;
@@ -387,14 +407,6 @@ input, textarea, select {
   cursor: pointer;
 }
 
-.service-card {
-  border-top: 4px solid transparent;
-}
-.service-card:hover {
-  border-top-color: var(--color-red);
-}
-
-
 
   /* ------------- forms -------------- */
   .form-group {
@@ -420,6 +432,8 @@ input, textarea, select {
     background-color: var(--color-light);
     transition: all var(--transition-fast);
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .form-input:focus {
@@ -497,5 +511,9 @@ input, textarea, select {
   :root {
     --font-size-h1: 2rem;
     --font-size-h2: 1.5rem;
+  }
+
+  .section {
+    padding: var(--space-xl) var(--space-md);
   }
 }
