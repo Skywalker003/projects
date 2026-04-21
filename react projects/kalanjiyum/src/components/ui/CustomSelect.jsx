@@ -40,22 +40,25 @@ export default function CustomSelect({ id, options, value, onChange, placeholder
                 className="custom-select_trigger"
                 onClick={() => !disabled && setOpen(!open)}
                 disabled={disabled}
+                aria-expanded={open}
+                aria-haspopup="listbox"
             >
                 <span className={selected ? '' : 'custom-select_placeholder'}>
                     {selected ? selected.label : placeholder}
                 </span>
-                <ChevronDown size={16} className="custom-select_chevron" />
+                <ChevronDown size={16} className="custom-select_chevron" aria-hidden="true" />
             </button>
 
             {open && (
                 <div className="custom-select_menu">
                     {searchable && (
                         <div className="custom-select_search">
-                            <Search size={14} className="custom-select_search-icon" />
+                            <Search size={14} className="custom-select_search-icon" aria-hidden="true" />
                             <input
                                 ref={searchRef}
                                 className="custom-select_search-input"
                                 type="text"
+                                aria-label="Search options"
                                 placeholder="Search..."
                                 value={query}
                                 onChange={e => setQuery(e.target.value)}
@@ -71,7 +74,7 @@ export default function CustomSelect({ id, options, value, onChange, placeholder
                                 onClick={() => { onChange(opt.value); setOpen(false) }}
                             >
                                 {opt.label}
-                                {opt.value === value && <Check size={14} />}
+                                {opt.value === value && <Check size={14} aria-hidden="true" />}
                             </li>
                         )) : (
                             <li className="custom-select_empty">No results</li>

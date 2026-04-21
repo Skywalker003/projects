@@ -13,7 +13,7 @@ export default function SectionHeading({
 
       <h2 className="section-heading_title">{heading}</h2>
 
-      <div className="section-heading_accent" />
+      <div className="section-heading_accent" aria-hidden="true" />
 
       {subtext && (
         <p className="section-heading_subtext">{subtext}</p>

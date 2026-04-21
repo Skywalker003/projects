@@ -45,6 +45,7 @@ export default function TagInput({ id, tags, onChange, placeholder }) {
                         type="button"
                         className="tag-input_remove"
                         onClick={e => { e.stopPropagation(); remove(tag) }}
+                        aria-label={`Remove ${tag}`}
                     >×</button>
                 </span>
             ))}

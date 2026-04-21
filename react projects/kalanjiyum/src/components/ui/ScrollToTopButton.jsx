@@ -19,7 +19,7 @@ export default function ScrollToTopButton() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Scroll to top"
         >
-            <ArrowUp size={20} />
+            <ArrowUp size={20} aria-hidden="true" />
         </button>
     )
 }
