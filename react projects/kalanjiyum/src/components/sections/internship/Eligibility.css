@@ -1,0 +1,68 @@
+.eligibility_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.eligibility_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+}
+
+.eligibility_icon {
+    width: 52px;
+    height: 52px;
+    background-color: var(--color-red-light);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-red);
+}
+
+.eligibility_title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.eligibility_text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+.eligibility_note {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+@media (max-width: 1024px) {
+    .eligibility_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .eligibility_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .eligibility_card {
+        padding: var(--space-lg);
+    }
+
+    .eligibility_icon {
+        width: 44px;
+        height: 44px;
+    }
+}

@@ -1,0 +1,116 @@
+.intern-hero {
+    background-color: var(--color-dark);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+}
+
+.intern-hero_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.intern-hero_badge {
+    display: inline-block;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+}
+
+.intern-hero_title {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    line-height: var(--line-height-heading);
+    max-width: 700px;
+}
+
+.intern-hero_subtext {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: var(--line-height-body);
+    max-width: 600px;
+}
+
+.intern-hero_actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.intern-hero_btn-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: all var(--transition-fast);
+}
+
+.intern-hero_btn-outline:hover {
+    border-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.intern-hero_pills {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.intern-hero_pill {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 768px) {
+    .intern-hero_title {
+        font-size: var(--font-size-h2);
+    }
+
+    .intern-hero_subtext {
+        font-size: var(--font-size-base);
+    }
+
+    .intern-hero_pills {
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .intern-hero {
+        padding: var(--space-3xl) 0;
+    }
+
+    .intern-hero_title {
+        font-size: var(--font-size-h3);
+    }
+
+    .intern-hero_subtext {
+        font-size: var(--font-size-sm);
+    }
+
+    .intern-hero_actions .btn--lg {
+        padding: 10px 24px;
+        font-size: var(--font-size-sm);
+    }
+
+    .intern-hero_pill {
+        font-size: var(--font-size-xs);
+        padding: 6px 12px;
+    }
+}

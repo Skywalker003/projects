@@ -1,0 +1,59 @@
+.why-intern_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.why-intern_card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: left;
+}
+
+.why-intern_icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-red-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-red);
+    flex-shrink: 0;
+}
+
+.why-intern_title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.why-intern_text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+@media (max-width: 1024px) {
+    .why-intern_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .why-intern_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-intern_grid {
+        gap: var(--space-md);
+    }
+
+    .why-intern_icon {
+        width: 40px;
+        height: 40px;
+    }
+}
