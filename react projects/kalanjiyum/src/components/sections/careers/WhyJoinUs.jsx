@@ -7,7 +7,7 @@ export default function WhyJoinUs() {
         <section className="section">
             <div className="container">
                 <SectionHeading
-                    label="Architectural Excellence"
+                    label="Life at Kalanjiyam"
                     heading="Why Join Kalanjiyam?"
                     align="center"
                 />

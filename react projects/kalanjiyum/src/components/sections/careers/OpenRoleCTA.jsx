@@ -8,7 +8,7 @@ export default function OpenRoleCTA() {
             className="open-role-cta"
             style={{ backgroundImage: `url(${bgImage})` }}
         >
-            <div className="open-role-cta_overlay" />
+            <div className="open-role-cta_overlay" aria-hidden="true" />
             <div className="container open-role-cta_inner">
                 <h2 className="open-role-cta_title">Looking for a different role?</h2>
                 <p className="open-role-cta_subtext">

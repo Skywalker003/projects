@@ -28,7 +28,13 @@
     line-height: var(--line-height-body);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+    .why-join-us {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
     .why-join-us {
         grid-template-columns: 1fr;
     }
