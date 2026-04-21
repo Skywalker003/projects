@@ -14,7 +14,7 @@ export default function WhyInternWithUs() {
                 <div className="why-intern_grid">
                     {internReasons.map((r) => (
                         <div className="why-intern_card card" key={r.title}>
-                            <div className="why-intern_icon"><r.icon size={24} /></div>
+                            <div className="why-intern_icon"><r.icon size={24} aria-hidden="true" /></div>
                             <h3 className="why-intern_title">{r.title}</h3>
                             <p className="why-intern_text">{r.text}</p>
                         </div>

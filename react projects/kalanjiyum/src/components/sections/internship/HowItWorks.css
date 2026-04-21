@@ -38,7 +38,7 @@
     flex-shrink: 0;
     position: relative;
     z-index: 1;
-    box-shadow: var(--shadow-red, 0 4px 16px rgba(208, 2, 27, 0.3));
+    box-shadow: var(--shadow-red);
 }
 
 .how-it-works_title {

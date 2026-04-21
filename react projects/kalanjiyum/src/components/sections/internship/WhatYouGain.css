@@ -53,7 +53,7 @@
 .what-you-gain_check {
     color: var(--color-red);
     flex-shrink: 0;
-    margin-top: var(--space-2xs, 2px);
+    margin-top: var(--space-2xs);
 }
 
 @media (max-width: 1024px) {

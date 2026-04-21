@@ -9,6 +9,8 @@ export default function InternDomains() {
     const [activeModal, setActiveModal] = useState(null)
     const [showFade, setShowFade] = useState(true)
     const modalBodyRef = useRef(null)
+    const modalRef = useRef(null)
+    const closeButtonRef = useRef(null)
 
     useEffect(() => {
         if (!activeModal) return
@@ -36,6 +38,33 @@ export default function InternDomains() {
         const onKey = (e) => { if (e.key === 'Escape') setActiveModal(null) }
         document.addEventListener('keydown', onKey)
         return () => document.removeEventListener('keydown', onKey)
+    }, [activeModal])
+
+    // Move focus into modal on open
+    useEffect(() => {
+        if (activeModal && closeButtonRef.current) {
+            closeButtonRef.current.focus()
+        }
+    }, [activeModal])
+
+    // Trap Tab key inside modal
+    useEffect(() => {
+        if (!activeModal) return
+        const modal = modalRef.current
+        if (!modal) return
+        const onTab = (e) => {
+            if (e.key !== 'Tab') return
+            const focusable = modal.querySelectorAll('a[href], button:not([disabled])')
+            const first = focusable[0]
+            const last = focusable[focusable.length - 1]
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus() }
+            } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus() }
+            }
+        }
+        document.addEventListener('keydown', onTab)
+        return () => document.removeEventListener('keydown', onTab)
     }, [activeModal])
 
     const handleModalScroll = () => {
@@ -88,10 +117,11 @@ export default function InternDomains() {
                         aria-modal="true"
                         aria-labelledby="intern-modal-title"
                         onClick={(e) => e.stopPropagation()}
+                        ref={modalRef}
                     >
                         <div className="intern-modal_header">
                             <h3 id="intern-modal-title" className="intern-modal_title">{activeModal.title}</h3>
-                            <button className="intern-modal_close" onClick={() => setActiveModal(null)} aria-label="Close">
+                            <button className="intern-modal_close" onClick={() => setActiveModal(null)} aria-label="Close" ref={closeButtonRef}>
                                 <X size={20} />
                             </button>
                         </div>

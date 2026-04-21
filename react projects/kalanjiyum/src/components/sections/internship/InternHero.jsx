@@ -17,7 +17,7 @@ export default function InternHero() {
                 </p>
                 <div className="intern-hero_actions">
                     <Link to="/internship/apply" className="btn btn--primary btn--lg">
-                        Apply Now <ArrowRight size={16} />
+                        Apply Now <ArrowRight size={16} aria-hidden="true" />
                     </Link>
                     <a href="#domains" className="btn intern-hero_btn-outline btn--lg">
                         View Domains

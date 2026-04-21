@@ -15,7 +15,7 @@ export default function InternFAQ() {
                     align="center"
                 />
                 <div className="intern-faq_list">
-                    {faqs.map((f) => (
+                    {faqs.map((f, i) => (
                         <div
                             className={`intern-faq_item ${open === f.q ? 'intern-faq_item--open' : ''}`}
                             key={f.q}
@@ -24,13 +24,13 @@ export default function InternFAQ() {
                                 className="intern-faq_question"
                                 onClick={() => setOpen(open === f.q ? null : f.q)}
                                 aria-expanded={open === f.q}
-                                aria-controls={`faq-answer-${f.q}`}
+                                aria-controls={`faq-answer-${i}`}
                             >
                                 <span>{f.q}</span>
                                 <ChevronDown size={18} className="intern-faq_chevron" />
                             </button>
                             <div
-                                id={`faq-answer-${f.q}`}
+                                id={`faq-answer-${i}`}
                                 className={`intern-faq_answer ${open === f.q ? 'intern-faq_answer--open' : ''}`}
                                 aria-live="polite"
                             >

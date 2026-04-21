@@ -16,7 +16,7 @@ export default function WhatYouGain() {
                     <ul className="what-you-gain_list">
                         {internBenefits.map((b, i) => (
                             <li key={i} className="what-you-gain_item">
-                                <CheckCircle size={18} className="what-you-gain_check" />
+                                <CheckCircle size={18} className="what-you-gain_check" aria-hidden="true" />
                                 <span>{b}</span>
                             </li>
                         ))}

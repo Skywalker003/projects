@@ -13,7 +13,7 @@ export default function Eligibility() {
                 <div className="eligibility_grid">
                     {eligibilityCards.map((c) => (
                         <div className="eligibility_card card" key={c.title}>
-                            <div className="eligibility_icon"><c.icon size={24} /></div>
+                            <div className="eligibility_icon"><c.icon size={24} aria-hidden="true" /></div>
                             <h3 className="eligibility_title">{c.title}</h3>
                             <p className="eligibility_text">{c.text}</p>
                         </div>

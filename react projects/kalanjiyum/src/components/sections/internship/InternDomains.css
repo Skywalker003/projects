@@ -24,7 +24,7 @@
 /* Image area */
 .intern-domain_img-wrap {
     position: relative;
-    height: 200px;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
 }
 
@@ -43,7 +43,7 @@
 .intern-domain_overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(to top, var(--color-overlay-strong), var(--color-overlay-light));
 }
 
 .intern-domain_badge {
@@ -53,13 +53,13 @@
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-black);
     letter-spacing: 0.1em;
-    padding: 4px 10px;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-sm);
     color: var(--color-white);
 }
 
 .intern-domain_badge--red  { background-color: var(--color-red); }
-.intern-domain_badge--blue { background-color: var(--color-blue, #2563EB); }
+.intern-domain_badge--blue { background-color: var(--color-blue); }
 .intern-domain_badge--gray { background-color: var(--color-text-secondary); }
 
 .intern-domain_img-title {
@@ -105,7 +105,7 @@
     font-weight: var(--font-weight-medium);
     background-color: var(--color-gray);
     color: var(--color-text-secondary);
-    padding: 4px 10px;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-full);
     border: 1px solid var(--color-border);
 }
@@ -114,7 +114,7 @@
 .intern-modal_overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-overlay-medium);
     z-index: 300;
     display: flex;
     align-items: center;
@@ -148,7 +148,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 10px;
+    padding-bottom: var(--space-sm);
 }
 
 .intern-modal_fade-label {
@@ -212,7 +212,7 @@
 .intern-modal_roles {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-sm);
 }
 
 .intern-modal_role-item {
@@ -240,7 +240,7 @@
 .intern-modal_tag-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--space-xs);
 }
 
 .intern-modal_tag-group-label {

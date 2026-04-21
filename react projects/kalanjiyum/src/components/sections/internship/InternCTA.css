@@ -20,7 +20,7 @@
 
 .intern-cta_subtext {
     font-size: var(--font-size-base);
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-white-dim);
     line-height: var(--line-height-body);
     max-width: 480px;
 }
