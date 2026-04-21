@@ -57,10 +57,22 @@
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .testimonial-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .testimonial-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: 100%;
   }
 }
