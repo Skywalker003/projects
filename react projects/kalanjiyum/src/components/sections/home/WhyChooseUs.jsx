@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
                     <div className="why-choose-us_features">
                         {homeFeatures.map((f) => (
                             <div className="why-choose-us_feature" key={f.title}>
-                                <CheckCircle size={32} color="var(--color-red)" />
+                                <CheckCircle size={32} />
                                 <div>
                                     <h4>{f.title}</h4>
                                     <p>{f.desc}</p>

@@ -7,10 +7,11 @@ export default function Hero() {
     return (
         <section className="hero">
             <div className="hero_content">
-                <div>
-                    <h1><span className="hero_bold">Your </span><span className="hero_red">Technical</span></h1>
-                    <h1><span className="hero_regular">Partner for </span><span className="hero_bold">Growth.</span></h1>
-                </div>
+                <h1>
+                    <span className="hero_bold">Your </span><span className="hero_red">Technical</span>
+                    <br />
+                    <span className="hero_regular">Partner for </span><span className="hero_bold">Growth.</span>
+                </h1>
 
                 <p>
                     Kalanjiyam Technical Solutions transforms business across major sectors with powerful, adaptable, and cost-effective digital solutions designed for the modern industrial landscape.

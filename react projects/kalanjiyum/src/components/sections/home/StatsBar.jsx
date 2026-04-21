@@ -2,7 +2,7 @@ import "./StatsBar.css"
 
 export default function StatsBar() {
     return (
-        <section className="stats-bar">
+        <section className="stats-bar" aria-label="Company statistics">
             <div className="stats-bar_item">
                 <div className="stats-bar_number">2019</div>
                 <div className="stats-bar_label">YEAR FOUNDED</div>

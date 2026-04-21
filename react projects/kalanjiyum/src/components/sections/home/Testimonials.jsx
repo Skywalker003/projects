@@ -20,7 +20,7 @@ export default function Testimonials() {
 
                             <div className="testimonial-card_stars">
                                 {Array.from({ length: t.rating }).map((_, i) => (
-                                <Star key={i} size={16} fill="var(--color-red)" color="var(--color-red)" />
+                                <Star key={i} size={16} />
                                 ))}
                             </div>
 

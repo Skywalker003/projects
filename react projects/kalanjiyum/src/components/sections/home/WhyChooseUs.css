@@ -37,6 +37,11 @@
     align-items: flex-start;
 }
 
+.why-choose-us_feature svg {
+    color: var(--color-red);
+    flex-shrink: 0;
+}
+
 .why-choose-us_feature h4 {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);

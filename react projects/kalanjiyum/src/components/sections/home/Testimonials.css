@@ -15,6 +15,11 @@
   gap: var(--space-xs);
 }
 
+.testimonial-card_stars svg {
+  color: var(--color-red);
+  fill: var(--color-red);
+}
+
 .testimonial-card_quote {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);

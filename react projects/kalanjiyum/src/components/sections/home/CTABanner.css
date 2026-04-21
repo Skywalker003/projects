@@ -22,7 +22,7 @@
 
 .cta-banner_subtext {
   font-size: var(--font-size-base);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-white-muted);
   max-width: 600px;
   line-height: var(--line-height-body);
 }

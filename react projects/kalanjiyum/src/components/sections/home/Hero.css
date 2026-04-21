@@ -50,7 +50,7 @@
 .hero img {
     margin-left: var(--space-4xl);
     border-radius: var(--radius-xl);
-    filter: drop-shadow(0px 10px 30px rgb(149, 149, 149));
+    box-shadow: var(--shadow-xl);
 }
 
 /* ── 1200px: tighten horizontal padding ── */
@@ -97,7 +97,7 @@
     }
 
     .hero_actions .btn {
-        padding: 12px 24px;
+        padding: var(--space-sm) var(--space-lg);
         font-size: var(--font-size-base);
     }
 }
