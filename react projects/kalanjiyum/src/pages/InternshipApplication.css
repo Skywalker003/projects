@@ -1,0 +1,507 @@
+/* Progress bar */
+.iapp-progress {
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: var(--shadow-sm);
+}
+
+.iapp-progress_bar {
+    height: 4px;
+    background-color: var(--color-light);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.iapp-progress_fill {
+    height: 100%;
+    background-color: var(--color-red);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.iapp-progress_label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.iapp-progress_step {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-red);
+    min-width: 32px;
+}
+
+.iapp-progress_name {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Section error state */
+.iapp-section--error {
+    border-left: 3px solid var(--color-red);
+}
+
+.iapp-error-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 8px 12px;
+    background-color: var(--color-red-light);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-red);
+    font-weight: var(--font-weight-medium);
+}
+
+.iapp-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* Prevent card hover lift on form sections */
+.iapp-section.card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+}
+
+
+.iapp-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    position: relative;
+}
+
+/* Descending z-index so dropdowns from earlier sections show above later cards */
+.iapp-section:nth-child(1) { z-index: 9; }
+.iapp-section:nth-child(2) { z-index: 8; }
+.iapp-section:nth-child(3) { z-index: 7; }
+.iapp-section:nth-child(4) { z-index: 6; }
+.iapp-section:nth-child(5) { z-index: 5; }
+.iapp-section:nth-child(6) { z-index: 4; }
+.iapp-section:nth-child(7) { z-index: 3; }
+.iapp-section:nth-child(8) { z-index: 2; }
+
+.iapp-section_title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.iapp-section_icon {
+    color: var(--color-red);
+    flex-shrink: 0;
+}
+
+.iapp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+}
+
+.iapp-row--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.iapp-row > *,
+.iapp-row--3 > * {
+    min-width: 0;
+}
+
+/* Required / Optional markers */
+.iapp-req {
+    color: var(--color-red);
+    margin-left: 2px;
+}
+
+.iapp-optional {
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-xs);
+    margin-left: var(--space-xs);
+}
+
+/* Upload */
+.iapp-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-xl) var(--space-md);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+    background-color: var(--color-light);
+    text-align: center;
+    min-height: 110px;
+}
+
+.iapp-upload:hover {
+    border-color: var(--color-red);
+}
+
+.iapp-upload--done {
+    border-color: var(--color-success);
+    background-color: var(--color-success-light);
+    border-style: solid;
+}
+
+.iapp-upload--error {
+    border-color: var(--color-red);
+    background-color: var(--color-red-light);
+    border-style: solid;
+}
+
+.iapp-upload_error {
+    font-size: var(--font-size-xs);
+    color: var(--color-red);
+    font-weight: var(--font-weight-medium);
+    margin-top: 2px;
+}
+
+.iapp-upload--done:hover {
+    border-color: var(--color-success);
+}
+
+.iapp-upload_icon {
+    color: var(--color-text-light);
+}
+
+.iapp-upload_icon--done {
+    color: var(--color-success);
+}
+
+.iapp-upload_filename {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-success-dark);
+    word-break: break-all;
+    text-align: center;
+    max-width: 100%;
+}
+
+.iapp-upload_clear {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: none;
+    border: 1px solid var(--color-red-light);
+    border-radius: var(--radius-sm);
+    color: var(--color-red);
+    font-size: var(--font-size-xs);
+    padding: 3px 8px;
+    cursor: pointer;
+    margin-top: 2px;
+    transition: background-color var(--transition-fast);
+}
+
+.iapp-upload_clear:hover {
+    background-color: var(--color-red-light);
+}
+
+.iapp-upload_text {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.iapp-upload_hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+/* Tag hint (shared, below both tag fields) */
+.iapp-tag-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    margin-top: calc(var(--space-sm) * -1);
+}
+
+/* Phone fieldset reset */
+.iapp-phone-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+.iapp-phone-fieldset legend {
+    float: left;
+    width: 100%;
+    margin-bottom: var(--space-xs);
+}
+
+/* Phone prefix + number */
+.iapp-phone {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-light);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+.iapp-phone:focus-within {
+    border-color: var(--color-red);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px var(--color-red-focus);
+}
+
+.iapp-phone--error {
+    border-color: var(--color-red);
+}
+
+.iapp-phone_prefix--error {
+    color: var(--color-red);
+}
+
+.iapp-phone_prefix {
+    width: 62px;
+    flex-shrink: 0;
+    padding: 12px 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+.iapp-phone_divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--color-border);
+    flex-shrink: 0;
+}
+
+.iapp-phone_number {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    color: var(--color-text-primary);
+}
+
+.iapp-phone_number::placeholder {
+    color: var(--color-text-light);
+}
+
+/* Pincode */
+.iapp-pincode-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.iapp-pincode--ok {
+    border-color: var(--color-success);
+}
+
+.iapp-pincode--error {
+    border-color: var(--color-red);
+}
+
+.iapp-pincode-autofill-hint {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-light);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.iapp-pincode-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.iapp-pincode-hint--ok {
+    color: var(--color-success);
+}
+
+.iapp-pincode-hint--error {
+    color: var(--color-red);
+}
+
+/* Declaration */
+.iapp-declaration {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+.iapp-declaration input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--color-red);
+    cursor: pointer;
+}
+
+/* Success screen */
+.iapp-success {
+    max-width: 520px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+    padding: var(--space-3xl) var(--space-xl);
+}
+
+.iapp-success_icon {
+    color: var(--color-success);
+}
+
+.iapp-success_title {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.iapp-success_text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+/* Submit */
+.iapp-submit {
+    align-self: flex-start;
+    min-width: 200px;
+}
+
+.iapp-submit_spinner {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    animation: iapp-spin 0.8s linear infinite;
+}
+
+@keyframes iapp-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .iapp-section.card {
+        padding: var(--space-lg);
+    }
+
+    .iapp-section {
+        scroll-margin-top: calc(var(--navbar-height) + 68px);
+    }
+
+    .iapp-row,
+    .iapp-row--3 {
+        grid-template-columns: 1fr;
+    }
+
+    .iapp-submit {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .iapp-form {
+        gap: var(--space-lg);
+    }
+
+    .iapp-section.card {
+        padding: var(--space-md);
+    }
+
+    .iapp-section {
+        gap: var(--space-md);
+        scroll-margin-top: calc(var(--navbar-height) + 48px);
+    }
+
+    .iapp-section_title {
+        font-size: var(--font-size-base);
+    }
+
+    .iapp-progress {
+        padding: 8px 12px;
+    }
+
+    .iapp-progress_name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .iapp-tag-hint {
+        font-size: 11px;
+        gap: 3px;
+    }
+
+    .iapp-upload {
+        padding: var(--space-lg) var(--space-md);
+        min-height: 90px;
+    }
+
+    .iapp-form .form-input {
+        padding: 10px 12px;
+        font-size: var(--font-size-sm);
+    }
+
+    .iapp-form input[type="date"] {
+        padding-right: 36px;
+    }
+
+    .iapp-phone_prefix {
+        width: 60px;
+        padding: 10px 8px;
+    }
+
+    .iapp-phone_number {
+        padding: 10px 12px;
+    }
+
+    .iapp-submit {
+        min-width: 0;
+    }
+
+    .iapp-optional {
+        display: none;
+    }
+}
