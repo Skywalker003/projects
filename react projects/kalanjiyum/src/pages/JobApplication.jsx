@@ -105,6 +105,7 @@ export default function JobApplication() {
 
     const hero = (
         <PageHero
+            className="japp-hero"
             title="Job Application Form"
             subtext="Join our team of industrial specialists and technical experts. Please fill out the detailed form below to apply for a position at Kalanjiyam Technical Solutions."
             page="Apply"
