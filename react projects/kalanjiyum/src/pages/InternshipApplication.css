@@ -1,9 +1,12 @@
+/* Hero */
+.iapp-hero {
+    background: radial-gradient(circle at center, var(--color-white) 0%, var(--color-red-light) 60%);
+}
+
 /* Progress bar */
 .iapp-progress {
-    display: none;
-}
     position: sticky;
-    top: 80px;
+    top: calc(var(--navbar-height) + var(--space-sm));
     z-index: 10;
     background: var(--color-white);
     border: 1px solid var(--color-border);
@@ -18,14 +21,14 @@
 .iapp-progress_bar {
     height: 4px;
     background-color: var(--color-light);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     overflow: hidden;
 }
 
 .iapp-progress_fill {
     height: 100%;
     background-color: var(--color-red);
-    border-radius: 999px;
+    border-radius: var(--radius-full);
     transition: width 0.3s ease;
 }
 
@@ -131,7 +134,7 @@
 /* Required / Optional markers */
 .iapp-req {
     color: var(--color-red);
-    margin-left: 2px;
+    margin-left: var(--space-2xs);
 }
 
 .iapp-optional {
@@ -178,7 +181,7 @@
     font-size: var(--font-size-xs);
     color: var(--color-red);
     font-weight: var(--font-weight-medium);
-    margin-top: 2px;
+    margin-top: var(--space-2xs);
 }
 
 .iapp-upload--done:hover {
@@ -213,7 +216,7 @@
     font-size: var(--font-size-xs);
     padding: 3px 8px;
     cursor: pointer;
-    margin-top: 2px;
+    margin-top: var(--space-2xs);
     transition: background-color var(--transition-fast);
 }
 
@@ -370,7 +373,7 @@
 .iapp-declaration input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    margin-top: 2px;
+    margin-top: var(--space-2xs);
     flex-shrink: 0;
     accent-color: var(--color-red);
     cursor: pointer;

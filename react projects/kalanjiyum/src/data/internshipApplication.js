@@ -43,7 +43,7 @@ export const indianStates = [
 export const sectionNames = [
     'Personal Details',
     'Academic Details',
-    'Address Details',
+    'Residential Address Details',
     'Internship Preferences',
     'Internship Period',
     'Skills & Experience',

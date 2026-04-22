@@ -48,6 +48,7 @@ export default function InternshipApplication() {
     const [dob, setDob]                     = useState(saved.dob             ?? '')
     const [email, setEmail]                 = useState(saved.email           ?? '')
     const [collegeName, setCollegeName]     = useState(saved.collegeName     ?? '')
+    const [collegeLocation, setCollegeLocation] = useState(saved.collegeLocation ?? '')
     const [registerNo, setRegisterNo]       = useState(saved.registerNo      ?? '')
     const [department, setDepartment]       = useState(saved.department      ?? '')
     const [passedYear, setPassedYear]       = useState(saved.passedYear      ?? '')
@@ -95,13 +96,13 @@ export default function InternshipApplication() {
             phonePrefix, phoneNumber, gender, qualification, currentStatus,
             district, state, domain, role, mode, duration,
             startDate, endDate, pincode, skills, tools, declared,
-            fullName, dob, email, collegeName, registerNo, department,
+            fullName, dob, email, collegeName, collegeLocation, registerNo, department,
             passedYear, fullAddress, experience,
         }))
     }, [phonePrefix, phoneNumber, gender, qualification, currentStatus,
         district, state, domain, role, mode, duration,
         startDate, endDate, pincode, skills, tools, declared,
-        fullName, dob, email, collegeName, registerNo, department,
+        fullName, dob, email, collegeName, collegeLocation, registerNo, department,
         passedYear, fullAddress, experience])
 
     const roleOptions = domain ? toOptions(domainRoles[domain] || []) : []
@@ -180,13 +181,14 @@ export default function InternshipApplication() {
         errors[0] = !!(fe.fullName || fe.gender || fe.dob || fe.phoneNumber || !prefixValid || fe.email)
 
         // Section 1 — Academic Details
-        if (!collegeName.trim())  fe.collegeName   = 'College name is required'
-        if (!registerNo.trim())   fe.registerNo    = 'Register number is required'
-        if (!qualification)       fe.qualification = 'Please select your qualification'
-        if (!department.trim())   fe.department    = 'Department is required'
-        if (!currentStatus)       fe.currentStatus = 'Please select your current status'
-        if (!passedYear)          fe.passedYear    = 'Passed year is required'
-        errors[1] = !!(fe.collegeName || fe.registerNo || fe.qualification || fe.department || fe.currentStatus || fe.passedYear)
+        if (!collegeName.trim())     fe.collegeName     = 'College name is required'
+        if (!collegeLocation.trim()) fe.collegeLocation = 'College location is required'
+        if (!registerNo.trim())      fe.registerNo      = 'Register number is required'
+        if (!qualification)          fe.qualification   = 'Please select your qualification'
+        if (!department.trim())      fe.department      = 'Department is required'
+        if (!currentStatus)          fe.currentStatus   = 'Please select your current status'
+        if (!passedYear)             fe.passedYear      = 'Passed year is required'
+        errors[1] = !!(fe.collegeName || fe.collegeLocation || fe.registerNo || fe.qualification || fe.department || fe.currentStatus || fe.passedYear)
 
         // Section 2 — Address Details
         if (!fullAddress.trim())  fe.fullAddress = 'Full address is required'
@@ -211,7 +213,7 @@ export default function InternshipApplication() {
 
         // Section 6 — Uploads
         if (!resumeFile)   fe.resumeFile   = 'Resume is required'
-        if (!bonafideFile) fe.bonafideFile = 'Bonafide certificate is required'
+        if (!bonafideFile && currentStatus === 'Pursuing') fe.bonafideFile = 'Bonafide certificate is required for pursuing students'
         errors[6] = !!(fe.resumeFile || fe.bonafideFile)
 
         // Section 7 — Declaration
@@ -241,6 +243,7 @@ export default function InternshipApplication() {
     return (
         <>
             <PageHero
+                className="iapp-hero"
                 title="Internship Application"
                 subtext="Fill out the form below to apply for an internship at Kalanjiyam Technical Solutions. We'll get back to you within 48 hours."
                 page="Apply"
@@ -248,12 +251,12 @@ export default function InternshipApplication() {
                 parentPath="/internship"
             />
 
-            <section className="section">
+            <section className="section section--light">
                 <div className="container">
                 {submitSuccess ? (
                     <div className="iapp-success">
                         <div className="iapp-success_icon">
-                            <CheckCircle size={56} />
+                            <CheckCircle size={56} aria-hidden="true" />
                         </div>
                         <h2 className="iapp-success_title">Application Submitted!</h2>
                         <p className="iapp-success_text">
@@ -283,12 +286,12 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[0] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <User size={18} className="iapp-section_icon" />
+                                <User size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Personal Details
                             </h3>
                             {submitted && sectionErrors[0] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Please fill in all required fields.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please fill in all required fields.
                                 </div>
                             )}
                             <div className="iapp-row">
@@ -365,22 +368,27 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[1] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <BookOpen size={18} className="iapp-section_icon" />
+                                <BookOpen size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Academic Details
                             </h3>
                             {submitted && sectionErrors[1] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Please fill in all required fields.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please fill in all required fields.
                                 </div>
                             )}
+                            <div className="form-group">
+                                <label htmlFor="iapp-collegeName" className="form-label">College Name <span className="iapp-req">*</span></label>
+                                <input id="iapp-collegeName" className={`form-input${fieldErrors.collegeName ? ' form-input--error' : ''}`} type="text" placeholder="Name of your college" value={collegeName} onChange={e => setCollegeName(e.target.value)} />
+                                {fieldErrors.collegeName && <span className="form-error">{fieldErrors.collegeName}</span>}
+                            </div>
                             <div className="iapp-row">
                                 <div className="form-group">
-                                    <label htmlFor="iapp-collegeName" className="form-label">College Name <span className="iapp-req">*</span></label>
-                                    <input id="iapp-collegeName" className={`form-input${fieldErrors.collegeName ? ' form-input--error' : ''}`} type="text" placeholder="Name of your college" value={collegeName} onChange={e => setCollegeName(e.target.value)} />
-                                    {fieldErrors.collegeName && <span className="form-error">{fieldErrors.collegeName}</span>}
+                                    <label htmlFor="iapp-collegeLocation" className="form-label">College Location <span className="iapp-req">*</span></label>
+                                    <input id="iapp-collegeLocation" className={`form-input${fieldErrors.collegeLocation ? ' form-input--error' : ''}`} type="text" placeholder="City / District" value={collegeLocation} onChange={e => setCollegeLocation(e.target.value)} />
+                                    {fieldErrors.collegeLocation && <span className="form-error">{fieldErrors.collegeLocation}</span>}
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="iapp-registerNo" className="form-label">College Register Number <span className="iapp-req">*</span></label>
+                                    <label htmlFor="iapp-registerNo" className="form-label">Register Number <span className="iapp-req">*</span></label>
                                     <input id="iapp-registerNo" className={`form-input${fieldErrors.registerNo ? ' form-input--error' : ''}`} type="text" placeholder="e.g. 123456789" value={registerNo} onChange={e => setRegisterNo(e.target.value)} />
                                     {fieldErrors.registerNo && <span className="form-error">{fieldErrors.registerNo}</span>}
                                 </div>
@@ -429,12 +437,12 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[2] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <MapPin size={18} className="iapp-section_icon" />
-                                Address Details
+                                <MapPin size={18} className="iapp-section_icon" aria-hidden="true" />
+                                Residential Address Details
                             </h3>
                             {submitted && sectionErrors[2] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Please fill in all required fields.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please fill in all required fields.
                                 </div>
                             )}
                             <div className="form-group">
@@ -467,6 +475,7 @@ export default function InternshipApplication() {
                                         />
                                     ) : (
                                         <input
+                                            id="iapp-district"
                                             className={`form-input${fieldErrors.district ? ' form-input--error' : ''}`}
                                             type="text"
                                             value={district}
@@ -477,7 +486,7 @@ export default function InternshipApplication() {
                                     {fieldErrors.district && <span className="form-error">{fieldErrors.district}</span>}
                                 </div>
                                 <div className="form-group">
-                                    <label className="form-label">
+                                    <label htmlFor="iapp-pincode" className="form-label">
                                         Pincode <span className="iapp-req">*</span>
                                         <span className="iapp-pincode-autofill-hint"> — auto-fills State &amp; District</span>
                                     </label>
@@ -507,12 +516,12 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[3] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <Layers size={18} className="iapp-section_icon" />
+                                <Layers size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Internship Preferences
                             </h3>
                             {submitted && sectionErrors[3] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Please fill in all required fields.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please fill in all required fields.
                                 </div>
                             )}
                             <div className="iapp-row">
@@ -528,7 +537,7 @@ export default function InternshipApplication() {
                                     {fieldErrors.domain && <span className="form-error">{fieldErrors.domain}</span>}
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="iapp-role" className="form-label">Preferred Role <span className="iapp-req">*</span></label>
+                                    <label htmlFor="iapp-role" className="form-label">Available Internships <span className="iapp-req">*</span></label>
                                     <CustomSelect
                                         id="iapp-role"
                                         options={roleOptions}
@@ -572,12 +581,12 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[4] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <Calendar size={18} className="iapp-section_icon" />
+                                <Calendar size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Internship Period
                             </h3>
                             {submitted && sectionErrors[4] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Please select a start and end date.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please select a start and end date.
                                 </div>
                             )}
                             <div className="iapp-row">
@@ -620,7 +629,7 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[5] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <Wrench size={18} className="iapp-section_icon" />
+                                <Wrench size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Skills &amp; Experience
                             </h3>
                             <div className="iapp-row">
@@ -658,12 +667,12 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[6] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <UploadCloud size={18} className="iapp-section_icon" />
+                                <UploadCloud size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Uploads
                             </h3>
                             {submitted && sectionErrors[6] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Resume and Bonafide Certificate are required.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please upload all required documents.
                                 </div>
                             )}
                             <div className="iapp-row iapp-row--3">
@@ -672,15 +681,15 @@ export default function InternshipApplication() {
                                     <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${resumeFile ? 'iapp-upload--done' : resumeError || fieldErrors.resumeFile ? 'iapp-upload--error' : ''}`}>
                                         {resumeFile ? (
                                             <>
-                                                <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" />
+                                                <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{resumeFile.name}</span>
                                                 <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setResumeFile(null) }}>
-                                                    <X size={14} /> Remove
+                                                    <X size={14} aria-hidden="true" /> Remove
                                                 </button>
                                             </>
                                         ) : (
                                             <>
-                                                <UploadCloud size={28} className="iapp-upload_icon" />
+                                                <UploadCloud size={28} className="iapp-upload_icon" aria-hidden="true" />
                                                 <span className="iapp-upload_text">Click to upload</span>
                                                 <span className="iapp-upload_hint">PDF, DOC up to 10MB</span>
                                             </>
@@ -700,19 +709,19 @@ export default function InternshipApplication() {
                                     }
                                 </div>
                                 <div className="form-group">
-                                    <label className="form-label">Bonafide Certificate <span className="iapp-req">*</span></label>
+                                    <label className="form-label">Bonafide {currentStatus === 'Pursuing' ? <span className="iapp-req">*</span> : <span className="iapp-optional">(Optional)</span>}</label>
                                     <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${bonafideFile ? 'iapp-upload--done' : bonafideError ? 'iapp-upload--error' : fieldErrors.bonafideFile ? 'iapp-upload--error' : ''}`}>
                                         {bonafideFile ? (
                                             <>
-                                                <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" />
+                                                <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{bonafideFile.name}</span>
                                                 <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setBonafideFile(null) }}>
-                                                    <X size={14} /> Remove
+                                                    <X size={14} aria-hidden="true" /> Remove
                                                 </button>
                                             </>
                                         ) : (
                                             <>
-                                                <UploadCloud size={28} className="iapp-upload_icon" />
+                                                <UploadCloud size={28} className="iapp-upload_icon" aria-hidden="true" />
                                                 <span className="iapp-upload_text">Click to upload</span>
                                                 <span className="iapp-upload_hint">PDF, JPG, PNG up to 5MB</span>
                                             </>
@@ -736,15 +745,15 @@ export default function InternshipApplication() {
                                     <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${idFile ? 'iapp-upload--done' : idError ? 'iapp-upload--error' : ''}`}>
                                         {idFile ? (
                                             <>
-                                                <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" />
+                                                <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{idFile.name}</span>
                                                 <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setIdFile(null) }}>
-                                                    <X size={14} /> Remove
+                                                    <X size={14} aria-hidden="true" /> Remove
                                                 </button>
                                             </>
                                         ) : (
                                             <>
-                                                <UploadCloud size={28} className="iapp-upload_icon" />
+                                                <UploadCloud size={28} className="iapp-upload_icon" aria-hidden="true" />
                                                 <span className="iapp-upload_text">Click to upload</span>
                                                 <span className="iapp-upload_hint">PDF, JPG, PNG up to 5MB</span>
                                             </>
@@ -769,12 +778,12 @@ export default function InternshipApplication() {
                             ref={el => sectionRefs.current[7] = el}
                         >
                             <h3 className="iapp-section_title">
-                                <FileCheck size={18} className="iapp-section_icon" />
+                                <FileCheck size={18} className="iapp-section_icon" aria-hidden="true" />
                                 Declaration
                             </h3>
                             {submitted && sectionErrors[7] && (
                                 <div className="iapp-error-banner" role="alert">
-                                    <AlertCircle size={14} /> Please accept the declaration to submit.
+                                    <AlertCircle size={14} aria-hidden="true" /> Please accept the declaration to submit.
                                 </div>
                             )}
                             <label className="iapp-declaration">
