@@ -65,6 +65,38 @@
     flex-shrink: 0;
 }
 
+.iapp-upload--drag {
+    border-color: var(--color-red);
+    background-color: var(--color-red-light);
+    border-style: dashed;
+}
+
+.iapp-upload_actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-2xs);
+}
+
+.iapp-upload_view {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.iapp-upload_view:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-secondary);
+}
+
 .iapp-submit_spinner {
     width: 20px;
     height: 20px;

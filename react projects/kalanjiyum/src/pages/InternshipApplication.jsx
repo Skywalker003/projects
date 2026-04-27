@@ -1,7 +1,7 @@
-import './InternshipApplication.css'
+﻿import './InternshipApplication.css'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import { User, BookOpen, MapPin, Layers, Calendar, Wrench, UploadCloud, FileCheck, FileText, X, AlertCircle, CheckCircle } from 'lucide-react'
+import { User, BookOpen, MapPin, Layers, Calendar, Wrench, UploadCloud, FileCheck, FileText, X, AlertCircle, CheckCircle, Eye } from 'lucide-react'
 import PageHero from '../components/ui/PageHero'
 import CustomSelect from '../components/ui/CustomSelect'
 import TagInput from '../components/ui/TagInput'
@@ -66,6 +66,7 @@ export default function InternshipApplication() {
     const [submitted, setSubmitted]         = useState(false)
     const [isSubmitting, setIsSubmitting]   = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
+    const [dragging, setDragging] = useState(null)
     const sectionRefs = useRef([])
     const pincodeAbortRef = useRef(null)
 
@@ -242,16 +243,18 @@ export default function InternshipApplication() {
 
     return (
         <>
-            <PageHero
-                className="iapp-hero"
-                title="Internship Application"
-                subtext="Fill out the form below to apply for an internship at Kalanjiyam Technical Solutions. We'll get back to you within 48 hours."
-                page="Apply"
-                parent="Internship"
-                parentPath="/internship"
-            />
+            {!submitSuccess && (
+                <PageHero
+                    className="iapp-hero"
+                    title="Internship Application"
+                    subtext="Fill out the form below to apply for an internship at Kalanjiyam Technical Solutions. We'll get back to you within 48 hours."
+                    page="Apply"
+                    parent="Internship"
+                    parentPath="/internship"
+                />
+            )}
 
-            <section className="section section--light">
+            <section className="section">
                 <div className="container">
                 {submitSuccess ? (
                     <div className="iapp-success">
@@ -678,14 +681,19 @@ export default function InternshipApplication() {
                             <div className="iapp-row iapp-row--3">
                                 <div className="form-group">
                                     <label className="form-label">Resume / CV <span className="iapp-req">*</span></label>
-                                    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${resumeFile ? 'iapp-upload--done' : resumeError || fieldErrors.resumeFile ? 'iapp-upload--error' : ''}`}>
+                                    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${resumeFile ? 'iapp-upload--done' : dragging === 'resume' ? 'iapp-upload--drag' : resumeError || fieldErrors.resumeFile ? 'iapp-upload--error' : ''}`} onDragOver={e => { e.preventDefault(); setDragging('resume') }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget)) setDragging(null) }} onDrop={e => { e.preventDefault(); setDragging(null); const f = e.dataTransfer.files[0]; if (!f) return; if (f.size > 10 * MB) { setResumeError('File too large — max 10MB'); return } setResumeError(''); setResumeFile(f) }}>
                                         {resumeFile ? (
                                             <>
                                                 <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{resumeFile.name}</span>
-                                                <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setResumeFile(null) }}>
-                                                    <X size={14} aria-hidden="true" /> Remove
-                                                </button>
+                                                <div className="iapp-upload_actions">
+                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(resumeFile), '_blank') }}>
+                                                        <Eye size={14} aria-hidden="true" /> View
+                                                    </button>
+                                                    <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setResumeFile(null) }}>
+                                                        <X size={14} aria-hidden="true" /> Remove
+                                                    </button>
+                                                </div>
                                             </>
                                         ) : (
                                             <>
@@ -694,7 +702,7 @@ export default function InternshipApplication() {
                                                 <span className="iapp-upload_hint">PDF, DOC up to 10MB</span>
                                             </>
                                         )}
-                                        <input type="file" accept=".pdf,.doc,.docx" hidden
+                                        <input key={resumeFile ? resumeFile.name : 'resume-empty'} type="file" accept=".pdf,.doc,.docx" hidden
                                             onChange={e => {
                                                 const f = e.target.files[0]
                                                 if (!f) return
@@ -710,14 +718,19 @@ export default function InternshipApplication() {
                                 </div>
                                 <div className="form-group">
                                     <label className="form-label">Bonafide {currentStatus === 'Pursuing' ? <span className="iapp-req">*</span> : <span className="iapp-optional">(Optional)</span>}</label>
-                                    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${bonafideFile ? 'iapp-upload--done' : bonafideError ? 'iapp-upload--error' : fieldErrors.bonafideFile ? 'iapp-upload--error' : ''}`}>
+                                    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${bonafideFile ? 'iapp-upload--done' : dragging === 'bonafide' ? 'iapp-upload--drag' : bonafideError ? 'iapp-upload--error' : fieldErrors.bonafideFile ? 'iapp-upload--error' : ''}`} onDragOver={e => { e.preventDefault(); setDragging('bonafide') }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget)) setDragging(null) }} onDrop={e => { e.preventDefault(); setDragging(null); const f = e.dataTransfer.files[0]; if (!f) return; if (f.size > 5 * MB) { setBonafideError('File too large — max 5MB'); return } setBonafideError(''); setBonafideFile(f) }}>
                                         {bonafideFile ? (
                                             <>
                                                 <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{bonafideFile.name}</span>
-                                                <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setBonafideFile(null) }}>
-                                                    <X size={14} aria-hidden="true" /> Remove
-                                                </button>
+                                                <div className="iapp-upload_actions">
+                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(bonafideFile), '_blank') }}>
+                                                        <Eye size={14} aria-hidden="true" /> View
+                                                    </button>
+                                                    <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setBonafideFile(null) }}>
+                                                        <X size={14} aria-hidden="true" /> Remove
+                                                    </button>
+                                                </div>
                                             </>
                                         ) : (
                                             <>
@@ -726,7 +739,7 @@ export default function InternshipApplication() {
                                                 <span className="iapp-upload_hint">PDF, JPG, PNG up to 5MB</span>
                                             </>
                                         )}
-                                        <input type="file" accept=".pdf,.jpg,.jpeg,.png" hidden
+                                        <input key={bonafideFile ? bonafideFile.name : 'bonafide-empty'} type="file" accept=".pdf,.jpg,.jpeg,.png" hidden
                                             onChange={e => {
                                                 const f = e.target.files[0]
                                                 if (!f) return
@@ -742,14 +755,19 @@ export default function InternshipApplication() {
                                 </div>
                                 <div className="form-group">
                                     <label className="form-label">ID Proof <span className="iapp-optional">(Optional)</span></label>
-                                    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${idFile ? 'iapp-upload--done' : idError ? 'iapp-upload--error' : ''}`}>
+                                    <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.querySelector('input[type="file"]').click() } }} className={`iapp-upload ${idFile ? 'iapp-upload--done' : dragging === 'id' ? 'iapp-upload--drag' : idError ? 'iapp-upload--error' : ''}`} onDragOver={e => { e.preventDefault(); setDragging('id') }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget)) setDragging(null) }} onDrop={e => { e.preventDefault(); setDragging(null); const f = e.dataTransfer.files[0]; if (!f) return; if (f.size > 5 * MB) { setIdError('File too large — max 5MB'); return } setIdError(''); setIdFile(f) }}>
                                         {idFile ? (
                                             <>
                                                 <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{idFile.name}</span>
-                                                <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setIdFile(null) }}>
-                                                    <X size={14} aria-hidden="true" /> Remove
-                                                </button>
+                                                <div className="iapp-upload_actions">
+                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(idFile), '_blank') }}>
+                                                        <Eye size={14} aria-hidden="true" /> View
+                                                    </button>
+                                                    <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setIdFile(null) }}>
+                                                        <X size={14} aria-hidden="true" /> Remove
+                                                    </button>
+                                                </div>
                                             </>
                                         ) : (
                                             <>
@@ -758,7 +776,7 @@ export default function InternshipApplication() {
                                                 <span className="iapp-upload_hint">PDF, JPG, PNG up to 5MB</span>
                                             </>
                                         )}
-                                        <input type="file" accept=".pdf,.jpg,.jpeg,.png" hidden
+                                        <input key={idFile ? idFile.name : 'id-empty'} type="file" accept=".pdf,.jpg,.jpeg,.png" hidden
                                             onChange={e => {
                                                 const f = e.target.files[0]
                                                 if (!f) return

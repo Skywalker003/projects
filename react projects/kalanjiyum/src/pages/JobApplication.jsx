@@ -1,7 +1,7 @@
-import './JobApplication.css'
+﻿import './JobApplication.css'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import { User, Briefcase, FileCheck, UploadCloud, FileText, Image, X, AlertCircle, CheckCircle } from 'lucide-react'
+import { User, Briefcase, FileCheck, UploadCloud, FileText, Image, X, AlertCircle, CheckCircle, Eye } from 'lucide-react'
 import PageHero from '../components/ui/PageHero'
 import logo from '../assets/images/logo.png'
 
@@ -38,6 +38,7 @@ export default function JobApplication() {
     const [submitted, setSubmitted]           = useState(false)
     const [isSubmitting, setIsSubmitting]     = useState(false)
     const [submitSuccess, setSubmitSuccess]   = useState(false)
+    const [dragging, setDragging]             = useState(null)
 
     const sectionRefs = useRef([])
     const photoRef    = useRef()
@@ -117,7 +118,6 @@ export default function JobApplication() {
     if (submitSuccess) {
         return (
             <>
-                {hero}
                 <section className="section">
                     <div className="container">
                         <div className="iapp-success">
@@ -140,7 +140,6 @@ export default function JobApplication() {
 
     return (
         <>
-            {hero}
             <section className="section">
                 <div className="container">
                     <form className="japp-form" onSubmit={handleSubmit} noValidate>
@@ -269,15 +268,20 @@ export default function JobApplication() {
                                 <label className="form-label">
                                     Photo <span className="iapp-optional">(Optional)</span>
                                 </label>
-                                <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); photoRef.current?.click() } }} className={`iapp-upload${photoFile ? ' iapp-upload--done' : photoError ? ' iapp-upload--error' : ''}`}>
+                                <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); photoRef.current?.click() } }} className={`iapp-upload${photoFile ? ' iapp-upload--done' : dragging === 'photo' ? ' iapp-upload--drag' : photoError ? ' iapp-upload--error' : ''}`} onDragOver={e => { e.preventDefault(); setDragging('photo') }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget)) setDragging(null) }} onDrop={e => { e.preventDefault(); setDragging(null); const f = e.dataTransfer.files[0]; if (!f) return; if (f.size > 5 * MB) { setPhotoError('File too large — max 5MB'); return } setPhotoError(''); setPhotoFile(f) }}>
                                     {photoFile ? (
                                         <>
                                             <Image size={28} className="iapp-upload_icon iapp-upload_icon--done" />
                                             <span className="iapp-upload_filename">{photoFile.name}</span>
-                                            <button type="button" className="iapp-upload_clear"
-                                                onClick={e => { e.preventDefault(); setPhotoFile(null); if (photoRef.current) photoRef.current.value = '' }}>
-                                                <X size={14} /> Remove
-                                            </button>
+                                            <div className="iapp-upload_actions">
+                                                <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(photoFile), '_blank') }}>
+                                                    <Eye size={14} /> View
+                                                </button>
+                                                <button type="button" className="iapp-upload_clear"
+                                                    onClick={e => { e.preventDefault(); setPhotoFile(null); if (photoRef.current) photoRef.current.value = '' }}>
+                                                    <X size={14} /> Remove
+                                                </button>
+                                            </div>
                                         </>
                                     ) : (
                                         <>
@@ -335,15 +339,20 @@ export default function JobApplication() {
 
                             <div className="form-group">
                                 <label className="form-label">Resume / CV <span className="iapp-req">*</span></label>
-                                <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); resumeRef.current?.click() } }} className={`iapp-upload${resumeFile ? ' iapp-upload--done' : resumeError || (submitted && sectionErrors[1]) ? ' iapp-upload--error' : ''}`}>
+                                <label role="button" tabIndex={0} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); resumeRef.current?.click() } }} className={`iapp-upload${resumeFile ? ' iapp-upload--done' : dragging === 'resume' ? ' iapp-upload--drag' : resumeError || (submitted && sectionErrors[1]) ? ' iapp-upload--error' : ''}`} onDragOver={e => { e.preventDefault(); setDragging('resume') }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget)) setDragging(null) }} onDrop={e => { e.preventDefault(); setDragging(null); const f = e.dataTransfer.files[0]; if (!f) return; if (f.size > 10 * MB) { setResumeError('File too large — max 10MB'); return } setResumeError(''); setResumeFile(f) }}>
                                     {resumeFile ? (
                                         <>
                                             <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" />
                                             <span className="iapp-upload_filename">{resumeFile.name}</span>
-                                            <button type="button" className="iapp-upload_clear"
-                                                onClick={e => { e.preventDefault(); setResumeFile(null); if (resumeRef.current) resumeRef.current.value = '' }}>
-                                                <X size={14} /> Remove
-                                            </button>
+                                            <div className="iapp-upload_actions">
+                                                <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(resumeFile), '_blank') }}>
+                                                    <Eye size={14} /> View
+                                                </button>
+                                                <button type="button" className="iapp-upload_clear"
+                                                    onClick={e => { e.preventDefault(); setResumeFile(null); if (resumeRef.current) resumeRef.current.value = '' }}>
+                                                    <X size={14} /> Remove
+                                                </button>
+                                            </div>
                                         </>
                                     ) : (
                                         <>
