@@ -135,3 +135,14 @@
     color: var(--color-red);
     font-weight: var(--font-weight-medium);
 }
+
+@media (max-width: 480px) {
+    .custom-select_trigger {
+        padding: 10px 12px;
+        font-size: var(--font-size-sm);
+    }
+
+    .custom-select_list {
+        max-height: 180px;
+    }
+}

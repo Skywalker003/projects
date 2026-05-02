@@ -44,8 +44,12 @@ export default function Navbar() {
           {/* Careers Hover Dropdown (desktop) + Accordion (mobile) */}
           <div className={`navbar_dropdown-wrap ${isCareersActive ? 'navbar_dropdown-wrap--active' : ''}`}>
             {/* Desktop trigger */}
-            <button className={`navbar_link navbar_dropdown-trigger ${isCareersActive ? 'navbar_link--active' : ''}`}>
-              Careers <ChevronDown size={14} className="navbar_dropdown-chevron" />
+            <button
+              className={`navbar_link navbar_dropdown-trigger ${isCareersActive ? 'navbar_link--active' : ''}`}
+              aria-haspopup="menu"
+              aria-label="Careers — open submenu"
+            >
+              Careers <ChevronDown size={14} className="navbar_dropdown-chevron" aria-hidden="true" />
             </button>
             <div className="navbar_dropdown">
               <div className="navbar_dropdown-inner">

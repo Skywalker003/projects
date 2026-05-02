@@ -60,13 +60,6 @@
 .job-card_btn {
     flex-shrink: 0;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-red), var(--color-red-dark));
-    border-color: transparent;
-}
-
-.job-card_btn:hover {
-    background: linear-gradient(135deg, var(--color-red-dark), var(--color-red));
-    border-color: transparent;
 }
 
 @media (max-width: 768px) {

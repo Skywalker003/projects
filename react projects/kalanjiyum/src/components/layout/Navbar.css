@@ -175,13 +175,16 @@
 
 /*-------------------Responsive Styles------------------------*/
 
+@media (max-width: 480px) {
+    .navbar_inner {
+        padding: 0 var(--space-md);
+    }
+}
+
 @media (max-width: 768px) {
     
     .navbar_hamburger {
         display: flex;
-    }
-    .navbar_cta {
-        display: none;
     }
     .navbar_links {
         display: none;

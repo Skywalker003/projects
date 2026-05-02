@@ -18,10 +18,10 @@ export default function Hero() {
                 </p>
 
                 <div className="hero_actions">
-                    <Link to="/about" className="btn btn--primary btn--xl">About Us</Link>
-                    <a href="#services" className="btn btn--secondary btn--xl">
+                    <a href="#services" className="btn btn--primary btn--xl">
                         View our Services <ArrowRight size={16} />
                     </a>
+                    <Link to="/about" className="btn btn--secondary btn--xl">About Us</Link>
                 </div>
             </div>
 

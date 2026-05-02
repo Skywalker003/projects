@@ -233,7 +233,7 @@ export default function ContactForm() {
 
                             <button type="submit" className="btn btn--primary btn--full" disabled={isSubmitting} aria-busy={isSubmitting}>
                                 {isSubmitting ? (
-                                    <><img src={logo} alt="" className="contact-spinner" />Sending…</>
+                                    <><img src={logo} alt="" aria-hidden="true" className="contact-spinner" />Sending…</>
                                 ) : 'Send Enquiry'}
                             </button>
 

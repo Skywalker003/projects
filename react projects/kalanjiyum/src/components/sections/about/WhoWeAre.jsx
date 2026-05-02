@@ -17,7 +17,7 @@ export default function WhoWeAre() {
                     <p>
                         From our humble beginnings, we have evolved into a multi-disciplinary powerhouse
                         specialising in Industry 4.0 integrations and bespoke software development. Our
-                        mission is to help local and global businesses leverage their lead in time in a
+                        mission is to help local and global businesses leverage their advantage in a
                         digital-first economy.
                     </p>
 

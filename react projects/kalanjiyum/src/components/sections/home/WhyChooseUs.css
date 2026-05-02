@@ -96,4 +96,8 @@
     .why-choose-us_content {
         gap: var(--space-lg);
     }
+
+    .why-choose-us_image {
+        max-height: 180px;
+    }
 }

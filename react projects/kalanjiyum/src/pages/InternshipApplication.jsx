@@ -826,7 +826,7 @@ export default function InternshipApplication() {
                         >
                             {isSubmitting ? (
                                 <>
-                                    <img src={logo} alt="" className="iapp-submit_spinner" />
+                                    <img src={logo} alt="" aria-hidden="true" className="iapp-submit_spinner" />
                                     Submitting…
                                 </>
                             ) : (

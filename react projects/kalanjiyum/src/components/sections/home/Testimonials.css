@@ -1,83 +1,173 @@
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+.testimonials-section {
+    overflow: hidden;
 }
 
+/* ── Carousel wrapper ── */
+.testimonials-carousel {
+    position: relative;
+    margin-top: var(--space-2xl);
+    overflow: hidden;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: calc(var(--space-2xl) - 12px);
+}
+
+/* Fade edges — wider so partial cards on both sides are fully masked */
+.testimonials-carousel::before,
+.testimonials-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 220px;
+    z-index: 1;
+    pointer-events: none;
+}
+.testimonials-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white) 30%, transparent);
+}
+.testimonials-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white) 30%, transparent);
+}
+
+/* ── Track ── */
+/*
+  Triple set [A B C | A B C | A B C].
+  Animates exactly -1212px (= 3 × (380px card + 24px gap)) — no percentage
+  rounding, no gap at the end.  At translateX(-1212px) the viewport still
+  has set 2 & 3 in view (track = 3636px, max viewport end = 1212+1400 = 2612 < 3636).
+  delay: -3s starts mid-scroll so Arun isn't sitting at the left edge on load.
+*/
+.testimonials-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    animation: testimonials-scroll 22s linear infinite;
+    animation-delay: -3s;
+}
+
+.testimonials-carousel:hover .testimonials-track {
+    animation-play-state: paused;
+}
+
+@keyframes testimonials-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-1212px); }
+}
+
+@keyframes testimonials-scroll-mobile {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-912px); }
+}
+
+/* 3 × (220px card + 16px gap) = 708px */
+@keyframes testimonials-scroll-xs {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-708px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonials-track {
+        animation: none;
+    }
+}
+
+/* ── Card ── */
 .testimonial-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    flex-shrink: 0;
+    width: 380px;
+    margin-right: var(--space-lg);
 }
 
 .testimonial-card_stars {
-  display: flex;
-  gap: var(--space-xs);
+    display: flex;
+    gap: var(--space-xs);
 }
 
 .testimonial-card_stars svg {
-  color: var(--color-red);
-  fill: var(--color-red);
+    color: var(--color-red);
+    fill: var(--color-red);
 }
 
 .testimonial-card_quote {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-body);
-  flex: 1;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+    flex: 1;
 }
 
 .testimonial-card_person {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
 }
 
 .testimonial-card_avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-dark);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-base);
-  flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    flex-shrink: 0;
 }
 
 .testimonial-card_person h4 {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
 }
 
 .testimonial-card_person span {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-}
-
-@media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .testimonial-card:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    max-width: 50%;
-    margin: 0 auto;
-    width: 100%;
-  }
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
 }
 
 @media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
+    .testimonial-card {
+        width: 280px;
+    }
 
-  .testimonial-card:last-child:nth-child(odd) {
-    grid-column: auto;
-    max-width: 100%;
-  }
+    .testimonials-track {
+        animation-name: testimonials-scroll-mobile;
+        animation-duration: 16s;
+    }
+
+    .testimonials-carousel::before,
+    .testimonials-carousel::after {
+        width: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .testimonial-card {
+        width: 220px;
+        margin-right: var(--space-md);
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+
+    .testimonial-card_quote {
+        font-size: var(--font-size-sm);
+    }
+
+    .testimonials-track {
+        animation-name: testimonials-scroll-xs;
+        animation-duration: 14s;
+    }
+
+    .testimonials-carousel::before,
+    .testimonials-carousel::after {
+        width: 32px;
+    }
 }

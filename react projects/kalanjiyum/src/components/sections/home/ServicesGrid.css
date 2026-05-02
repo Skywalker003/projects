@@ -79,6 +79,7 @@
   }
 
   .service-card::before {
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
     opacity: 1;
   }
 

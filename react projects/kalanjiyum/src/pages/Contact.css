@@ -1,0 +1,3 @@
+.contact-hero {
+    background: radial-gradient(circle at center, var(--color-white) 0%, var(--color-red-light) 60%);
+}

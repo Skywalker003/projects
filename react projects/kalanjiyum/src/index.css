@@ -511,9 +511,22 @@ input, textarea, select {
   :root {
     --font-size-h1: 2rem;
     --font-size-h2: 1.5rem;
+    --space-3xl: 3rem;
   }
 
   .section {
     padding: var(--space-xl) var(--space-md);
+  }
+
+  .page-hero_title {
+    font-size: var(--font-size-h2);
+  }
+
+  .page-hero_subtext {
+    font-size: var(--font-size-base);
+  }
+
+  .section-heading_subtext {
+    font-size: var(--font-size-base);
   }
 }
