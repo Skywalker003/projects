@@ -1,7 +1,5 @@
 import {Link} from 'react-router-dom'
 import { Mail, MapPin, Clock } from 'lucide-react'
-import logo from '../../assets/images/logo.png'
-import strokeLogo from '../../assets/images/stroke logo.png'
 import './Footer.css'
 
 export default function Footer() {
@@ -15,7 +13,6 @@ export default function Footer() {
           <div className="footer_brand">
 
             <Link to="/" className="footer_logo-wrap">
-              <img src={strokeLogo} alt="Logo" className="footer_logo"/>
               <div className="footer_company-name">
                 Kalanjiyam <span className="footer_company-sub">Tech</span>
               </div>

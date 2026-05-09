@@ -79,7 +79,7 @@
   }
 
   .service-card::before {
-    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 100%);
     opacity: 1;
   }
 
@@ -90,6 +90,12 @@
 
   .service-card_overlay h3 {
     font-size: var(--font-size-h4);
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+
+  .service-card_overlay p {
+    display: none;
   }
 }
 
@@ -101,5 +107,9 @@
 
   .service-card_overlay {
     padding: var(--space-lg);
+  }
+
+  .service-card_overlay h3 {
+    font-size: var(--font-size-h3);
   }
 }

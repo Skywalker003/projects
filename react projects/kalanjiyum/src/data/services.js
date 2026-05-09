@@ -8,6 +8,7 @@ import consulting from '../assets/images/consulting_services.jpg'
 export const services = [
   {
     id: 1,
+    anchor: 'industry4',
     title: 'Industry 4.0',
     icon: 'Settings',
     image: industry,
@@ -15,6 +16,7 @@ export const services = [
   },
   {
     id: 2,
+    anchor: 'automation',
     title: 'Process Automation',
     icon: 'RefreshCw',
     image: processAutomation,
@@ -22,6 +24,7 @@ export const services = [
   },
   {
     id: 3,
+    anchor: 'webdev',
     title: 'Web Development',
     icon: 'Globe',
     image: webDev,
@@ -29,6 +32,7 @@ export const services = [
   },
   {
     id: 4,
+    anchor: 'network',
     title: 'Network Solutions',
     icon: 'Network',
     image: networkSol,
@@ -36,6 +40,7 @@ export const services = [
   },
   {
     id: 5,
+    anchor: 'plc',
     title: 'PLCs, Sensors & Safety',
     icon: 'Cpu',
     image: plcSensor,
@@ -43,6 +48,7 @@ export const services = [
   },
   {
     id: 6,
+    anchor: 'consulting',
     title: 'Consulting Services',
     icon: 'Wrench',
     image: consulting,

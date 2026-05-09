@@ -2,8 +2,8 @@
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion' // eslint-disable-line no-unused-vars
 import {
-    ArrowLeft, ArrowRight, X, SearchX, Check,
-    Users, Truck, Package, ClipboardList, BarChart2, UserCheck, Cog,
+    ArrowLeft, ArrowRight, ChevronRight, X, SearchX, Check,
+    Users, Truck, Package, BarChart2, UserCheck, Cog,
     Monitor, Cpu, Box, Smartphone,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -36,13 +36,12 @@ const TAG_ICONS = {
 }
 
 const TOPIC_META = {
-    crm:         { Icon: Users,         bg: '#EEF2FF', color: '#4F46E5' },
-    sales:       { Icon: Truck,         bg: '#FFF7ED', color: '#EA580C' },
-    inventory:   { Icon: Package,       bg: '#F0FDF4', color: '#16A34A' },
-    procurement: { Icon: ClipboardList, bg: '#FEF3C7', color: '#D97706' },
-    finance:     { Icon: BarChart2,     bg: '#EFF6FF', color: '#2563EB' },
-    hrm:         { Icon: UserCheck,     bg: '#FDF4FF', color: '#9333EA' },
-    mes:         { Icon: Cog,           bg: '#FFF1F2', color: '#DC2626' },
+    crm:       { Icon: Users,     bg: '#EEF2FF', color: '#4F46E5' },
+    scm:       { Icon: Truck,     bg: '#FFF7ED', color: '#EA580C' },
+    mes:       { Icon: Cog,       bg: '#FFF1F2', color: '#DC2626' },
+    inventory: { Icon: Package,   bg: '#F0FDF4', color: '#16A34A' },
+    hrm:       { Icon: UserCheck, bg: '#FDF4FF', color: '#9333EA' },
+    finance:   { Icon: BarChart2, bg: '#EFF6FF', color: '#2563EB' },
 }
 
 const MODAL_TITLE_ID  = 'port-modal-title'
@@ -59,19 +58,21 @@ export default function Portfolio() {
     const modalRef       = useRef(null)
     const modalRightRef  = useRef(null)
     const triggerRef     = useRef(null)
+    const activeTabRef   = useRef(null)
 
     const selectTopic = (topic) => {
         setSelectedTopic(topic)
         setSelectedSub('All')
         setVisibleCount(INITIAL_VISIBLE)
         prevVisibleRef.current = INITIAL_VISIBLE
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({ top: 0, behavior: 'instant' })
     }
 
     const selectSub = (sub) => {
         setSelectedSub(sub)
         setVisibleCount(INITIAL_VISIBLE)
         prevVisibleRef.current = INITIAL_VISIBLE
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
     const goBack = () => {
@@ -115,6 +116,11 @@ export default function Portfolio() {
     useEffect(() => {
         if (modalRightRef.current) modalRightRef.current.scrollTop = 0
     }, [selectedProject])
+
+    // Scroll active domain tab into view when topic changes
+    useEffect(() => {
+        activeTabRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    }, [selectedTopic])
 
     // Escape key closes modal
     useEffect(() => {
@@ -162,18 +168,32 @@ export default function Portfolio() {
         [selectedTopic]
     )
 
-    // eslint-disable-next-line react-hooks/preserve-manual-memoization
-    const filtered = useMemo(
-        () => selectedSub === 'All' ? topicItems : topicItems.filter(p => p.subCategory === selectedSub),
-        [topicItems, selectedSub]
-    )
+    const filtered = useMemo(() => {
+        if (!selectedTopic) return []
+        if (selectedSub !== 'All') {
+            return topicItems.filter(p => p.subCategory === selectedSub)
+        }
+        const subDomains = selectedTopic.subFilters.filter(sub => sub !== 'All')
+        // Domain has no sub-domains (e.g. Finance) — show all items
+        if (subDomains.length === 0) return topicItems
+        // One featured (or first) project per sub-domain, in sub-domain order
+        return subDomains
+            .map(sub => {
+                const subItems = topicItems.filter(p => p.subCategory === sub)
+                return subItems.find(p => p.featured) ?? subItems[0]
+            })
+            .filter(Boolean)
+    }, [topicItems, selectedSub, selectedTopic])
 
     // Per-domain: counts per sub-category — recomputed only when the active topic changes
     const subCounts = useMemo(() => {
-        const map = { All: topicItems.length }
+        const map = {}
         topicItems.forEach(p => { map[p.subCategory] = (map[p.subCategory] || 0) + 1 })
+        if (selectedTopic) {
+            map['All'] = selectedTopic.subFilters.filter(sub => sub !== 'All' && map[sub] > 0).length
+        }
         return map
-    }, [topicItems])
+    }, [topicItems, selectedTopic])
 
     const visible  = filtered.slice(0, visibleCount)
     const hasMore  = visibleCount < filtered.length
@@ -222,13 +242,24 @@ export default function Portfolio() {
                                                 whileTap={{ scale: 0.97 }}
                                                 transition={{ duration: 0.3, delay: index * 0.05 }}
                                             >
-                                                <span className="port-topic-box_icon" style={{ background: bg }}>
-                                                    {Icon && <Icon size={22} style={{ color }} aria-hidden="true" />}
+                                                <div className="port-topic-box_top">
+                                                    <span className="port-topic-box_icon" style={{ background: bg }}>
+                                                        {Icon && <Icon size={24} style={{ color }} aria-hidden="true" />}
+                                                    </span>
+                                                    <span className="port-topic-box_count">{count} projects</span>
+                                                </div>
+                                                <span className="port-topic-box_label">
+                                                    {topic.fullLabel}
+                                                    {topic.fullLabel !== topic.label && <span className="port-topic-box_abbr"> ({topic.label})</span>}
                                                 </span>
-                                                <span className="port-topic-box_label">{topic.label}</span>
-                                                <span className="port-topic-box_count">{count} projects</span>
+                                                <span className="port-topic-box_sub">
+                                                    {topic.subFilters.length > 1 ? `${topic.subFilters.length - 1} sub-domains` : 'General'}
+                                                </span>
                                                 <span className="port-topic-box_cta">
-                                                    Explore <ArrowRight size={13} aria-hidden="true" />
+                                                    Explore domain
+                                                    <span className="port-topic-box_cta-arrow">
+                                                        <ArrowRight size={13} aria-hidden="true" />
+                                                    </span>
                                                 </span>
                                             </motion.button>
                                         )
@@ -262,7 +293,9 @@ export default function Portfolio() {
                                             return (
                                                 <button
                                                     key={topic.id}
+                                                    ref={isActive ? activeTabRef : null}
                                                     className={`port-tab-btn${isActive ? ' port-tab-btn--active' : ''}`}
+                                                    style={isActive ? { '--tab-active-color': color } : undefined}
                                                     onClick={() => selectTopic(topic)}
                                                 >
                                                     {Icon && <Icon size={13} aria-hidden="true" style={{ color }} />}
@@ -272,6 +305,9 @@ export default function Portfolio() {
                                         })}
                                     </div>
                                 </div>
+                                <span className="port-tabs_scroll-hint" aria-hidden="true">
+                                    <ChevronRight size={13} />
+                                </span>
                             </div>
                         </nav>
 
@@ -289,45 +325,53 @@ export default function Portfolio() {
                                     {/* Domain header */}
                                     {activeMeta && (
                                         <div className="port-domain-header">
-                                            <div className="port-domain-header_left">
+                                            <div className="port-domain-header_top">
                                                 <span className="port-domain-header_icon" style={{ background: activeMeta.bg }}>
                                                     <activeMeta.Icon size={20} style={{ color: activeMeta.color }} aria-hidden="true" />
                                                 </span>
-                                                <div>
-                                                    <h2 className="port-domain-header_title">{selectedTopic.label}</h2>
-                                                    <p className="port-domain-header_count">{topicItems.length} project{topicItems.length !== 1 ? 's' : ''}</p>
+                                                <div className="port-domain-header_text">
+                                                    <h2 className="port-domain-header_title">
+                                                        <span className="port-domain-header_title-long">{selectedTopic.fullLabel}</span>
+                                                        <span className="port-domain-header_title-abbr">{selectedTopic.label}</span>
+                                                    </h2>
+                                                    <p className="port-domain-header_count">
+                                                        {selectedSub === 'All' && selectedTopic.subFilters.length > 1
+                                                            ? `${selectedTopic.subFilters.length - 1} sub-domain${selectedTopic.subFilters.length - 1 !== 1 ? 's' : ''}`
+                                                            : `${filtered.length} project${filtered.length !== 1 ? 's' : ''}`
+                                                        }
+                                                    </p>
                                                 </div>
                                             </div>
-                                            <div className="port-subfilters-wrap">
-                                                <div className="port-subfilters" role="group" aria-label="Sub-category filter">
-                                                    {selectedTopic.subFilters.map(sub => {
-                                                        const subCount = subCounts[sub] || 0
-                                        return (
+                                            {selectedTopic.subFilters.length > 1 && (
+                                                <div className="port-subtabs-wrap">
+                                                    <div className="port-subtabs" style={{ '--domain-color': activeMeta.color }}>
+                                                        {selectedTopic.subFilters.map(sub => (
                                                             <button
                                                                 key={sub}
-                                                                className={`port-sub-btn${selectedSub === sub ? ' port-sub-btn--active' : ''}`}
+                                                                className={`port-subtab${selectedSub === sub ? ' port-subtab--active' : ''}`}
                                                                 onClick={() => selectSub(sub)}
                                                             >
                                                                 {sub}
-                                                                <span className="port-sub-count">{subCount}</span>
+                                                                {sub !== 'All' && <span className="port-subtab-count">{subCounts[sub] || 0}</span>}
                                                             </button>
-                                                        )
-                                                    })}
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
                                         </div>
                                     )}
 
                                     {/* Project grid */}
                                     {visible.length > 0 ? (
                                         <>
-                                            <div className="port-grid" ref={gridRef}>
+                                            <div className="port-grid" ref={gridRef} style={{ '--card-accent': activeMeta?.color }}>
                                                 {visible.map((item, idx) => {
                                                     const TagIcon = TAG_ICONS[item.tag]
                                                     return (
                                                         <motion.article
                                                             key={item.id}
                                                             className="port-card"
+                                                            onClick={() => openProject(item)}
                                                             initial={{ opacity: 0, y: 16 }}
                                                             animate={{ opacity: 1, y: 0 }}
                                                             transition={{ duration: 0.3, delay: Math.min(idx, 5) * 0.05 }}
@@ -340,8 +384,11 @@ export default function Portfolio() {
                                                                 {item.featured && (
                                                                     <span className="port-card_featured">★ Featured</span>
                                                                 )}
+                                                                {item.phase && (
+                                                                    <span className="port-card_phase">{item.phase}</span>
+                                                                )}
                                                                 <span className="port-card_num">
-                                                                    {String(idx + 1).padStart(2, '0')}
+                                                                    {String(item.id).padStart(2, '0')}
                                                                 </span>
                                                                 <span
                                                                     className="port-card_tag"
@@ -354,12 +401,9 @@ export default function Portfolio() {
                                                                 <span className="port-card_cat">{item.subCategory}</span>
                                                                 <h3 className="port-card_title">{item.title}</h3>
                                                                 <p className="port-card_desc">{item.description}</p>
-                                                                <button
-                                                                    className="port-card_link"
-                                                                    onClick={() => openProject(item)}
-                                                                >
+                                                                <span className="port-card_link" aria-hidden="true">
                                                                     View Details <ArrowRight size={13} aria-hidden="true" />
-                                                                </button>
+                                                                </span>
                                                             </div>
                                                         </motion.article>
                                                     )
@@ -433,12 +477,12 @@ export default function Portfolio() {
                                 style={{ background: TAG_GRADIENTS[selectedProject.tag] || 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' }}
                             >
                                 <div className="port-modal_left-top">
-                                    <button className="port-modal_close" onClick={closeProject} aria-label="Close">
-                                        <X size={16} />
-                                    </button>
                                     <span className="port-modal_tag" style={{ backgroundColor: TAG_COLORS[selectedProject.tag] }}>
                                         {selectedProject.tag}
                                     </span>
+                                    <button className="port-modal_close" onClick={closeProject} aria-label="Close">
+                                        <X size={16} />
+                                    </button>
                                 </div>
 
                                 <div className="port-modal_left-center">
@@ -446,8 +490,11 @@ export default function Portfolio() {
                                 </div>
 
                                 <div className="port-modal_left-bottom">
-                                    <p className="port-modal_domain-label">{selectedTopic?.label}</p>
+                                    <p className="port-modal_domain-label">{selectedTopic?.fullLabel}</p>
                                     <p className="port-modal_subcat-label">{selectedProject.subCategory}</p>
+                                    {selectedProject.phase && (
+                                        <span className="port-modal_phase">{selectedProject.phase}</span>
+                                    )}
                                     <p className="port-modal_index-label">
                                         {currentIndex + 1} of {filtered.length} projects
                                     </p>

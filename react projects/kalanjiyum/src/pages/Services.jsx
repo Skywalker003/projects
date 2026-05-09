@@ -1,4 +1,6 @@
 import './Services.css'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import {
     Settings, RefreshCw, Globe, Network, Cpu, Wrench,
     ArrowRight, Search, PenTool, Code2, Rocket,
@@ -72,6 +74,14 @@ const process = [
 ]
 
 export default function Services() {
+    const { hash } = useLocation()
+
+    useEffect(() => {
+        if (!hash) return
+        const el = document.getElementById(hash.slice(1))
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, [hash])
+
     return (
         <>
             <PageHero
@@ -92,7 +102,7 @@ export default function Services() {
                     />
                     <div className="srv-grid">
                         {services.map(({ id, icon: Icon, color, bg, title, desc, items }) => (
-                            <div key={id} className="srv-card card" style={{ '--srv-color': color }}>
+                            <div key={id} id={id} className="srv-card card" style={{ '--srv-color': color }}>
                                 <span className="srv-card_icon" style={{ background: bg }}>
                                     <Icon size={22} style={{ color }} aria-hidden="true" />
                                 </span>

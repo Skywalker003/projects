@@ -20,7 +20,7 @@ export default function ServicesGrid() {
                             <div className="service-card_overlay">
                                 <h3>{service.title}</h3>
                                 <p>{service.shortDescription}</p>
-                                <Link to="/services" className="btn btn--white btn--sm">Learn More</Link>
+                                <Link to={`/services#${service.anchor}`} className="btn btn--white btn--sm">Learn More</Link>
                             </div>
                         </div>
                     ))}

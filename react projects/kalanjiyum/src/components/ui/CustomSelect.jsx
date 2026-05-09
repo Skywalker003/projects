@@ -43,7 +43,7 @@ export default function CustomSelect({ id, options, value, onChange, placeholder
                 aria-expanded={open}
                 aria-haspopup="listbox"
             >
-                <span className={selected ? '' : 'custom-select_placeholder'}>
+                <span className={`custom-select_trigger-inner ${!selected ? 'custom-select_placeholder' : ''}`}>
                     {selected ? selected.label : placeholder}
                 </span>
                 <ChevronDown size={16} className="custom-select_chevron" aria-hidden="true" />
@@ -73,8 +73,13 @@ export default function CustomSelect({ id, options, value, onChange, placeholder
                                 className={`custom-select_option ${opt.value === value ? 'custom-select_option--active' : ''}`}
                                 onClick={() => { onChange(opt.value); setOpen(false) }}
                             >
-                                {opt.label}
-                                {opt.value === value && <Check size={14} aria-hidden="true" />}
+                                <span className="custom-select_option-label">{opt.label}</span>
+                                <span className="custom-select_option-right">
+                                    {opt.badge !== undefined && (
+                                        <span className="custom-select_badge">{opt.badge}</span>
+                                    )}
+                                    {opt.value === value && <Check size={14} aria-hidden="true" />}
+                                </span>
                             </li>
                         )) : (
                             <li className="custom-select_empty">No results</li>
