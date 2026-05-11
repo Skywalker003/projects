@@ -1,8 +1,12 @@
 import './HowItWorks.css'
 import SectionHeading from '../../ui/SectionHeading'
-import { steps } from '../../../data/internship'
+import { steps as fallback } from '../../../data/internship'
+import { getInternshipSteps } from '../../../api/internship'
+import { useApi } from '../../../hooks/useApi'
 
 export default function HowItWorks() {
+    const steps = useApi(getInternshipSteps, fallback)
+
     return (
         <section className="section section--light">
             <div className="container">

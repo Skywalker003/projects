@@ -1,23 +1,34 @@
 import './MissionVision.css'
-import { missionVisionItems } from '../../../data/about'
+import { missionVisionItems as fallback } from '../../../data/about'
+import { getMissionVision } from '../../../api/about'
+import { useApi } from '../../../hooks/useApi'
+import { resolveIcon } from '../../../utils/iconMap'
+import SectionHeading from '../../ui/SectionHeading'
 
 export default function MissionVision() {
+    const missionVisionItems = useApi(getMissionVision, fallback)
+
     return (
         <section className='section section--gray'>
             <div className="container">
-                <div className="section-heading section-heading--center">
-                    <span className="section-heading_label">What Drives Us</span>
-                </div>
+                <SectionHeading
+                    label="What Drives Us"
+                    heading="Mission & Vision"
+                    align="center"
+                />
                 <div className="mission-vision">
-                    {missionVisionItems.map((item) => (
-                        <div className="mission-vision_card card" key={item.title}>
-                            <div className="mission-vision_icon" aria-hidden="true">
-                                <item.icon size={28} />
+                    {missionVisionItems.map((item) => {
+                        const Icon = resolveIcon(item.icon)
+                        return (
+                            <div className="mission-vision_card card" key={item.title}>
+                                <div className="mission-vision_icon" aria-hidden="true">
+                                    {Icon && <Icon size={28} />}
+                                </div>
+                                <h3 className="mission-vision_title">{item.title}</h3>
+                                <p className="mission-vision_desc">{item.description}</p>
                             </div>
-                            <h3 className="mission-vision_title">{item.title}</h3>
-                            <p className="mission-vision_desc">{item.description}</p>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
             </div>
         </section>

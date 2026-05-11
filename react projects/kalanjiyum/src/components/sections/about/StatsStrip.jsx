@@ -1,17 +1,16 @@
+import './StatsStrip.css'
 import { useState, useEffect, useRef } from 'react'
-import './StatsBar.css'
-import { homeStats as fallback } from '../../../data/home'
-import { getHomeStats } from '../../../api/home'
+import { aboutStats as fallback } from '../../../data/about'
+import { getAboutStats } from '../../../api/about'
 import { useApi } from '../../../hooks/useApi'
 
-export default function StatsBar() {
-    const liveStats  = useApi(getHomeStats, fallback)
+export default function StatsStrip() {
+    const liveStats  = useApi(getAboutStats, fallback)
     const statsRef   = useRef(fallback)
     const [counts, setCounts]   = useState(fallback.map(() => 0))
     const [started, setStarted] = useState(false)
     const ref = useRef(null)
 
-    // Keep ref in sync so the rAF tick always reads latest data
     useEffect(() => { statsRef.current = liveStats }, [liveStats])
 
     useEffect(() => {
@@ -39,13 +38,17 @@ export default function StatsBar() {
     }, [started])
 
     return (
-        <section ref={ref} className="stats-bar" aria-label="Company statistics">
-            {liveStats.map((stat, i) => (
-                <div className="stats-bar_item" key={stat.label}>
-                    <div className="stats-bar_number">{stat.static ? stat.end : counts[i]}{stat.suffix}</div>
-                    <div className="stats-bar_label">{stat.label}</div>
+        <div className="stats-strip" ref={ref} aria-label="Company statistics">
+            <div className="container">
+                <div className="stats-strip_grid">
+                    {liveStats.map((s, i) => (
+                        <div className="stats-strip_item" key={s.label}>
+                            <span className="stats-strip_value">{counts[i]}{s.suffix}</span>
+                            <span className="stats-strip_label">{s.label}</span>
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </section>
+            </div>
+        </div>
     )
 }

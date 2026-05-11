@@ -2,9 +2,12 @@ import './InternFAQ.css'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import SectionHeading from '../../ui/SectionHeading'
-import { faqs } from '../../../data/internship'
+import { faqs as fallback } from '../../../data/internship'
+import { getInternshipFAQs } from '../../../api/internship'
+import { useApi } from '../../../hooks/useApi'
 
 export default function InternFAQ() {
+    const faqs = useApi(getInternshipFAQs, fallback)
     const [open, setOpen] = useState(null)
 
     return (

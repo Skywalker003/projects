@@ -61,7 +61,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .core-values {
         grid-template-columns: 1fr;
     }

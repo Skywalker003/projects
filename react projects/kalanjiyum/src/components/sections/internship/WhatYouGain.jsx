@@ -1,9 +1,13 @@
 import './WhatYouGain.css'
 import { CheckCircle } from 'lucide-react'
 import gainImage from '../../../assets/images/who-we-are.png'
-import { internBenefits } from '../../../data/internship'
+import { internBenefits as fallback } from '../../../data/internship'
+import { getInternshipBenefits } from '../../../api/internship'
+import { useApi } from '../../../hooks/useApi'
 
 export default function WhatYouGain() {
+    const internBenefits = useApi(getInternshipBenefits, fallback)
+
     return (
         <section className="section">
             <div className="container what-you-gain_layout">

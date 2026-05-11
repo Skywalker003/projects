@@ -2,9 +2,13 @@ import './WhyChooseUs.css'
 import { CheckCircle, Headset } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import whyImage from '../../../assets/images/homepage2.png'
-import { homeFeatures } from '../../../data/home'
+import { homeFeatures as fallback } from '../../../data/home'
+import { getHomeFeatures } from '../../../api/home'
+import { useApi } from '../../../hooks/useApi'
 
 export default function WhyChooseUs() {
+    const homeFeatures = useApi(getHomeFeatures, fallback)
+
     return (
         <section className="section section--gray">
             <div className="container why-choose-us">

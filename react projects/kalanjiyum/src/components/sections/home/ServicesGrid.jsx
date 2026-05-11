@@ -1,9 +1,13 @@
 import "./ServicesGrid.css"
 import { Link } from 'react-router-dom'
-import { services } from "../../../data/services"
+import { services as fallback } from "../../../data/services"
+import { getServices } from "../../../api/services"
+import { useApi } from "../../../hooks/useApi"
 import SectionHeading from "../../ui/SectionHeading"
 
 export default function ServicesGrid() {
+    const services = useApi(getServices, fallback)
+
     return (
         <section id="services" className="section">
             <div className="container">

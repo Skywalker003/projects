@@ -1,13 +1,20 @@
 import './OurLocations.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Building2, MapPin, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import { locations, headquarters } from '../../../data/locations'
+import { locations as fallback, headquarters } from '../../../data/locations'
+import { getLocations } from '../../../api/locations'
+import { useApi } from '../../../hooks/useApi'
 import SectionHeading from '../../ui/SectionHeading'
 
 const PER_PAGE = 2
 
 export default function OurLocations() {
+    const locations = useApi(getLocations, fallback)
     const [page, setPage] = useState(0)
+
+    // Reset page when locations data updates
+    useEffect(() => { setPage(0) }, [locations])
+
     const totalPages = Math.ceil(locations.length / PER_PAGE)
     const visible = locations.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE)
 
@@ -105,7 +112,6 @@ export default function OurLocations() {
                         </div>
                     </a>
                 </div>
-
             </div>
         </section>
     )

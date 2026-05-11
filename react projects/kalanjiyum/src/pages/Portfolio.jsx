@@ -9,7 +9,9 @@ import {
 import { Link } from 'react-router-dom'
 import PageHero from '../components/ui/PageHero'
 import SectionHeading from '../components/ui/SectionHeading'
-import { portfolioTopics, portfolioItems } from '../data/portfolio'
+import { portfolioTopics as topicsFallback, portfolioItems as itemsFallback } from '../data/portfolio'
+import { getPortfolioTopics, getPortfolioItems } from '../api/portfolio'
+import { useApi } from '../hooks/useApi'
 
 const TAG_GRADIENTS = {
     'WEB APP':    'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)',
@@ -48,6 +50,9 @@ const MODAL_TITLE_ID  = 'port-modal-title'
 const INITIAL_VISIBLE = 6
 
 export default function Portfolio() {
+    const portfolioTopics = useApi(getPortfolioTopics, topicsFallback)
+    const portfolioItems  = useApi(getPortfolioItems,  itemsFallback)
+
     const [selectedTopic,   setSelectedTopic]   = useState(null)
     const [selectedSub,     setSelectedSub]     = useState('All')
     const [visibleCount,    setVisibleCount]    = useState(INITIAL_VISIBLE)
@@ -122,12 +127,18 @@ export default function Portfolio() {
         activeTabRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
     }, [selectedTopic])
 
-    // Escape key closes modal
+    // Escape key closes modal + body scroll lock
     useEffect(() => {
         if (!selectedProject) return
+        document.body.style.overflow = 'hidden'
+        document.documentElement.style.overflow = 'hidden'
         const handler = (e) => { if (e.key === 'Escape') closeProject() }
         document.addEventListener('keydown', handler)
-        return () => document.removeEventListener('keydown', handler)
+        return () => {
+            document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            document.removeEventListener('keydown', handler)
+        }
     }, [selectedProject])
 
     // Focus management: move focus into modal on open, restore on close
@@ -547,18 +558,7 @@ export default function Portfolio() {
                                     </div>
                                 )}
 
-                                {selectedProject.tech?.length > 0 && (
-                                    <div className="port-modal_section">
-                                        <h3 className="port-modal_section-title">Tech & Platform</h3>
-                                        <div className="port-modal_tech">
-                                            {selectedProject.tech.map(t => (
-                                                <span key={t} className="port-modal_chip">{t}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                <Link
+<Link
                                     to="/contact"
                                     className="btn btn--primary port-modal_cta"
                                     onClick={closeProject}

@@ -7,6 +7,7 @@ import CustomSelect from '../components/ui/CustomSelect'
 import TagInput from '../components/ui/TagInput'
 import { domainRoles, tnDistricts, indianStates, sectionNames } from '../data/internshipApplication'
 import logo from '../assets/images/logo.png'
+import { submitInternshipApplication } from '../api/forms'
 
 const toOptions = (arr) => arr.map(v => ({ value: v, label: v }))
 
@@ -66,6 +67,7 @@ export default function InternshipApplication() {
     const [submitted, setSubmitted]         = useState(false)
     const [isSubmitting, setIsSubmitting]   = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
+    const [submitError, setSubmitError]     = useState(false)
     const [dragging, setDragging] = useState(null)
     const sectionRefs = useRef([])
     const pincodeAbortRef = useRef(null)
@@ -230,13 +232,46 @@ export default function InternshipApplication() {
             return
         }
 
+        const fd = new FormData()
+        fd.append('fullName', fullName)
+        fd.append('gender', gender)
+        fd.append('dob', dob)
+        fd.append('phone', `${phonePrefix}${phoneNumber}`)
+        fd.append('email', email)
+        fd.append('collegeName', collegeName)
+        fd.append('collegeLocation', collegeLocation)
+        fd.append('registerNo', registerNo)
+        fd.append('qualification', qualification)
+        fd.append('department', department)
+        fd.append('currentStatus', currentStatus)
+        fd.append('passedYear', passedYear)
+        fd.append('fullAddress', fullAddress)
+        fd.append('state', state)
+        fd.append('district', district)
+        fd.append('pincode', pincode)
+        fd.append('skills', JSON.stringify(skills))
+        fd.append('tools', JSON.stringify(tools))
+        fd.append('domain', domain)
+        fd.append('role', role)
+        fd.append('mode', mode)
+        fd.append('duration', duration)
+        fd.append('startDate', startDate)
+        fd.append('endDate', endDate)
+        if (experience) fd.append('experience', experience)
+        fd.append('resume', resumeFile)
+        if (bonafideFile) fd.append('bonafide', bonafideFile)
+        if (idFile) fd.append('idProof', idFile)
+
         setIsSubmitting(true)
-        setTimeout(() => {
-            localStorage.removeItem(STORAGE_KEY)
-            setIsSubmitting(false)
-            setSubmitSuccess(true)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }, 1500)
+        setSubmitError(false)
+        submitInternshipApplication(fd)
+            .then(() => {
+                localStorage.removeItem(STORAGE_KEY)
+                setIsSubmitting(false)
+                setSubmitSuccess(true)
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+            })
+            .catch(() => { setIsSubmitting(false); setSubmitError(true) })
     }
 
     const progress = ((activeSection + 1) / 8) * 100
@@ -833,6 +868,12 @@ export default function InternshipApplication() {
                                 'Submit Application'
                             )}
                         </button>
+
+                        {submitError && (
+                            <p className="form-submit-error" role="alert">
+                                Submission failed. Please check your connection and try again.
+                            </p>
+                        )}
 
                     </form>
                 )}

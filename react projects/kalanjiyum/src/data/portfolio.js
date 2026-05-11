@@ -4,7 +4,7 @@ export const portfolioTopics = [
     { id: 'mes',       label: 'MES',                  fullLabel: 'Manufacturing Execution System',    subFilters: ['All', 'Machine Data Monitoring', 'Quality Assurance', 'Calibration', 'Planning & Scheduling', 'OEE & PMS', 'Maintenance'] },
     { id: 'inventory', label: 'Inventory & Warehouse', fullLabel: 'Inventory & Warehouse Management', subFilters: ['All', 'Inter Location Transfer', 'Intra Location Transfer'] },
     { id: 'hrm',       label: 'HRM',                  fullLabel: 'Human Resource Management',         subFilters: ['All', 'Payroll', 'Employee Details Management', 'Attendance Management'] },
-    { id: 'finance',   label: 'Accounting & Finance', fullLabel: 'Accounting & Finance',              subFilters: ['All'] },
+    { id: 'finance',   label: 'Accounting & Finance', fullLabel: 'Accounting & Finance',              subFilters: ['All', 'General Accounting', 'Financial Reporting'] },
 ]
 
 export const portfolioItems = [

@@ -114,7 +114,6 @@
 .port-topic-box_abbr {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-light);
 }
 
 .port-topic-box_text {
@@ -652,6 +651,7 @@
     justify-content: center;
     padding: var(--space-xl);
     overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .port-modal {
@@ -913,12 +913,22 @@
 
 /* ── Modal responsive ── */
 @media (max-width: 768px) {
+    .port-modal-overlay {
+        align-items: flex-start;
+        padding: var(--space-lg);
+    }
+
     .port-modal {
         grid-template-columns: 1fr;
         max-width: 540px;
+        max-height: calc(100vh - var(--space-lg) * 2);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
     .port-modal_left {
+        flex-shrink: 0;
         min-height: unset;
         padding: var(--space-lg);
     }
@@ -934,8 +944,10 @@
     }
 
     .port-modal_right {
+        flex: 1;
         padding: var(--space-xl);
-        max-height: none;
+        overflow-y: auto;
+        min-height: 0;
     }
 }
 

@@ -1,5 +1,6 @@
 import './WhoWeAre.css'
 import aboutImage from '../../../assets/images/who-we-are.png'
+import { whoWeAreText } from '../../../data/about'
 
 export default function WhoWeAre() {
     return (
@@ -9,17 +10,9 @@ export default function WhoWeAre() {
                     <span className='section-heading_label'>Our Story</span>
                     <h2 className='who-we-are_title'>Who We Are</h2>
 
-                    <p>
-                        Founded in the industrial heart of <strong>Madurai</strong>, Kalanjiyam Technical
-                        Solutions was born in 2019 out of a vision to bridge the gap between complex
-                        engineering challenges and accessible technical innovation.
-                    </p>
-                    <p>
-                        From our humble beginnings, we have evolved into a multi-disciplinary powerhouse
-                        specialising in Industry 4.0 integrations and bespoke software development. Our
-                        mission is to help local and global businesses leverage their advantage in a
-                        digital-first economy.
-                    </p>
+                    {whoWeAreText.map((text, i) => (
+                        <p key={i} dangerouslySetInnerHTML={{ __html: text }} />
+                    ))}
 
                 </div>
 

@@ -1,3 +1,10 @@
+export const homeStats = [
+    { end: 2019, suffix: '',  label: 'YEAR FOUNDED', static: true },
+    { end: 50,   suffix: '+', label: 'SOLUTIONS OFFERED' },
+    { end: 25,   suffix: '+', label: 'BUSINESS DOMAINS' },
+    { end: 20,   suffix: '+', label: 'ASSOCIATED PROFESSIONALS' },
+]
+
 export const homeFeatures = [
     { title: 'Cost-Effective', desc: 'High-quality engineering without the premium price tag.' },
     { title: 'Local Support',  desc: 'On-site assistance in Madurai and across South India.' },

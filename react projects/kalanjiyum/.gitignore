@@ -1,3 +1,9 @@
+# Environment variables
+.env
+.env.production
+.env.local
+# .env.example is intentionally committed
+
 # Logs
 logs
 *.log

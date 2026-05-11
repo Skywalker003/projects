@@ -3,9 +3,12 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, X } from 'lucide-react'
 import SectionHeading from '../../ui/SectionHeading'
-import { domains } from '../../../data/internship'
+import { domains as fallback } from '../../../data/internship'
+import { getInternshipDomains } from '../../../api/internship'
+import { useApi } from '../../../hooks/useApi'
 
 export default function InternDomains() {
+    const domains = useApi(getInternshipDomains, fallback)
     const [activeModal, setActiveModal] = useState(null)
     const [showFade, setShowFade] = useState(true)
     const modalBodyRef = useRef(null)

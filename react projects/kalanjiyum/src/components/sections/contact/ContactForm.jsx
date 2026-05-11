@@ -2,10 +2,15 @@ import './ContactForm.css'
 import { useState } from 'react'
 import { Mail, Clock, Zap, CheckCircle } from 'lucide-react'
 import logo from '../../../assets/images/logo.png'
+import { submitContact } from '../../../api/forms'
+import { getFooterContact } from '../../../api/locations'
+import { footerContact as contactFallback } from '../../../data/footer'
+import { useApi } from '../../../hooks/useApi'
 
 
 export default function ContactForm() {
     const today = new Date().toISOString().split('T')[0]
+    const footerContact = useApi(getFooterContact, contactFallback)
 
     const [orgName, setOrgName]       = useState('')
     const [name, setName]             = useState('')
@@ -19,6 +24,7 @@ export default function ContactForm() {
     const [errors, setErrors]         = useState({})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitted, setSubmitted]   = useState(false)
+    const [submitError, setSubmitError] = useState(false)
 
     const validate = () => {
         const e = {}
@@ -40,11 +46,10 @@ export default function ContactForm() {
         if (Object.keys(errs).length > 0) return
 
         setIsSubmitting(true)
-        setTimeout(() => {
-            setIsSubmitting(false)
-            setSubmitted(true)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }, 1500)
+        setSubmitError(false)
+        submitContact({ name, email, phone: `${phonePrefix}${phone}`, orgName, address, message })
+            .then(() => { setIsSubmitting(false); setSubmitted(true); window.scrollTo({ top: 0, behavior: 'smooth' }) })
+            .catch(() => { setIsSubmitting(false); setSubmitError(true) })
     }
 
     if (submitted) {
@@ -91,8 +96,8 @@ export default function ContactForm() {
                             </div>
                             <div>
                                 <span className="contact-form_detail-label">Email</span>
-                                <a href="mailto:contactus@kalanjiyam.info" className="contact-form_detail-value">
-                                    contactus@kalanjiyam.info
+                                <a href={`mailto:${footerContact.email}`} className="contact-form_detail-value">
+                                    {footerContact.email}
                                 </a>
                             </div>
                         </div>
@@ -236,6 +241,12 @@ export default function ContactForm() {
                                     <><img src={logo} alt="" aria-hidden="true" className="contact-spinner" />Sending…</>
                                 ) : 'Send Enquiry'}
                             </button>
+
+                            {submitError && (
+                                <p className="form-submit-error" role="alert">
+                                    Submission failed. Please check your connection and try again.
+                                </p>
+                            )}
 
                         </div>
                     </form>

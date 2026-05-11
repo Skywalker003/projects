@@ -4,6 +4,7 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { User, Briefcase, FileCheck, UploadCloud, FileText, Image, X, AlertCircle, CheckCircle, Eye } from 'lucide-react'
 import PageHero from '../components/ui/PageHero'
 import logo from '../assets/images/logo.png'
+import { submitJobApplication } from '../api/forms'
 
 const STORAGE_KEY = 'job_application_draft'
 const MB = 1024 * 1024
@@ -38,6 +39,7 @@ export default function JobApplication() {
     const [submitted, setSubmitted]           = useState(false)
     const [isSubmitting, setIsSubmitting]     = useState(false)
     const [submitSuccess, setSubmitSuccess]   = useState(false)
+    const [submitError, setSubmitError]       = useState(false)
     const [dragging, setDragging]             = useState(null)
 
     const sectionRefs = useRef([])
@@ -93,13 +95,26 @@ export default function JobApplication() {
             return
         }
 
+        const fd = new FormData()
+        fd.append('firstName', firstName)
+        fd.append('lastName', lastName)
+        fd.append('email', email)
+        fd.append('phone', `${phonePrefix}${phone}`)
+        fd.append('address', address)
+        fd.append('position', position)
+        fd.append('resume', resumeFile)
+        if (photoFile) fd.append('photo', photoFile)
+
         setIsSubmitting(true)
-        setTimeout(() => {
-            localStorage.removeItem(STORAGE_KEY)
-            setIsSubmitting(false)
-            setSubmitSuccess(true)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }, 1500)
+        setSubmitError(false)
+        submitJobApplication(fd)
+            .then(() => {
+                localStorage.removeItem(STORAGE_KEY)
+                setIsSubmitting(false)
+                setSubmitSuccess(true)
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+            })
+            .catch(() => { setIsSubmitting(false); setSubmitError(true) })
     }
 
     const progress = ((activeSection + 1) / 3) * 100
@@ -421,6 +436,12 @@ export default function JobApplication() {
                                 'Submit Application'
                             )}
                         </button>
+
+                        {submitError && (
+                            <p className="form-submit-error" role="alert">
+                                Submission failed. Please check your connection and try again.
+                            </p>
+                        )}
 
                     </form>
                 </div>

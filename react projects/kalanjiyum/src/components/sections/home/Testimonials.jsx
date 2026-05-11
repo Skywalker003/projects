@@ -1,11 +1,15 @@
 import './Testimonials.css'
+import { useMemo } from 'react'
 import { Star } from 'lucide-react'
-import { testimonials } from '../../../data/home'
+import { testimonials as fallback } from '../../../data/home'
+import { getTestimonials } from '../../../api/home'
+import { useApi } from '../../../hooks/useApi'
 import SectionHeading from '../../ui/SectionHeading'
 
-const track = [...testimonials, ...testimonials, ...testimonials]
-
 export default function Testimonials() {
+    const testimonials = useApi(getTestimonials, fallback)
+    const track = useMemo(() => [...testimonials, ...testimonials, ...testimonials], [testimonials])
+
     return (
         <section className="section testimonials-section">
             <div className="container">

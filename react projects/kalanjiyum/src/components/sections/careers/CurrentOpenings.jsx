@@ -1,10 +1,14 @@
 import './CurrentOpenings.css'
 import { MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { jobs } from '../../../data/careers'
+import { jobs as fallback } from '../../../data/careers'
+import { getJobs } from '../../../api/careers'
+import { useApi } from '../../../hooks/useApi'
 import SectionHeading from '../../ui/SectionHeading'
 
 export default function CurrentOpenings() {
+    const jobs = useApi(getJobs, fallback)
+
     return (
         <section id="openings" className="section section--gray">
             <div className="container">
