@@ -3,3 +3,7 @@
   position: relative;
   overflow: hidden;
 }
+
+.about-hero .page-hero_title {
+  white-space: pre-line;
+}
