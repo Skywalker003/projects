@@ -5,6 +5,14 @@ import { getServices } from "../../../api/services"
 import { useApi } from "../../../hooks/useApi"
 import SectionHeading from "../../ui/SectionHeading"
 
+const ORIGIN = (() => { try { return new URL(import.meta.env.VITE_API_BASE_URL ?? '').origin } catch { return '' } })()
+const imgSrc = (url) => {
+    if (!url) return ''
+    if (url.startsWith('http')) return url
+    if (url.startsWith('/uploads/')) return ORIGIN + url
+    return url
+}
+
 export default function ServicesGrid() {
     const services = useApi(getServices, fallback)
 
@@ -20,7 +28,7 @@ export default function ServicesGrid() {
                 <div className="services-grid">
                     {services.map(service => (
                         <div className="service-card" key={service.id}>
-                            <img src={service.image} alt="" />
+                            <img src={imgSrc(service.image)} alt="" />
                             <div className="service-card_overlay">
                                 <h3>{service.title}</h3>
                                 <p>{service.shortDescription}</p>

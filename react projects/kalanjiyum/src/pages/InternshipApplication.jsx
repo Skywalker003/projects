@@ -5,9 +5,13 @@ import { User, BookOpen, MapPin, Layers, Calendar, Wrench, UploadCloud, FileChec
 import PageHero from '../components/ui/PageHero'
 import CustomSelect from '../components/ui/CustomSelect'
 import TagInput from '../components/ui/TagInput'
-import { domainRoles, tnDistricts, indianStates, sectionNames } from '../data/internshipApplication'
+import FileViewer from '../components/ui/FileViewer'
+import { tnDistricts, indianStates, sectionNames } from '../data/internshipApplication'
+import { domains as domainsFallback } from '../data/internship'
 import logo from '../assets/images/logo.png'
 import { submitInternshipApplication } from '../api/forms'
+import { useApi } from '../hooks/useApi'
+import { getInternshipDomains } from '../api/internship'
 
 const toOptions = (arr) => arr.map(v => ({ value: v, label: v }))
 
@@ -15,6 +19,7 @@ const STORAGE_KEY = 'kalanjiyum_intern_app'
 
 export default function InternshipApplication() {
     const [searchParams] = useSearchParams()
+    const [viewFile, setViewFile] = useState(null)
 
     const saved = useMemo(() => {
         try {
@@ -108,7 +113,11 @@ export default function InternshipApplication() {
         fullName, dob, email, collegeName, collegeLocation, registerNo, department,
         passedYear, fullAddress, experience])
 
-    const roleOptions = domain ? toOptions(domainRoles[domain] || []) : []
+    const fetchedDomains = useApi(getInternshipDomains, domainsFallback)
+    const domainOptions  = toOptions((fetchedDomains ?? domainsFallback).map(d => d.domainKey))
+    const roleOptions    = domain
+        ? toOptions((fetchedDomains ?? domainsFallback).find(d => d.domainKey === domain)?.roles ?? [])
+        : []
 
     const handleStateChange = (val) => { setState(val); setDistrict(''); setPincodeStatus(null) }
     const handleDomainChange = (val) => { setDomain(val); setRole('') }
@@ -567,7 +576,7 @@ export default function InternshipApplication() {
                                     <label htmlFor="iapp-domain" className="form-label">Internship Domain <span className="iapp-req">*</span></label>
                                     <CustomSelect
                                         id="iapp-domain"
-                                        options={toOptions(['Software Development', 'Industrial Automation', 'Administration'])}
+                                        options={domainOptions}
                                         value={domain}
                                         onChange={handleDomainChange}
                                         placeholder="Select domain"
@@ -722,7 +731,7 @@ export default function InternshipApplication() {
                                                 <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{resumeFile.name}</span>
                                                 <div className="iapp-upload_actions">
-                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(resumeFile), '_blank') }}>
+                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); setViewFile({ file: resumeFile, label: "Resume / CV" }) }}>
                                                         <Eye size={14} aria-hidden="true" /> View
                                                     </button>
                                                     <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setResumeFile(null) }}>
@@ -759,7 +768,7 @@ export default function InternshipApplication() {
                                                 <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{bonafideFile.name}</span>
                                                 <div className="iapp-upload_actions">
-                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(bonafideFile), '_blank') }}>
+                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); setViewFile({ file: bonafideFile, label: "Bonafide Certificate" }) }}>
                                                         <Eye size={14} aria-hidden="true" /> View
                                                     </button>
                                                     <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setBonafideFile(null) }}>
@@ -796,7 +805,7 @@ export default function InternshipApplication() {
                                                 <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" aria-hidden="true" />
                                                 <span className="iapp-upload_filename">{idFile.name}</span>
                                                 <div className="iapp-upload_actions">
-                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(idFile), '_blank') }}>
+                                                    <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); setViewFile({ file: idFile, label: "ID Proof" }) }}>
                                                         <Eye size={14} aria-hidden="true" /> View
                                                     </button>
                                                     <button type="button" className="iapp-upload_clear" onClick={e => { e.preventDefault(); setIdFile(null) }}>
@@ -879,6 +888,7 @@ export default function InternshipApplication() {
                 )}
                 </div>
             </section>
+            {viewFile && <FileViewer file={viewFile.file} label={viewFile.label} onClose={() => setViewFile(null)} />}
         </>
     )
 }

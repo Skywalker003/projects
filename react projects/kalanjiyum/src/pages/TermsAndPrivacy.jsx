@@ -2,6 +2,9 @@ import './TermsAndPrivacy.css'
 import { useEffect, useRef, useState } from 'react'
 import { Link2, Printer, Mail, Clock } from 'lucide-react'
 import PageHero from '../components/ui/PageHero'
+import { useApi } from '../hooks/useApi'
+import { getFooterContact } from '../api/locations'
+import { footerContact as contactFallback } from '../data/footer'
 
 const TERMS_TOC = [
     { id: 'terms-1', num: 1, title: 'User Conduct' },
@@ -58,7 +61,7 @@ function LegalDivider() {
     return <div className="legal-divider" aria-hidden="true"><span>§</span></div>
 }
 
-function LegalContactCard({ context }) {
+function LegalContactCard({ context, email }) {
     return (
         <div className="legal-contact-card">
             <div className="legal-contact-card_icon" aria-hidden="true">
@@ -68,8 +71,8 @@ function LegalContactCard({ context }) {
                 <p className="legal-contact-card_title">
                     {context === 'terms' ? 'Questions about our Terms?' : 'Questions about our Privacy Policy?'}
                 </p>
-                <a href="mailto:contactus@kalanjiyam.info" className="btn btn--primary">
-                    contactus@kalanjiyam.info
+                <a href={`mailto:${email}`} className="btn btn--primary">
+                    {email}
                 </a>
             </div>
         </div>
@@ -77,6 +80,7 @@ function LegalContactCard({ context }) {
 }
 
 export default function TermsAndPrivacy() {
+    const { email } = useApi(getFooterContact, contactFallback)
     const [activeTab, setActiveTab]         = useState('terms')
     const [activeTocItem, setActiveTocItem] = useState(null)
     const [copiedSection, setCopiedSection] = useState(null)
@@ -201,7 +205,7 @@ export default function TermsAndPrivacy() {
                                 <p className="legal-article_text">4.2 Your continued use of our services following the posting of changes constitutes your acceptance of such changes.</p>
                             </LegalArticle>
 
-                            <LegalContactCard context="terms" />
+                            <LegalContactCard context="terms" email={email} />
                         </div>
                     </div>
                 </div>
@@ -266,7 +270,7 @@ export default function TermsAndPrivacy() {
                                 <p className="legal-article_text">We reserve the right to update and revise this Privacy Policy periodically. Any changes will be effective immediately upon the posting of the revised Privacy Policy. Your continued use of our website and services following the posting of changes constitutes your acceptance of such changes.</p>
                             </LegalArticle>
 
-                            <LegalContactCard context="privacy" />
+                            <LegalContactCard context="privacy" email={email} />
                         </div>
                     </div>
                 </div>

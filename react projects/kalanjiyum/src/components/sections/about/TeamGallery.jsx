@@ -1,5 +1,8 @@
 import './TeamGallery.css'
 import { useState, useEffect, useCallback, useRef } from 'react'
+
+const ORIGIN = (() => { try { return new URL(import.meta.env.VITE_API_BASE_URL ?? '').origin } catch { return '' } })()
+const imgSrc = (url) => { if (!url) return ''; if (url.startsWith('http')) return url; if (url.startsWith('/uploads/')) return ORIGIN + url; return url }
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionHeading from '../../ui/SectionHeading'
 import { gallerySlides as fallback } from '../../../data/about'
@@ -59,7 +62,7 @@ export default function TeamGallery() {
                                 className={`gallery-slide${i === current ? ' gallery-slide--active' : ''}`}
                                 aria-hidden={i !== current}
                             >
-                                <img src={slide.src} alt={slide.caption} className="gallery-img" />
+                                <img src={imgSrc(slide.src)} alt={slide.caption} className="gallery-img" />
                                 <div className="gallery-caption">{slide.caption}</div>
                             </div>
                         ))}

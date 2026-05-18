@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useMemo } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { User, Briefcase, FileCheck, UploadCloud, FileText, Image, X, AlertCircle, CheckCircle, Eye } from 'lucide-react'
 import PageHero from '../components/ui/PageHero'
+import FileViewer from '../components/ui/FileViewer'
 import logo from '../assets/images/logo.png'
 import { submitJobApplication } from '../api/forms'
 
@@ -13,6 +14,7 @@ const sectionNames = ['Personal Information', 'Professional Details', 'Declarati
 
 export default function JobApplication() {
     const [searchParams] = useSearchParams()
+    const [viewFile, setViewFile] = useState(null)
     const position = searchParams.get('position') || ''
 
     const saved = useMemo(() => {
@@ -289,7 +291,7 @@ export default function JobApplication() {
                                             <Image size={28} className="iapp-upload_icon iapp-upload_icon--done" />
                                             <span className="iapp-upload_filename">{photoFile.name}</span>
                                             <div className="iapp-upload_actions">
-                                                <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(photoFile), '_blank') }}>
+                                                <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); setViewFile({ file: photoFile, label: "Photo" }) }}>
                                                     <Eye size={14} /> View
                                                 </button>
                                                 <button type="button" className="iapp-upload_clear"
@@ -360,7 +362,7 @@ export default function JobApplication() {
                                             <FileText size={28} className="iapp-upload_icon iapp-upload_icon--done" />
                                             <span className="iapp-upload_filename">{resumeFile.name}</span>
                                             <div className="iapp-upload_actions">
-                                                <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); window.open(URL.createObjectURL(resumeFile), '_blank') }}>
+                                                <button type="button" className="iapp-upload_view" onClick={e => { e.preventDefault(); setViewFile({ file: resumeFile, label: "Resume / CV" }) }}>
                                                     <Eye size={14} /> View
                                                 </button>
                                                 <button type="button" className="iapp-upload_clear"
@@ -446,6 +448,7 @@ export default function JobApplication() {
                     </form>
                 </div>
             </section>
+            {viewFile && <FileViewer file={viewFile.file} label={viewFile.label} onClose={() => setViewFile(null)} />}
         </>
     )
 }

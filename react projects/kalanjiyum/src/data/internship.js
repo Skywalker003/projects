@@ -1,13 +1,9 @@
 import { Laptop, Users, Calendar, Award, BookOpen, User, RefreshCw } from 'lucide-react'
-import internpage2 from '../assets/images/internpage2.png'
-import internpage3 from '../assets/images/internpage3.png'
-import internpage4 from '../assets/images/internpage4.png'
-
 export const domains = [
     {
         badge: 'TECH',
-        badgeColor: 'red',
-        image: internpage2,
+        badgeColor: '#ef4444',
+        image: '/images/internpage2.png',
         domainKey: 'Software Development',
         title: 'Software Development',
         desc: 'Build real-world applications across web, mobile, and AI using modern tech stacks.',
@@ -30,8 +26,8 @@ export const domains = [
     },
     {
         badge: 'CORE',
-        badgeColor: 'blue',
-        image: internpage3,
+        badgeColor: '#3b82f6',
+        image: '/images/internpage3.png',
         domainKey: 'Industrial Automation',
         title: 'Industrial Automation (Industry 4.0)',
         desc: 'Gain hands-on experience with cutting-edge industrial systems, PLCs, IoT and SCADA technologies.',
@@ -54,8 +50,8 @@ export const domains = [
     },
     {
         badge: 'OPERATIONS',
-        badgeColor: 'gray',
-        image: internpage4,
+        badgeColor: '#6b7280',
+        image: '/images/internpage4.png',
         domainKey: 'Administration',
         title: 'Administration',
         desc: 'Develop business acumen and operational skills across HR, project management and business analysis.',

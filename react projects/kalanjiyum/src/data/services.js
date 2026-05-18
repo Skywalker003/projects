@@ -1,12 +1,5 @@
 import { Settings, RefreshCw, Globe, Network, Cpu, Wrench, Search, PenTool, Code2, Rocket } from 'lucide-react'
 
-import industry from '../assets/images/industry 4.0.jpg'
-import processAutomation from '../assets/images/process-automation.jpg'
-import webDev from '../assets/images/web-design.jpg'
-import networkSol from '../assets/images/network1.jpg'
-import plcSensor from '../assets/images/PLC.png'
-import consulting from '../assets/images/consulting_services.jpg'
-
 export const services = [
   {
     id: 1,
@@ -15,7 +8,7 @@ export const services = [
     color: '#2563EB',
     bg: '#EFF6FF',
     title: 'Industry 4.0',
-    image: industry,
+    image: '/images/industry-4.0.jpg',
     shortDescription: 'Data acquisition, cloud reporting, IIoT, machine vision and industrial automation',
     desc: 'Connect your machines to the cloud — capture live data, deploy IIoT sensors, and automate the shopfloor with machine vision.',
     items: ['Data acquisition & cloud reporting', 'IIoT & machine vision', 'Industrial automation'],
@@ -27,7 +20,7 @@ export const services = [
     color: '#EA580C',
     bg: '#FFF7ED',
     title: 'Process Automation',
-    image: processAutomation,
+    image: '/images/process-automation.jpg',
     shortDescription: 'Customer management, logistics solutions and process traceability systems',
     desc: 'Digitise customer management, logistics workflows, and end-to-end process traceability across your operations.',
     items: ['Customer management systems', 'Logistics & route solutions', 'Process traceability'],
@@ -39,7 +32,7 @@ export const services = [
     color: '#4F46E5',
     bg: '#EEF2FF',
     title: 'Web Development',
-    image: webDev,
+    image: '/images/web-design.jpg',
     shortDescription: 'eCommerce platforms, business management systems and corporate websites',
     desc: 'Build eCommerce stores, business management systems, and corporate websites designed to grow with your business.',
     items: ['eCommerce platforms', 'Business management systems', 'Corporate websites'],
@@ -51,7 +44,7 @@ export const services = [
     color: '#0891B2',
     bg: '#ECFEFF',
     title: 'Network Solutions',
-    image: networkSol,
+    image: '/images/network1.jpg',
     shortDescription: 'Mesh networking, network design, debugging and CCTV network setup',
     desc: 'Design, deploy, and debug wired and mesh networks — including full CCTV network infrastructure.',
     items: ['Mesh & enterprise network design', 'Network debugging & monitoring', 'CCTV network setup'],
@@ -63,7 +56,7 @@ export const services = [
     color: '#DC2626',
     bg: '#FFF1F2',
     title: 'PLCs, Sensors & Safety',
-    image: plcSensor,
+    image: '/images/PLC.png',
     shortDescription: 'Siemens, Omron, Allen Bradley, Mitsubishi, Schneider and more',
     desc: 'Programme and integrate PLCs from Siemens, Omron, Allen Bradley, Mitsubishi, and Schneider with safety systems.',
     items: ['Siemens, Omron & Allen Bradley', 'Mitsubishi & Schneider PLCs', 'Safety systems integration'],
@@ -75,7 +68,7 @@ export const services = [
     color: '#16A34A',
     bg: '#F0FDF4',
     title: 'Consulting Services',
-    image: consulting,
+    image: '/images/consulting_services.jpg',
     shortDescription: 'SAP solutions, AMC for computers, CCTV installation and technical support',
     desc: 'SAP solutions, annual maintenance contracts, CCTV installation, and hands-on technical support.',
     items: ['SAP solutions & implementation', 'AMC for computers & CCTV', 'Technical support & training'],

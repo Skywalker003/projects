@@ -6,7 +6,7 @@ export function useApi(apiFn, fallback) {
     useEffect(() => {
         let cancelled = false
         apiFn()
-            .then(d => { if (!cancelled) setData(d) })
+            .then(d => { if (!cancelled) setData(d ?? fallback) })
             .catch(() => {})
         return () => { cancelled = true }
     }, [])

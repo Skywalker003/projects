@@ -1,5 +1,8 @@
 import './InternDomains.css'
 import { useState, useRef, useEffect } from 'react'
+
+const ORIGIN = (() => { try { return new URL(import.meta.env.VITE_API_BASE_URL ?? '').origin } catch { return '' } })()
+const imgSrc = (url) => { if (!url) return ''; if (url.startsWith('http')) return url; if (url.startsWith('/uploads/')) return ORIGIN + url; return url }
 import { Link } from 'react-router-dom'
 import { ArrowRight, X } from 'lucide-react'
 import SectionHeading from '../../ui/SectionHeading'
@@ -89,9 +92,9 @@ export default function InternDomains() {
                         <div className="intern-domain_card" key={i}>
                             {/* Image with overlay */}
                             <div className="intern-domain_img-wrap">
-                                <img src={d.image} alt={d.title} className="intern-domain_img" />
+                                <img src={imgSrc(d.image)} alt={d.title} className="intern-domain_img" />
                                 <div className="intern-domain_overlay" />
-                                <span className={`intern-domain_badge intern-domain_badge--${d.badgeColor}`}>
+                                <span className="intern-domain_badge" style={{ backgroundColor: d.badgeColor || '#6b7280' }}>
                                     {d.badge}
                                 </span>
                                 <h3 className="intern-domain_img-title">{d.title}</h3>

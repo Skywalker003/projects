@@ -1,9 +1,5 @@
 import { Target, Eye, IndianRupee, Users, Lightbulb, ShieldCheck } from 'lucide-react'
 
-import img1 from '../assets/images/internpage2.png'
-import img2 from '../assets/images/internpage3.png'
-import img3 from '../assets/images/internpage4.png'
-import img4 from '../assets/images/who-we-are.png'
 
 export const aboutStats = [
     { end: 6,  suffix: '+', label: 'Years of Experience' },
@@ -18,10 +14,10 @@ export const whoWeAreText = [
 ]
 
 export const gallerySlides = [
-    { src: img1, caption: 'Our Workspace' },
-    { src: img2, caption: 'Team at Work' },
-    { src: img3, caption: 'Building Solutions' },
-    { src: img4, caption: 'Our Team' },
+    { src: '/images/internpage2.png', caption: 'Our Workspace' },
+    { src: '/images/internpage3.png', caption: 'Team at Work' },
+    { src: '/images/internpage4.png', caption: 'Building Solutions' },
+    { src: '/images/who-we-are.png',  caption: 'Our Team' },
 ]
 
 export const missionVisionItems = [
